@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/terraintiles.png</file>
+        <file>bin/ter.bin</file>
+    </qresource>
+</RCC>
