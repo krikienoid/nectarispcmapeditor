@@ -10,8 +10,8 @@
 #include "pickermapinfo.h"
 #include "editormapmap.h"
 #include "editorplayers.h"
-#include "neclib/necdatamanager.h"
-#include "neclib/nectertype.h"
+#include "nec/necdatamanager.h"
+#include "nec/nectertype.h"
 
 // Class
 

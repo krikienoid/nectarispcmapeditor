@@ -8,7 +8,7 @@
 #include <QListWidget>
 #include <QGroupBox>
 #include <QLabel>
-#include "neclib/necdatamanager.h"
+#include "nec/necdatamanager.h"
 
 #include <QDebug>
 

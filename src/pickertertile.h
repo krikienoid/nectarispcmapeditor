@@ -11,7 +11,7 @@
 #include <QIcon>
 #include <QByteArray>
 #include "pixmaptertiles.h"
-#include "neclib/nectertype.h"
+#include "nec/nectertype.h"
 
 // Class
 

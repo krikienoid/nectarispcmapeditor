@@ -10,7 +10,7 @@
 #include <fstream>
 #include <string>
 #include "editormain.h"
-#include "neclib/necdatamanager.h"
+#include "nec/necdatamanager.h"
 
 #include <QDebug>
 

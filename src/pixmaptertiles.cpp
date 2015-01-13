@@ -3,7 +3,7 @@
 // Constructor
 
 PixmapTerTiles::PixmapTerTiles (QWidget * parent) : QWidget (parent) {
-    terTileset = new QPixmap(":/images/terraintiles.png");
+    terTileset = new QPixmap(":/res/images/terraintiles.png");
 }
 
 PixmapTerTiles::~PixmapTerTiles () {

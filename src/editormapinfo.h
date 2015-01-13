@@ -7,7 +7,7 @@
 #include <QBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
-#include "neclib/necdatamanager.h"
+#include "nec/necdatamanager.h"
 
 // Class
 

@@ -11,9 +11,9 @@
 #include <QList>
 #include <QSignalMapper>
 #include <QComboBox>
-#include "neclib/necdatamanager.h"
-#include "neclib/necplayerstance.h"
-#include "neclib/necplayerrole.h"
+#include "nec/necdatamanager.h"
+#include "nec/necplayerstance.h"
+#include "nec/necplayerrole.h"
 
 // Class
 

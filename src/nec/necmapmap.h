@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <vector>
-#include "bytestring.h"
+#include "neclib/bytestring.h"
 
 namespace Nec {
 

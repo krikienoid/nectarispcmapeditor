@@ -16,10 +16,10 @@
 #include "scenemaptilegrid.h"
 #include "pickertertile.h"
 
-#include "neclib/necmapinfo.h"
-#include "neclib/necmapmap.h"
-#include "neclib/necdatamanager.h"
-#include "neclib/nectertype.h"
+#include "nec/necmapinfo.h"
+#include "nec/necmapmap.h"
+#include "nec/necdatamanager.h"
+#include "nec/nectertype.h"
 
 #include <QDebug>
 

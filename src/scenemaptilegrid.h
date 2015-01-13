@@ -13,8 +13,8 @@
 #include <QGraphicsPixmapItem>
 #include <QList>
 #include "pixmaptertiles.h"
-#include "neclib/necmapinfo.h"
-#include "neclib/necmapmap.h"
+#include "nec/necmapinfo.h"
+#include "nec/necmapmap.h"
 
 #include <QDebug>
 

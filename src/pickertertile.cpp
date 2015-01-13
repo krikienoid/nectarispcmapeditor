@@ -3,7 +3,7 @@
 PickerTerTile::PickerTerTile(QWidget * parent) : QListWidget(parent), terTypeFilter(0) {
 
     // Initialize internal resource ter.bin
-    QFile terBin(":/bin/ter.bin");
+    QFile terBin(":res/bin/ter.bin");
     terBin.open(QIODevice::ReadOnly);
     Q_ASSERT(terBin.isReadable());
     bytesTerBin = terBin.readAll();

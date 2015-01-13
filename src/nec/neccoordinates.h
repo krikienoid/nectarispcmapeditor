@@ -4,7 +4,7 @@
 // Dependencies
 
 #include <iostream>
-#include "byte.h"
+#include "neclib/byte.h"
 
 namespace Nec {
 
