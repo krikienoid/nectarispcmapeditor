@@ -119,10 +119,10 @@ ByteString ByteString::substr (
     const std::size_t n
 ) const {
     std::size_t nn = n;
-    if (start + n > length)
-        nn -= (start + n) - length;
-    if (nn < 0)
+    if (start >= length)
         nn = 0;
+    else if (start + n > length)
+        nn -= (start + n) - length;
     ByteString result(nn);
     for (std::size_t i = 0; start + i < length && i < result.length; ++i)
         result.data[i] = data[start + i];
@@ -155,7 +155,7 @@ void ByteString::resize (const std::size_t n) {
 std::string ByteString::toString () const {
     std::string result;
     for(std::size_t i = 0; i < length; ++i)
-        result += data[i].toStringHex() + ' ';
+        result += data[i].printString() + ' ';
     return result;
 }
 

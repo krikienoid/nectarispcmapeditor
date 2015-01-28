@@ -57,11 +57,22 @@ std::string Byte::toStringDec () const {
 }
 
 std::string Byte::toStringBin () const {
-    char * buffer = new char [BITS];
-    std::sprintf(buffer, "%b", data);
-    std::string result(buffer);
-    while (result.size() < BITS)
-        result = '0' + result;
+    std::string result(BITS, '0');
+    unsigned char marker = 1;
+    for (std::size_t i = BITS; i; marker <<= 1) {
+        result[--i] = (data & marker) ? '1' : '0';
+    }
+    return result;
+}
+
+std::string Byte::printString (const Print print) const {
+    std::string result;
+    switch (print) {
+        case DEC : result = toStringDec(); break;
+        case BIN : result = toStringBin(); break;
+        case HEX :
+        default  : result = toStringHex(); break;
+    }
     return result;
 }
 

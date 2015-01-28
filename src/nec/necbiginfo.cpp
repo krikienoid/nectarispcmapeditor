@@ -13,7 +13,7 @@ BigInfo::BigInfo () {
 // Methods
 
 bool BigInfo::mapInfoExists (const std::size_t i) const {
-    return (i + 1) == at(i).mapNumber;
+    return (i + 1) == std::size_t(at(i).mapNumber);
 }
 
 // I/O

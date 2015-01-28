@@ -1,14 +1,15 @@
 TEMPLATE = subdirs
 
 SUBDIRS = \
-    src \
     src/bytes \
     src/nec \
     app \
     test
 
-app.depends = src
-test.depends = src
+app.depends = src/bytes
+app.depends = src/nec
+test.depends = src/bytes
+test.depends = src/nec
 src/nec.depends = src/bytes
 
 OTHER_FILES += \

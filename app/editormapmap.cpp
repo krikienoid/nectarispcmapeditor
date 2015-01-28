@@ -31,7 +31,7 @@ void EditorMapMap::selectTerTile (int i) {
 }
 
 void EditorMapMap::selectMapTile (int i) {
-    if (toolMode == TOOL_TER && i < necMapMap->size()) {
+    if (toolMode == TOOL_TER && i < int(necMapMap->size())) {
         necMapMap->at(i) = Nec::ByteString::fromInt(selectedTerTile);
         necMapMap->at(i).resize(2);
         updateNecData();
