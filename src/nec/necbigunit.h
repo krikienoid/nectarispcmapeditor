@@ -5,14 +5,15 @@
 
 #include <iostream>
 #include <vector>
-#include "neclib/byte.h"
+#include "bytes/byte.h"
+#include "necmapunit.h"
 #include "necbiginfo.h"
 
 namespace Nec {
 
 // Class
 
-class BigUnit : public std::vector<Byte> {
+class BigUnit : public std::vector<MapUnit> {
 
 public:
 

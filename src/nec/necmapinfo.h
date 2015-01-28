@@ -4,8 +4,7 @@
 // Dependencies
 
 #include <iostream>
-#include "neclib/byte.h"
-#include "neclib/bytestring.h"
+#include "bytes/bytestring.h"
 #include "necmapname.h"
 #include "neccoordinates.h"
 

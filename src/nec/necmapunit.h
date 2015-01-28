@@ -1,22 +1,23 @@
-#ifndef NEC_COORDINATES_H
-#define NEC_COORDINATES_H
+#ifndef NEC_MAPUNIT_H
+#define NEC_MAPUNIT_H
 
 // Dependencies
 
 #include <iostream>
-#include "bytes/byte.h"
+#include <string>
 
 namespace Nec {
 
 // Class
 
-struct Coordinates {
+class MapUnit {
+
+public:
+
+    MapUnit ();
 
     std::istream& read         (std::istream&);
     std::ostream& write        (std::ostream&)     const;
-
-    Byte x;
-    Byte y;
 
 };
 
@@ -24,4 +25,4 @@ struct Coordinates {
 
 }
 
-#endif // NEC_COORDINATES_H
+#endif // NEC_MAPUNIT_H
