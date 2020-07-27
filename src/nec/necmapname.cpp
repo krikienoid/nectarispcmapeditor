@@ -4,7 +4,7 @@ namespace Nec {
 
 // Static Constants
 
-const char MapName::CHAR_OFFSET[MapName::LENGTH] = {72, 223, 88, 62, -22, 92};
+const char MapName::CHAR_OFFSET[MapName::LENGTH] = {72, -33, 88, 62, -22, 92};
 
 // I/O
 
