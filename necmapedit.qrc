@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/bin/ter.bin</file>
-        <file>res/images/terraintiles.png</file>
-        <file>res/images/units.png</file>
+        <file>data/bin/ter.bin</file>
+        <file>data/images/terraintiles.png</file>
+        <file>data/images/units.png</file>
     </qresource>
 </RCC>
