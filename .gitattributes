@@ -1,0 +1,29 @@
+* text=auto
+
+# Source Code
+*.c             text eol=lf
+*.cpp           text eol=lf
+*.h             text eol=lf
+*.hpp           text eol=lf
+
+# Documentation
+*.md            text eol=lf
+*.txt           text eol=lf
+
+# Configs
+.editorconfig   text eol=lf
+.gitattributes  text eol=lf
+.gitconfig      text eol=lf
+.gitignore      text eol=lf
+*.pri           text eol=lf
+*.pro           text eol=lf
+*.qrc           text eol=lf
+*.user          text eol=lf
+
+# Assets
+*.bin           binary
+*.gif           binary
+*.jpeg          binary
+*.jpg           binary
+*.png           binary
+*.svg           text eol=lf
