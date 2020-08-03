@@ -1,16 +1,16 @@
 TEMPLATE = subdirs
 
 SUBDIRS = \
-    src/bytes \
+    src/raw \
     src/nec \
-    app \
-    test
+    src/app \
+    src/test
 
-app.depends = src/bytes
+app.depends = src/raw
 app.depends = src/nec
-test.depends = src/bytes
+test.depends = src/raw
 test.depends = src/nec
-src/nec.depends = src/bytes
+src/nec.depends = src/raw
 
 OTHER_FILES += \
     defaults.pri \
