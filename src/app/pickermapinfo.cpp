@@ -1,5 +1,7 @@
 #include "pickermapinfo.h"
 
+namespace App {
+
 // Constructors
 
 PickerMapInfo::PickerMapInfo (QWidget * parent) : QWidget(parent) {
@@ -76,3 +78,5 @@ int PickerMapInfo::getListItemData (QListWidgetItem * listItem) {
 void PickerMapInfo::setListItemData (QListWidgetItem * listItem, const int i) {
     listItem->setData(Qt::UserRole, QVariant(i));
 }
+
+} // namespace App

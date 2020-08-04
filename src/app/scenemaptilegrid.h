@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_SCENEMAPTILEGRID_H
-#define NECMAPEDIT_SCENEMAPTILEGRID_H
+#ifndef APP_SCENEMAPTILEGRID_H
+#define APP_SCENEMAPTILEGRID_H
 
 // Dependencies
 
@@ -16,6 +16,8 @@
 #include "nec/mapinfo.h"
 #include "nec/mapmap.h"
 #include "pixmaptertiles.h"
+
+namespace App {
 
 // Class
 
@@ -67,4 +69,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_SCENEMAPTILEGRID_H
+} // namespace App
+
+#endif // APP_SCENEMAPTILEGRID_H

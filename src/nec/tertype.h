@@ -52,6 +52,6 @@ void initTerTypeData ();
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_TERTYPE_H

@@ -12,7 +12,7 @@ namespace Nec {
 
 // Class
 
-class Ter : public std::vector<Byte> {
+class Ter : public std::vector<Raw::Byte> {
 
 public:
 
@@ -27,6 +27,6 @@ private:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_TER_H

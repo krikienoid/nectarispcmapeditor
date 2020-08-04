@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_PICKERMAPINFO_H
-#define NECMAPEDIT_PICKERMAPINFO_H
+#ifndef APP_PICKERMAPINFO_H
+#define APP_PICKERMAPINFO_H
 
 // Dependencies
 
@@ -10,6 +10,8 @@
 #include <QWidget>
 
 #include "nec/datamanager.h"
+
+namespace App {
 
 // Class
 
@@ -46,4 +48,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_PICKERMAPINFO_H
+} // namespace App
+
+#endif // APP_PICKERMAPINFO_H

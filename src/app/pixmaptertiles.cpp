@@ -1,5 +1,7 @@
 #include "pixmaptertiles.h"
 
+namespace App {
+
 // Constructor
 
 PixmapTerTiles::PixmapTerTiles (QWidget * parent) : QWidget (parent) {
@@ -22,3 +24,5 @@ QPixmap PixmapTerTiles::getTerTile (int i) const {
         TILE_HEIGHT
     );
 }
+
+} // namespace App

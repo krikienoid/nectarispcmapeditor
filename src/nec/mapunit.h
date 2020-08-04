@@ -23,6 +23,6 @@ public:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_MAPUNIT_H

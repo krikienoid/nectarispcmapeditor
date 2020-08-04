@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 
+namespace App {
+
 // Forward Declarations
 
 std::string getFileExtension (const std::string&);
@@ -202,3 +204,5 @@ std::string getFileExtension (const std::string& fileName) {
         return fileName.substr(fileName.find_last_of(".") + 1);
     return "";
 }
+
+} // namespace App

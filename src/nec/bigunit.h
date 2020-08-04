@@ -27,6 +27,6 @@ public:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_BIGUNIT_H

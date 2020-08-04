@@ -26,4 +26,4 @@ std::ostream& MapName::write (std::ostream& outs) const {
 
 //
 
-}
+} // namespace Nec

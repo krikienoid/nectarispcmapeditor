@@ -65,4 +65,4 @@ void initTerTypeData () {
 
 //
 
-}
+} // namespace Nec

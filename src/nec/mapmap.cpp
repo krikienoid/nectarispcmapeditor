@@ -52,7 +52,7 @@ std::ostream& MapMap::write (std::ostream& outs) const {
 // Methods
 
 void MapMap::resize (const std::size_t n) {
-    std::vector<ByteString>::resize(n, ByteString(2));
+    std::vector<Raw::ByteString>::resize(n, Raw::ByteString(2));
 }
 
 // Static Methods
@@ -71,4 +71,4 @@ std::size_t MapMap::getSize (const std::size_t qX, const std::size_t qY) {
 
 //
 
-}
+} // namespace Nec

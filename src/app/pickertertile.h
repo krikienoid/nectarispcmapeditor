@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_PICKERTERTILE_H
-#define NECMAPEDIT_PICKERTERTILE_H
+#ifndef APP_PICKERTERTILE_H
+#define APP_PICKERTERTILE_H
 
 // Dependencies
 
@@ -13,6 +13,8 @@
 
 #include "nec/tertype.h"
 #include "pixmaptertiles.h"
+
+namespace App {
 
 // Class
 
@@ -56,4 +58,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_PICKERTERTILE_H
+} // namespace App
+
+#endif // APP_PICKERTERTILE_H

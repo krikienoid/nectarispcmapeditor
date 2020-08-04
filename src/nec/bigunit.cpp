@@ -23,7 +23,7 @@ std::istream& BigUnit::read  (std::istream& ins) {
 std::ostream& BigUnit::write (std::ostream& outs) const {
     /*for (std::size_t i = 0, ii = bigInfo->size(); i < ii; ++i) {
         if (bigInfo->mapInfoExists(i)) {
-            bigInfo->at(i).addressUnit = ByteString::fromInt(outs.tellp());
+            bigInfo->at(i).addressUnit = Raw::ByteString::fromInt(outs.tellp());
             at(i).write(outs);
         }
     }*/
@@ -32,4 +32,4 @@ std::ostream& BigUnit::write (std::ostream& outs) const {
 
 //
 
-}
+} // namespace Nec

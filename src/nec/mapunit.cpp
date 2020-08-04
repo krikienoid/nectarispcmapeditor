@@ -30,4 +30,4 @@ std::ostream& MapUnit::write (std::ostream& outs) const {
 
 //
 
-}
+} // namespace Nec

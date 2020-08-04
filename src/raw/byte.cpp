@@ -1,6 +1,6 @@
 #include "byte.h"
 
-namespace Nec {
+namespace Raw {
 
 // Constructors
 
@@ -78,4 +78,4 @@ std::string Byte::printString (const Print print) const {
 
 //
 
-}
+} // namespace Raw
