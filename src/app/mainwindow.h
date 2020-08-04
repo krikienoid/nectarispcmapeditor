@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_MAINWINDOW_H
-#define NECMAPEDIT_MAINWINDOW_H
+#ifndef APP_MAINWINDOW_H
+#define APP_MAINWINDOW_H
 
 // Dependencies
 
@@ -28,6 +28,8 @@ class QAction;
 class QMenu;
 class QPlainTextEdit;
 QT_END_NAMESPACE
+
+namespace App {
 
 // Class
 
@@ -84,4 +86,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_MAINWINDOW_H
+} // namespace App
+
+#endif // APP_MAINWINDOW_H

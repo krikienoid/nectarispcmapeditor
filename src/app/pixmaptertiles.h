@@ -1,10 +1,12 @@
-#ifndef NECMAPEDIT_PIXMAPTERTILES_H
-#define NECMAPEDIT_PIXMAPTERTILES_H
+#ifndef APP_PIXMAPTERTILES_H
+#define APP_PIXMAPTERTILES_H
 
 // Dependencies
 
 #include <QPixmap>
 #include <QWidget>
+
+namespace App {
 
 // Class
 
@@ -33,4 +35,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_PIXMAPTERTILES_H
+} // namespace App
+
+#endif // APP_PIXMAPTERTILES_H

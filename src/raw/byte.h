@@ -1,5 +1,5 @@
-#ifndef IMP_BYTE_H
-#define IMP_BYTE_H
+#ifndef RAW_BYTE_H
+#define RAW_BYTE_H
 
 // Dependencies
 
@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 
-namespace Nec {
+namespace Raw {
 
 // Class
 
@@ -54,6 +54,6 @@ private:
 
 //
 
-}
+} // namespace Raw
 
-#endif // IMP_BYTE_H
+#endif // RAW_BYTE_H

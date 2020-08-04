@@ -31,6 +31,6 @@ private:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_BIGMAP_H

@@ -18,4 +18,4 @@ std::ostream& Coordinates::write (std::ostream& outs) const {
 
 //
 
-}
+} // namespace Nec

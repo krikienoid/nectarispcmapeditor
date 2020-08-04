@@ -1,5 +1,7 @@
 #include "editorplayers.h"
 
+namespace App {
+
 // Constructors
 
 EditorPlayers::EditorPlayers (QWidget * parent) : QWidget(parent) {
@@ -126,3 +128,4 @@ void EditorPlayers::createPlayerStanceComboBoxes () {
 
 }
 
+} // namespace App

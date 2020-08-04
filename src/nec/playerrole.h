@@ -17,17 +17,17 @@ class PlayerRole {
 private:
 
     // Data
-    Byte data;
+    Raw::Byte data;
     int  index;
 
     // Helper Struct
     struct PlayerRoleType {
 
-        PlayerRoleType (const Byte& value, const std::string& name)
+        PlayerRoleType (const Raw::Byte& value, const std::string& name)
             : value(value), name(name)
         {}
 
-        Byte        value;
+        Raw::Byte   value;
         std::string name;
 
     };
@@ -48,7 +48,7 @@ public:
     }
 
     // Methods
-    Byte toByte   () const {return data;}
+    Raw::Byte toByte () const {return data;}
     int  getIndex () const {return index;}
 
     // Static Data Initializer
@@ -58,6 +58,6 @@ public:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_PLAYERROLE_H

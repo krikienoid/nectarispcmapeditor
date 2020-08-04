@@ -1,5 +1,7 @@
 #include "editormapinfo.h"
 
+namespace App {
+
 // Constructors
 
 EditorMapInfo::EditorMapInfo (QWidget * parent) : QWidget(parent) {
@@ -42,3 +44,5 @@ void EditorMapInfo::loadNecData (Nec::MapInfo * mapInfo) {
 void EditorMapInfo::updateNecData () {
     editMapName->setText(QString::fromStdString(necMapInfo->mapName));
 }
+
+} // namespace App

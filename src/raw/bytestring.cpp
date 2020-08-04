@@ -1,6 +1,6 @@
 #include "bytestring.h"
 
-namespace Nec {
+namespace Raw {
 
 // Constructors
 
@@ -195,4 +195,4 @@ ByteString operator+ (const Byte b, const ByteString& bString) {
 
 //
 
-}
+} // namespace Raw

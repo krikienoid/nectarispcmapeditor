@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_EDITORPLAYERS_H
-#define NECMAPEDIT_EDITORPLAYERS_H
+#ifndef APP_EDITORPLAYERS_H
+#define APP_EDITORPLAYERS_H
 
 // Dependencies
 
@@ -16,6 +16,8 @@
 #include "nec/mapinfo.h"
 #include "nec/playerrole.h"
 #include "nec/playerstance.h"
+
+namespace App {
 
 // Class
 
@@ -59,4 +61,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_EDITORPLAYERS_H
+} // namespace App
+
+#endif // APP_EDITORPLAYERS_H

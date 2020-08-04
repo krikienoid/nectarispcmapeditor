@@ -12,7 +12,7 @@ namespace Nec {
 
 // Class
 
-class MapMap : public std::vector<ByteString> {
+class MapMap : public std::vector<Raw::ByteString> {
 
 public:
 
@@ -39,6 +39,6 @@ public:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_MAPMAP_H

@@ -1,5 +1,7 @@
 #include "pickertertile.h"
 
+namespace App {
+
 PickerTerTile::PickerTerTile(QWidget * parent) : QListWidget(parent), terTypeFilter(0) {
 
     // Initialize internal resource ter.bin
@@ -79,3 +81,5 @@ void PickerTerTile::updateTilesetRanges () {
         );
     }
 }
+
+} // namespace App

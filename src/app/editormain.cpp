@@ -1,5 +1,7 @@
 #include "editormain.h"
 
+namespace App {
+
 // Constructors
 
 EditorMain::EditorMain (QWidget * parent) : QWidget(parent) {
@@ -96,3 +98,5 @@ void EditorMain::loadSelectedMapData (const std::size_t i) {
     // All updating is triggered by NecMapEditorMain
     updateNecData();
 }
+
+} // namespace App

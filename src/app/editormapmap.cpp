@@ -1,5 +1,7 @@
 #include "editormapmap.h"
 
+namespace App {
+
 // Constructors
 
 EditorMapMap::EditorMapMap (QWidget * parent) : QWidget(parent) {
@@ -32,7 +34,7 @@ void EditorMapMap::selectTerTile (int i) {
 
 void EditorMapMap::selectMapTile (int i) {
     if (toolMode == TOOL_TER && i < int(necMapMap->size())) {
-        necMapMap->at(i) = Nec::ByteString::fromInt(selectedTerTile);
+        necMapMap->at(i) = Raw::ByteString::fromInt(selectedTerTile);
         necMapMap->at(i).resize(2);
         updateNecData();
     }
@@ -270,3 +272,5 @@ void EditorMapMap::createMapSizePicker () {
     groupMapSize->setLayout(layoutRowMapSize);
 
 }
+
+} // namespace App

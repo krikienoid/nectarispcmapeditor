@@ -15,7 +15,7 @@ int main (int argc, char * argv[]) {
     app.setApplicationName("Nectaris PC DOS Map Editor");
 
     // Initialize
-    MainWindow mainWin;
+    App::MainWindow mainWin;
     mainWin.setWindowTitle("Nectaris PC DOS Map Editor");
     mainWin.show();
 

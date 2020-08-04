@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_EDITORMAPINFO_H
-#define NECMAPEDIT_EDITORMAPINFO_H
+#ifndef APP_EDITORMAPINFO_H
+#define APP_EDITORMAPINFO_H
 
 // Dependencies
 
@@ -12,6 +12,8 @@
 
 #include "nec/mapinfo.h"
 #include "nec/mapname.h"
+
+namespace App {
 
 // Class
 
@@ -45,4 +47,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_EDITORMAPINFO_H
+} // namespace App
+
+#endif // APP_EDITORMAPINFO_H

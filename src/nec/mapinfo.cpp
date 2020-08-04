@@ -54,4 +54,4 @@ std::ostream& MapInfo::write (std::ostream& outs) const {
 
 //
 
-}
+} // namespace Nec

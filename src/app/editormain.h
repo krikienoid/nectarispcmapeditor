@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_EDITORMAIN_H
-#define NECMAPEDIT_EDITORMAIN_H
+#ifndef APP_EDITORMAIN_H
+#define APP_EDITORMAIN_H
 
 // Dependencies
 
@@ -17,6 +17,8 @@
 #include "editormapmap.h"
 #include "editorplayers.h"
 #include "pickermapinfo.h"
+
+namespace App {
 
 // Class
 
@@ -58,4 +60,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_EDITORMAIN_H
+} // namespace App
+
+#endif // APP_EDITORMAIN_H

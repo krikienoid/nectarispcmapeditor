@@ -115,4 +115,4 @@ void DataManager::write (const std::string& filepath) {
 
 //
 
-}
+} // namespace Nec

@@ -19,4 +19,4 @@ std::vector<PlayerStance::PlayerStanceType> PlayerStance::DATA = PlayerStance::i
 
 //
 
-}
+} // namespace Nec

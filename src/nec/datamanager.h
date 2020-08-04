@@ -44,6 +44,6 @@ private:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_DATAMANAGER_H

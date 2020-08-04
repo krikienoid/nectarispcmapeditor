@@ -1,5 +1,5 @@
-#ifndef IMP_BYTESTRING_H
-#define IMP_BYTESTRING_H
+#ifndef RAW_BYTESTRING_H
+#define RAW_BYTESTRING_H
 
 // Dependencies
 
@@ -9,7 +9,7 @@
 
 #include "byte.h"
 
-namespace Nec {
+namespace Raw {
 
 // Class
 
@@ -60,6 +60,6 @@ private:
 
 ByteString    operator+  (const Byte, const ByteString&);
 
-}
+} // namespace Raw
 
-#endif // IMP_BYTESTRING_H
+#endif // RAW_BYTESTRING_H

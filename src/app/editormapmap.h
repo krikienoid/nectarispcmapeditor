@@ -1,5 +1,5 @@
-#ifndef NECMAPEDIT_EDITORMAPMAP_H
-#define NECMAPEDIT_EDITORMAPMAP_H
+#ifndef APP_EDITORMAPMAP_H
+#define APP_EDITORMAPMAP_H
 
 // Dependencies
 
@@ -26,6 +26,7 @@
 #include "pixmaptertiles.h"
 #include "scenemaptilegrid.h"
 
+namespace App {
 
 // Class
 
@@ -93,4 +94,6 @@ private:
 
 };
 
-#endif // NECMAPEDIT_EDITORMAPMAP_H
+} // namespace App
+
+#endif // APP_EDITORMAPMAP_H

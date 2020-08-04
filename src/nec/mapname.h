@@ -29,6 +29,6 @@ public:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_MAPNAME_H

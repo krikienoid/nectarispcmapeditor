@@ -1,5 +1,7 @@
 #include "scenemaptilegrid.h"
 
+namespace App {
+
 // Constructors
 
 SceneMapTileGrid::SceneMapTileGrid (QWidget * parent) : QGraphicsScene(parent) {
@@ -93,3 +95,5 @@ void SceneMapTileGrid::updateGridTiles () {
         listGridTiles[i]->setVisible(isMapGridVisible && x < width && y < height);
     }
 }
+
+} // namespace App

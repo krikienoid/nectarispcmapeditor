@@ -30,6 +30,6 @@ public:
 
 //
 
-}
+} // namespace Nec
 
 #endif // NEC_BIGINFO_H

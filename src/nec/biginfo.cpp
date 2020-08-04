@@ -36,4 +36,4 @@ std::ostream& BigInfo::write (std::ostream& outs) const {
 
 //
 
-}
+} // namespace Nec

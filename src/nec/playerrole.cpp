@@ -23,4 +23,4 @@ std::vector<PlayerRole::PlayerRoleType> PlayerRole::DATA = PlayerRole::initData(
 
 //
 
-}
+} // namespace Nec
