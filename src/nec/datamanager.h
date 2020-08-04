@@ -3,10 +3,10 @@
 
 // Dependencies
 
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 #include "biginfo.h"
 #include "bigmap.h"

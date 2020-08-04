@@ -3,17 +3,18 @@
 
 // Dependencies
 
-#include <QWidget>
 #include <QBoxLayout>
-#include <QLabel>
+#include <QComboBox>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QLabel>
 #include <QList>
 #include <QSignalMapper>
-#include <QComboBox>
-#include "datamanager.h"
-#include "playerstance.h"
-#include "playerrole.h"
+#include <QWidget>
+
+#include "nec/datamanager.h"
+#include "nec/playerrole.h"
+#include "nec/playerstance.h"
 
 // Class
 

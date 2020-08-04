@@ -3,11 +3,12 @@
 
 // Dependencies
 
-#include <QWidget>
 #include <QBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
-#include "datamanager.h"
+#include <QWidget>
+
+#include "nec/datamanager.h"
 
 // Class
 

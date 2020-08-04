@@ -5,8 +5,9 @@
 
 #include <iostream>
 #include <vector>
-#include "mapmap.h"
+
 #include "biginfo.h"
+#include "mapmap.h"
 
 namespace Nec {
 

@@ -1,6 +1,7 @@
 // Dependencies
 
 #include <QApplication>
+
 #include "mainwindow.h"
 
 // Main

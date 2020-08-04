@@ -3,25 +3,24 @@
 
 // Dependencies
 
-#include <QWidget>
 #include <QBoxLayout>
-#include <QGroupBox>
-#include <QLabel>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QGroupBox>
+#include <QLabel>
 #include <QScrollBar>
 #include <QSignalMapper>
-#include "scenemaptilegrid.h"
+#include <QWidget>
+
+#include "nec/datamanager.h"
+#include "nec/mapinfo.h"
+#include "nec/mapmap.h"
+#include "nec/tertype.h"
 #include "pickertertile.h"
+#include "scenemaptilegrid.h"
 
-#include "mapinfo.h"
-#include "mapmap.h"
-#include "datamanager.h"
-#include "tertype.h"
-
-#include <QDebug>
 
 // Class
 

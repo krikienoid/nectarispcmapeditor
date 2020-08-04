@@ -3,8 +3,8 @@
 
 // Dependencies
 
-#include <QWidget>
 #include <QPixmap>
+#include <QWidget>
 
 // Class
 

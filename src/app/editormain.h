@@ -3,15 +3,16 @@
 
 // Dependencies
 
-#include <QWidget>
-#include <QTabWidget>
 #include <QSplitter>
+#include <QTabWidget>
+#include <QWidget>
+
+#include "nec/datamanager.h"
+#include "nec/tertype.h"
 #include "editormapinfo.h"
-#include "pickermapinfo.h"
 #include "editormapmap.h"
 #include "editorplayers.h"
-#include "datamanager.h"
-#include "tertype.h"
+#include "pickermapinfo.h"
 
 // Class
 

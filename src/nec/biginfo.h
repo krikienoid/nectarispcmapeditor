@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector>
+
 #include "mapinfo.h"
 
 namespace Nec {

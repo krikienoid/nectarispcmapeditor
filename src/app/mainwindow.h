@@ -3,16 +3,16 @@
 
 // Dependencies
 
-#include <QMainWindow>
-#include <QtWidgets>
-#include <cstdlib>
 #include <cstdio>
+#include <cstdlib>
 #include <fstream>
 #include <string>
-#include "editormain.h"
-#include "datamanager.h"
 
-#include <QDebug>
+#include <QMainWindow>
+#include <QtWidgets>
+
+#include "nec/datamanager.h"
+#include "editormain.h"
 
 // Qt Stuff
 
