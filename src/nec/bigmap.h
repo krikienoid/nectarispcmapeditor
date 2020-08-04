@@ -5,8 +5,10 @@
 
 #include <iostream>
 #include <vector>
-#include "mapmap.h"
+
+#include "raw/bytestring.h"
 #include "biginfo.h"
+#include "mapmap.h"
 
 namespace Nec {
 

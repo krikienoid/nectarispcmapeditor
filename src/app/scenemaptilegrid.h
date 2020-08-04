@@ -3,20 +3,20 @@
 
 // Dependencies
 
-#include <QWidget>
+#include <QColor>
+#include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
-#include <QTransform>
-#include <QGraphicsItem>
+#include <QList>
 #include <QPainter>
 #include <QPixmap>
-#include <QGraphicsPixmapItem>
-#include <QList>
-#include "pixmaptertiles.h"
-#include "mapinfo.h"
-#include "mapmap.h"
+#include <QTransform>
+#include <QVariant>
+#include <QWidget>
 
-#include <QDebug>
+#include "nec/mapinfo.h"
+#include "nec/mapmap.h"
+#include "pixmaptertiles.h"
 
 // Class
 

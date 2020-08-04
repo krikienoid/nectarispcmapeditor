@@ -3,16 +3,23 @@
 
 // Dependencies
 
-#include <QMainWindow>
-#include <QtWidgets>
-#include <cstdlib>
-#include <cstdio>
-#include <fstream>
 #include <string>
-#include "editormain.h"
-#include "datamanager.h"
 
-#include <QDebug>
+#include <QAction>
+#include <QApplication>
+#include <QFile>
+#include <QFileDialog>
+#include <QKeySequence>
+#include <QMainWindow>
+#include <QMenu>
+#include <QMessageBox>
+#include <QString>
+#include <QStringList>
+#include <QToolBar>
+#include <QtWidgets>
+
+#include "nec/datamanager.h"
+#include "editormain.h"
 
 // Qt Stuff
 

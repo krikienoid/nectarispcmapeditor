@@ -5,9 +5,10 @@
 
 #include <iostream>
 #include <vector>
-#include "raw/byte.h"
-#include "mapunit.h"
+
+#include "raw/bytestring.h"
 #include "biginfo.h"
+#include "mapunit.h"
 
 namespace Nec {
 

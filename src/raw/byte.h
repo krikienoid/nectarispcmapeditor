@@ -3,10 +3,10 @@
 
 // Dependencies
 
-#include <iostream>
 #include <cstddef>
+#include <cstdio>
+#include <iostream>
 #include <string>
-#include <bitset>
 
 namespace Nec {
 

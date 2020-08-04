@@ -3,9 +3,10 @@
 
 // Dependencies
 
+#include <cstddef>
 #include <iostream>
 #include <string>
-#include <cstddef>
+
 #include "byte.h"
 
 namespace Nec {

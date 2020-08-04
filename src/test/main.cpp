@@ -1,6 +1,7 @@
 #include <iostream>
-#include "byte.h"
-#include "mapname.h"
+
+#include "nec/mapname.h"
+#include "raw/byte.h"
 
 int main () {
 

@@ -3,15 +3,22 @@
 
 // Dependencies
 
-#include <QWidget>
-#include <QComboBox>
-#include <QListWidget>
-#include <QFile>
-#include <QList>
-#include <QIcon>
 #include <QByteArray>
+#include <QComboBox>
+#include <QFile>
+#include <QIcon>
+#include <QIODevice>
+#include <QList>
+#include <QListView>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QSize>
+#include <QString>
+#include <QVariant>
+#include <QWidget>
+
+#include "nec/tertype.h"
 #include "pixmaptertiles.h"
-#include "tertype.h"
 
 // Class
 

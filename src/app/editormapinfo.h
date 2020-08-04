@@ -3,11 +3,15 @@
 
 // Dependencies
 
-#include <QWidget>
-#include <QBoxLayout>
+#include <QFrame>
 #include <QLabel>
 #include <QLineEdit>
-#include "datamanager.h"
+#include <QString>
+#include <QVBoxLayout>
+#include <QWidget>
+
+#include "nec/mapinfo.h"
+#include "nec/mapname.h"
 
 // Class
 

@@ -3,14 +3,17 @@
 
 // Dependencies
 
-#include <QWidget>
-#include <QBoxLayout>
-#include <QListWidget>
 #include <QGroupBox>
-#include <QLabel>
-#include "datamanager.h"
+#include <QHBoxLayout>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QString>
+#include <QVBoxLayout>
+#include <QVariant>
+#include <QWidget>
 
-#include <QDebug>
+#include "nec/biginfo.h"
+#include "nec/datamanager.h"
 
 // Class
 

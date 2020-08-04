@@ -4,9 +4,11 @@
 // Dependencies
 
 #include <iostream>
+
+#include "raw/byte.h"
 #include "raw/bytestring.h"
-#include "mapname.h"
 #include "coordinates.h"
+#include "mapname.h"
 
 namespace Nec {
 

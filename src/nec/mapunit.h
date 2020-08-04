@@ -4,7 +4,6 @@
 // Dependencies
 
 #include <iostream>
-#include <string>
 
 namespace Nec {
 
