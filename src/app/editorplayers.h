@@ -1,8 +1,6 @@
 #ifndef APP_EDITORPLAYERS_H
 #define APP_EDITORPLAYERS_H
 
-// Dependencies
-
 #include <QComboBox>
 #include <QGridLayout>
 #include <QGroupBox>
@@ -19,46 +17,35 @@
 
 namespace App {
 
-// Class
-
 class EditorPlayers : public QWidget {
     Q_OBJECT
 
 public:
+    explicit                    EditorPlayers(QWidget* parent = 0);
 
-    explicit EditorPlayers (QWidget * parent = 0);
-
-    // Methods
-    void     loadNecData    (Nec::MapInfo *);
-    void     updateNecData  ();
+    void                        loadNecData(Nec::MapInfo*);
+    void                        updateNecData();
 
 signals:
 
 public slots:
-
-    void changePlayerRole   (int);
-    void changePlayerStance (int);
+    void                        changePlayerRole(int);
+    void                        changePlayerStance(int);
 
 private:
+    static const int            PLAYERS_COUNT = 4;
 
-    // Static Data
-    static const int PLAYERS_COUNT = 4;
+    QComboBox*                  createPlayerRoleComboBox();
+    QComboBox*                  createPlayerStanceComboBox();
+    void                        createPlayerRoleComboBoxes();
+    void                        createPlayerStanceComboBoxes();
 
-    // Methods
-    QComboBox * createPlayerRoleComboBox     ();
-    QComboBox * createPlayerStanceComboBox   ();
-    void        createPlayerRoleComboBoxes   ();
-    void        createPlayerStanceComboBoxes ();
+    QGroupBox*                  groupPlayerRole;
+    QGroupBox*                  groupPlayerStance;
+    QList<QComboBox*>           combosPlayerRole;
+    QList<QComboBox*>           combosPlayerStance;
 
-    // Children
-    QGroupBox        * groupPlayerRole;
-    QGroupBox        * groupPlayerStance;
-    QList<QComboBox *> combosPlayerRole;
-    QList<QComboBox *> combosPlayerStance;
-
-    // Nec Data
-    Nec::MapInfo * necMapInfo;
-
+    Nec::MapInfo*               necMapInfo;
 };
 
 } // namespace App

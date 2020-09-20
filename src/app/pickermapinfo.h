@@ -1,8 +1,6 @@
 #ifndef APP_PICKERMAPINFO_H
 #define APP_PICKERMAPINFO_H
 
-// Dependencies
-
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QListWidget>
@@ -17,39 +15,28 @@
 
 namespace App {
 
-// Class
-
 class PickerMapInfo : public QWidget {
     Q_OBJECT
 
 public:
+    explicit                    PickerMapInfo(QWidget* parent = 0);
 
-    explicit PickerMapInfo   (QWidget * parent = 0);
-
-    // Methods
-    void     loadNecData     (Nec::DataManager *);
-    void     updateNecData   ();
+    void                        loadNecData(Nec::DataManager*);
+    void                        updateNecData();
 
 public slots:
-
-    void     clickMapList         (QListWidgetItem *);
+    void                        clickMapList(QListWidgetItem*);
 
 signals:
-
-    void     selectedMapInfo   (int);
+    void                        selectedMapInfo(int);
 
 private:
+    int                         getListItemData(QListWidgetItem*);
+    void                        setListItemData(QListWidgetItem*, const int);
 
-    // Methods
-    int      getListItemData (QListWidgetItem *);
-    void     setListItemData (QListWidgetItem *, const int);
+    QListWidget*                listMapInfo;
 
-    // Children
-    QListWidget      * listMapInfo;
-
-    // Nec Data
-    Nec::DataManager * necData;
-
+    Nec::DataManager*           necData;
 };
 
 } // namespace App

@@ -1,8 +1,6 @@
 #ifndef NEC_BIGUNIT_H
 #define NEC_BIGUNIT_H
 
-// Dependencies
-
 #include <iostream>
 #include <vector>
 
@@ -12,20 +10,13 @@
 
 namespace Nec {
 
-// Class
-
 class BigUnit : public std::vector<MapUnit> {
-
 public:
+    explicit                    BigUnit();
 
-    explicit BigUnit ();
-
-    std::istream& read         (std::istream&);
-    std::ostream& write        (std::ostream&) const;
-
+    std::istream&               read(std::istream&);
+    std::ostream&               write(std::ostream&) const;
 };
-
-//
 
 } // namespace Nec
 

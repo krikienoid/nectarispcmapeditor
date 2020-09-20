@@ -1,8 +1,6 @@
 #ifndef APP_EDITORMAPMAP_H
 #define APP_EDITORMAPMAP_H
 
-// Dependencies
-
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFrame>
@@ -28,70 +26,56 @@
 
 namespace App {
 
-// Class
-
 class EditorMapMap : public QWidget {
     Q_OBJECT
 
 public:
+    explicit                    EditorMapMap(QWidget* parent = 0);
 
-    explicit EditorMapMap       (QWidget * parent = 0);
+    void                        loadNecData(Nec::MapInfo*, Nec::MapMap*);
+    void                        updateNecData();
+    void                        zoomMap(const double, const bool);
+    void                        setMapGridVisible(const bool);
 
-    // Methods
-    void     loadNecData        (Nec::MapInfo *, Nec::MapMap *);
-    void     updateNecData      ();
-    void     zoomMap            (const double, const bool);
-    void     setMapGridVisible  (const bool);
-
-    // Children
-    QGraphicsView    * viewMapTileGrid;
+    QGraphicsView*              viewMapTileGrid;
 
 public slots:
-
-    void     selectTerTile      (int);
-    void     selectMapTile      (int);
-    void     changeTilesetRange (int);
-    void     changeMapSizeX     (int);
-    void     changeMapSizeY     (int);
+    void                        selectTerTile(int);
+    void                        selectMapTile(int);
+    void                        changeTilesetRange(int);
+    void                        changeMapSizeX(int);
+    void                        changeMapSizeY(int);
 
 private:
+    enum                        ToolMode { TOOL_TER };
 
-    // Enums
-    enum ToolMode {TOOL_TER};
+    static const int            TILESETS = 9;
 
-    // Static Consts
-    static const int TILESETS = 9;
+    void                        updateSelectedTerTile(int);
+    void                        updateEnabledTilesetRange();
+    bool                        hasTilesetEnabled(int);
 
-    // Methods
-    void updateSelectedTerTile     (int);
-    void updateEnabledTilesetRange ();
-    bool hasTilesetEnabled         (int);
+    void                        createViewMapTileGrid();
+    void                        createTilesetRangePicker();
+    void                        createPickerTerTile();
+    void                        createMapSizePicker();
 
-    void createViewMapTileGrid     ();
-    void createTilesetRangePicker  ();
-    void createPickerTerTile       ();
-    void createMapSizePicker       ();
+    SceneMapTileGrid*           sceneMapTileGrid;
+    PickerTerTile*              pickerTerTile;
+    QLabel*                     labelTerTileImg;
+    QLabel*                     labelTerTileName;
+    QGroupBox*                  groupChecks;
+    QGroupBox*                  groupMapSize;
+    QGroupBox*                  groupTerTile;
+    QList<QCheckBox*>           checksTilesetRange;
+    QComboBox*                  comboMapSizeX;
+    QComboBox*                  comboMapSizeY;
 
-    // Children
-    SceneMapTileGrid * sceneMapTileGrid;
-    PickerTerTile    * pickerTerTile;
-    QLabel           * labelTerTileImg;
-    QLabel           * labelTerTileName;
-    QGroupBox        * groupChecks;
-    QGroupBox        * groupMapSize;
-    QGroupBox        * groupTerTile;
-    QList<QCheckBox *> checksTilesetRange;
-    QComboBox        * comboMapSizeX;
-    QComboBox        * comboMapSizeY;
+    ToolMode                    toolMode;
+    int                         selectedTerTile;
 
-    // Data
-    ToolMode           toolMode;
-    int                selectedTerTile;
-
-    // Nec Data
-    Nec::MapInfo     * necMapInfo;
-    Nec::MapMap      * necMapMap;
-
+    Nec::MapInfo*               necMapInfo;
+    Nec::MapMap*                necMapMap;
 };
 
 } // namespace App

@@ -1,8 +1,6 @@
 #ifndef NEC_BIGMAP_H
 #define NEC_BIGMAP_H
 
-// Dependencies
-
 #include <iostream>
 #include <vector>
 
@@ -12,24 +10,16 @@
 
 namespace Nec {
 
-// Class
-
 class BigMap : public std::vector<MapMap> {
-
 public:
+    explicit                    BigMap(BigInfo*);
 
-    explicit BigMap (BigInfo *);
-
-    std::istream& read         (std::istream&);
-    std::ostream& write        (std::ostream&)     const;
+    std::istream&               read(std::istream&);
+    std::ostream&               write(std::ostream&) const;
 
 private:
-
-    BigInfo * bigInfo;
-
+    BigInfo*                    bigInfo;
 };
-
-//
 
 } // namespace Nec
 

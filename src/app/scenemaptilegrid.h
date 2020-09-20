@@ -1,8 +1,6 @@
 #ifndef APP_SCENEMAPTILEGRID_H
 #define APP_SCENEMAPTILEGRID_H
 
-// Dependencies
-
 #include <QColor>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
@@ -20,54 +18,41 @@
 
 namespace App {
 
-// Class
-
 class SceneMapTileGrid : public QGraphicsScene {
     Q_OBJECT
 
 public:
+    explicit                    SceneMapTileGrid(QWidget* parent = 0);
 
-    explicit SceneMapTileGrid  (QWidget * parent = 0);
+    void                        mousePressEvent(QGraphicsSceneMouseEvent*);
 
-    void     mousePressEvent   (QGraphicsSceneMouseEvent *);
+    void                        loadNecData(Nec::MapInfo*, Nec::MapMap*);
+    void                        updateNecData();
+    void                        setMapGridVisible(const bool);
 
-    // Methods
-    void     loadNecData       (Nec::MapInfo *, Nec::MapMap *);
-    void     updateNecData     ();
-    void     setMapGridVisible (const bool);
+    static const int            TILE_WIDTH      = 16;
+    static const int            TILE_HEIGHT     = 16;
+    static const int            TILESET_COLUMNS = 16;
+    static const int            TILESET_ROWS    = 144;
 
-    // Static Constants
-    static const int TILE_WIDTH      = 16;
-    static const int TILE_HEIGHT     = 16;
-    static const int TILESET_COLUMNS = 16;
-    static const int TILESET_ROWS    = 144;
-
-    // Children
-    PixmapTerTiles * pixmapTerTiles;
+    PixmapTerTiles*             pixmapTerTiles;
 
 signals:
-
-    void selectedMapTile (int);
+    void                        selectedMapTile(int);
 
 public slots:
 
 private:
+    void                        updateTerTiles();
+    void                        updateGridTiles();
 
-    // Methods
-    void updateTerTiles  ();
-    void updateGridTiles ();
+    QList<QGraphicsPixmapItem*> listTerTiles;
+    QList<QGraphicsPixmapItem*> listGridTiles;
 
-    // Children
-    QList<QGraphicsPixmapItem *> listTerTiles;
-    QList<QGraphicsPixmapItem *> listGridTiles;
+    bool                        isMapGridVisible;
 
-    // Data
-    bool           isMapGridVisible;
-
-    // Nec Data
-    Nec::MapInfo * necMapInfo;
-    Nec::MapMap  * necMapMap;
-
+    Nec::MapInfo*               necMapInfo;
+    Nec::MapMap*                necMapMap;
 };
 
 } // namespace App

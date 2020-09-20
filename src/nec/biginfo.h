@@ -1,8 +1,6 @@
 #ifndef NEC_BIGINFO_H
 #define NEC_BIGINFO_H
 
-// Dependencies
-
 #include <iostream>
 #include <vector>
 
@@ -10,25 +8,18 @@
 
 namespace Nec {
 
-// Class
-
 class BigInfo : public std::vector<MapInfo> {
-
 public:
+    static const std::size_t    LENGTH = 0x100;
+    static const std::size_t    SIZE   = MapInfo::SIZE * LENGTH;
 
-    static const std::size_t LENGTH = 0x100;
-    static const std::size_t SIZE   = MapInfo::SIZE * LENGTH;
+                                BigInfo();
 
-    BigInfo ();
+    std::istream&               read(std::istream&);
+    std::ostream&               write(std::ostream&) const;
 
-    std::istream& read          (std::istream&);
-    std::ostream& write         (std::ostream&)     const;
-
-    bool          mapInfoExists (const std::size_t) const;
-
+    bool                        mapInfoExists(const std::size_t) const;
 };
-
-//
 
 } // namespace Nec
 

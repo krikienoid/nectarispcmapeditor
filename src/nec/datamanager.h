@@ -1,8 +1,6 @@
 #ifndef NEC_DATAMANAGER_H
 #define NEC_DATAMANAGER_H
 
-// Dependencies
-
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -13,36 +11,26 @@
 
 namespace Nec {
 
-// Class
-
 class DataManager {
-
 public:
+                                DataManager();
+                                ~DataManager();
 
-    DataManager  ();
-    ~DataManager ();
+    void                        read(const std::string&);
+    void                        write(const std::string&);
 
-    // Methods
-    void           read          (const std::string&);
-    void           write         (const std::string&);
-
-    // Data
-    BigInfo * bigInfo;
-    //BigUnit * bigUnit;
-    BigMap  * bigMap;
+    BigInfo*                    bigInfo;
+    // BigUnit*                    bigUnit;
+    BigMap*                     bigMap;
 
 private:
+    static const std::string    FILENAME_BIGINFO;
+    static const std::string    FILENAME_BIGUNIT;
+    static const std::string    FILENAME_BIGMAP;
 
-    // Static consts
-    static const std::string             FILENAME_BIGINFO;
-    static const std::string             FILENAME_BIGUNIT;
-    static const std::string             FILENAME_BIGMAP;
     static const std::ios_base::openmode FILEREADMODE;
     static const std::ios_base::openmode FILEWRITEMODE;
-
 };
-
-//
 
 } // namespace Nec
 
