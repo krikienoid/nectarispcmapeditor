@@ -3,8 +3,7 @@
 #include "nec/mapname.h"
 #include "raw/byte.h"
 
-int main () {
-
+int main() {
     {
         std::cout << std::endl << "Byte" << std::endl << std::endl;
 
@@ -12,13 +11,13 @@ int main () {
         Raw::Byte b(0xff);
         Raw::Byte c(0xff01);
 
-        std::cout << "0f : " << a.printString() << ' ' <<
+        std::cout << "0f: " << a.printString() << ' ' <<
             a.printString(Raw::Byte::BIN) << ' ' <<
             a.printString(Raw::Byte::DEC) << std::endl;
-        std::cout << "ff : " << b.printString() << ' ' <<
+        std::cout << "ff: " << b.printString() << ' ' <<
             b.printString(Raw::Byte::BIN) << ' ' <<
             b.printString(Raw::Byte::DEC) << std::endl;
-        std::cout << "01 : " << c.printString() << ' ' <<
+        std::cout << "01: " << c.printString() << ' ' <<
             c.printString(Raw::Byte::BIN) << ' ' <<
             c.printString(Raw::Byte::DEC) << std::endl;
     }

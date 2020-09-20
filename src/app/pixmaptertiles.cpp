@@ -2,21 +2,19 @@
 
 namespace App {
 
-// Constructor
-
-PixmapTerTiles::PixmapTerTiles (QWidget * parent) : QWidget (parent) {
+PixmapTerTiles::PixmapTerTiles(QWidget* parent) : QWidget(parent) {
     terTileset = new QPixmap(":/data/images/terraintiles.png");
 }
 
-PixmapTerTiles::~PixmapTerTiles () {
+PixmapTerTiles::~PixmapTerTiles() {
     delete terTileset;
 }
 
-// Methods
-
-QPixmap PixmapTerTiles::getTerTile (int i) const {
-    if (i >= TILE_MAX)
+QPixmap PixmapTerTiles::getTerTile(int i) const {
+    if (i >= TILE_MAX) {
         i = 0;
+    }
+
     return terTileset->copy(
         (i % TILESET_COLUMNS) * TILE_WIDTH,
         (i / TILESET_COLUMNS) * TILE_HEIGHT,

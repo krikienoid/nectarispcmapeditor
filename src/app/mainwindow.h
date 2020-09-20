@@ -1,8 +1,6 @@
 #ifndef APP_MAINWINDOW_H
 #define APP_MAINWINDOW_H
 
-// Dependencies
-
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
@@ -14,8 +12,6 @@
 #include "nec/datamanager.h"
 #include "editormain.h"
 
-// Qt Stuff
-
 QT_BEGIN_NAMESPACE
 class QAction;
 class QMenu;
@@ -24,59 +20,48 @@ QT_END_NAMESPACE
 
 namespace App {
 
-// Class
-
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-
-    MainWindow  ();
-    ~MainWindow ();
+                                MainWindow();
+                                ~MainWindow();
 
 private slots:
-
-    void open           ();
-    bool save           ();
-    bool saveAs         ();
+    void                        open();
+    bool                        save();
+    bool                        saveAs();
 
 private:
+    void                        createActions();
+    void                        createMenus();
+    void                        createToolBars();
 
-    // Methods
-    void createActions  ();
-    void createMenus    ();
-    void createToolBars ();
+    void                        setCurrentFile(const QString& fileName);
+    void                        loadFile(const QString& fileName);
+    bool                        saveFile(const QString& fileName);
 
-    void setCurrentFile (const QString& fileName);
-    void loadFile       (const QString& fileName);
-    bool saveFile       (const QString& fileName);
+    QString                     currentFile;
 
-    // Filename
-    QString currentFile;
+    QMenu*                      menuFile;
+    QMenu*                      menuEdit;
+    QMenu*                      menuView;
+    QMenu*                      menuWindow;
+    QMenu*                      menuHelp;
+    QToolBar*                   toolBarFile;
+    QToolBar*                   toolBarWindow;
+    QAction*                    actOpen;
+    QAction*                    actSave;
+    QAction*                    actSaveAs;
+    QAction*                    actExit;
+    QAction*                    actZoomMapFull;
+    QAction*                    actZoomMapIn;
+    QAction*                    actZoomMapOut;
+    QAction*                    actToggleMapGrid;
 
-    // Window UI
-    QMenu    * menuFile;
-    QMenu    * menuEdit;
-    QMenu    * menuView;
-    QMenu    * menuWindow;
-    QMenu    * menuHelp;
-    QToolBar * toolBarFile;
-    QToolBar * toolBarWindow;
-    QAction  * actOpen;
-    QAction  * actSave;
-    QAction  * actSaveAs;
-    QAction  * actExit;
-    QAction  * actZoomMapFull;
-    QAction  * actZoomMapIn;
-    QAction  * actZoomMapOut;
-    QAction  * actToggleMapGrid;
+    EditorMain*                 editorMain;
 
-    // Children
-    EditorMain       * editorMain;
-
-    // Nec Data
-    Nec::DataManager * necData;
-
+    Nec::DataManager*           necData;
 };
 
 } // namespace App

@@ -2,13 +2,10 @@
 
 namespace Nec {
 
-// Terrain Data
-
 std::vector<TerTypeData> TER_TYPE_DATA;
-
 std::vector<std::string> TER_GROUP_NAMES;
 
-void initTerTypeData () {
+void initTerTypeData() {
     TER_GROUP_NAMES.resize(int(TerTypeData::TER_LAST + 1));
         TER_GROUP_NAMES[TerTypeData::TER_PLAINS]    = "Plains";
         TER_GROUP_NAMES[TerTypeData::TER_ROADS]     = "Roads";

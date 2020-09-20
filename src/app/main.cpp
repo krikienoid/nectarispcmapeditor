@@ -1,15 +1,10 @@
-// Dependencies
-
 #include <QApplication>
 
 #include "mainwindow.h"
 
-// Main
-
-int main (int argc, char * argv[]) {
-
+int main(int argc, char* argv[]) {
     // Setup
-    //Q_INIT_RESOURCE(application);
+    // Q_INIT_RESOURCE(application);
     QApplication app(argc, argv);
     app.setOrganizationName("QtProject");
     app.setApplicationName("Nectaris PC DOS Map Editor");
@@ -21,5 +16,4 @@ int main (int argc, char * argv[]) {
 
     // Execute
     return app.exec();
-
 }

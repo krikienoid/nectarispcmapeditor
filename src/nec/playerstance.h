@@ -1,8 +1,6 @@
 #ifndef NEC_PLAYERSTANCE_H
 #define NEC_PLAYERSTANCE_H
 
-// Dependencies
-
 #include <string>
 #include <vector>
 
@@ -10,53 +8,40 @@
 
 namespace Nec {
 
-// Class
-
 class PlayerStance {
-
 private:
+    Raw::Byte                   data;
+    int                         index;
 
-    // Data
-    Raw::Byte data;
-    int  index;
-
-    // Helper Struct
     struct PlayerStanceType {
+                                PlayerStanceType(
+                                    const Raw::Byte& value,
+                                    const std::string& name
+                                ) : value(value), name(name) {}
 
-        PlayerStanceType (const Raw::Byte& value, const std::string& name)
-            : value(value), name(name)
-        {}
-
-        Raw::Byte value;
-        std::string name;
-
+        Raw::Byte               value;
+        std::string             name;
     };
 
 public:
-
-    // Static Data
     static std::vector<PlayerStanceType> DATA;
 
-    // Constructors
-    PlayerStance () : data(0), index(0) {}
-    PlayerStance (const int i) {
-        if (i >= int(DATA.size()))
-            index = DATA.size() - 1;
-        else
-            index = i;
-        data = DATA.at(index).value;
-    }
+                                PlayerStance() : data(0), index(0) {}
+                                PlayerStance(const int i) {
+                                    if (i >= int(DATA.size())) {
+                                        index = DATA.size() - 1;
+                                    } else {
+                                        index = i;
+                                    }
 
-    // Methods
-    Raw::Byte toByte () const {return data;}
-    int  getIndex () const {return index;}
+                                    data = DATA.at(index).value;
+                                }
 
-    // Static Data Initializer
-    static std::vector<PlayerStanceType> initData ();
+    Raw::Byte                   toByte() const { return data; }
+    int                         getIndex() const { return index; }
 
+    static std::vector<PlayerStanceType> initData();
 };
-
-//
 
 } // namespace Nec
 
