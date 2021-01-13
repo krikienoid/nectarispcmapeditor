@@ -17,7 +17,7 @@ class EditorMapInfo : public QWidget {
     Q_OBJECT
 
 public:
-    explicit                    EditorMapInfo(QWidget* parent = 0);
+    explicit                    EditorMapInfo(QWidget* parent = nullptr);
 
     void                        loadNecData(Nec::MapInfo*);
     void                        updateNecData();

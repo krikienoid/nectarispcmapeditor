@@ -12,11 +12,9 @@ public:
     static const std::size_t    LENGTH = 6;
     static const char           CHAR_OFFSET[LENGTH];
 
-                                MapName() : std::string(LENGTH, FILLER_CHAR) {}
-                                MapName(const std::string& str) :
-                                    std::string(str) { resize(LENGTH, FILLER_CHAR); }
-                                MapName(const char* s) :
-                                    std::string(s) { resize(LENGTH, FILLER_CHAR); }
+                                MapName();
+    explicit                    MapName(const std::string&);
+    explicit                    MapName(const char*);
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;

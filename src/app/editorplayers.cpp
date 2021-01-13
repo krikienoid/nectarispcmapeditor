@@ -8,7 +8,7 @@ EditorPlayers::EditorPlayers(QWidget* parent) : QWidget(parent) {
     createPlayerStanceComboBoxes();
 
     // Layout
-    QVBoxLayout* layoutMain = new QVBoxLayout;
+    QVBoxLayout* layoutMain = new QVBoxLayout();
     layoutMain->addWidget(groupPlayerRole);
     layoutMain->addWidget(groupPlayerStance);
 
@@ -69,7 +69,7 @@ QComboBox* EditorPlayers::createPlayerStanceComboBox() {
 
 void EditorPlayers::createPlayerRoleComboBoxes() {
     // Player Roles
-    QGridLayout* layoutGridPlayerRoles = new QGridLayout;
+    QGridLayout* layoutGridPlayerRoles = new QGridLayout();
     layoutGridPlayerRoles->setAlignment(Qt::AlignTop);
 
     // ComboBoxes
@@ -107,7 +107,7 @@ void EditorPlayers::createPlayerRoleComboBoxes() {
 
 void EditorPlayers::createPlayerStanceComboBoxes() {
     // Player Stances
-    QGridLayout* layoutGridPlayerStances = new QGridLayout;
+    QGridLayout* layoutGridPlayerStances = new QGridLayout();
     layoutGridPlayerStances->setAlignment(Qt::AlignTop);
 
     // Labels

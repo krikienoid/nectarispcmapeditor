@@ -5,8 +5,8 @@ namespace App {
 std::string getFileExtension(const std::string&);
 
 MainWindow::MainWindow() {
-    necData    = new Nec::DataManager;
-    editorMain = new EditorMain;
+    necData    = new Nec::DataManager();
+    editorMain = new EditorMain();
 
     editorMain->loadNecData(necData);
 
@@ -173,7 +173,7 @@ void MainWindow::loadFile(const QString& fileName) {
         // Load data from file
         delete necData;
 
-        necData = new Nec::DataManager;
+        necData = new Nec::DataManager();
         necData->read(fileName.toStdString());
 
         editorMain->loadNecData(necData);
@@ -196,8 +196,7 @@ bool MainWindow::saveFile(const QString& fileName) {
             this,
             tr("Nectaris PC Map Editor"),
             tr("Cannot write file %1:\n%2.")
-                .arg(fileName)
-                .arg(file.errorString())
+                .arg(fileName, file.errorString())
         );
 
         return false;

@@ -24,7 +24,7 @@ class PickerTerTile : public QListWidget {
     Q_OBJECT
 
 public:
-    explicit                    PickerTerTile(QWidget* parent = 0);
+    explicit                    PickerTerTile(QWidget* parent = nullptr);
 
     void                        updateTilesetRanges();
 
@@ -33,12 +33,12 @@ public:
     QByteArray                  bytesTerBin;
     QList<bool>                 enabledTilesetRange;
 
-signals:
-    void                        selectedTerTile(int);
-
 public slots:
     void                        selectTerTile(QListWidgetItem*);
     void                        selectTerTypeFilter(int);
+
+signals:
+    void                        selectedTerTile(int);
 
 private:
     enum DATA_ROLES {

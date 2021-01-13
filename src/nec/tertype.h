@@ -27,7 +27,7 @@ struct TerTypeData {
     };
 
                                 TerTypeData(
-                                    const std::string name,
+                                    const std::string& name,
                                     const double defMod,
                                     const TerGroup terGroup
                                 ) :

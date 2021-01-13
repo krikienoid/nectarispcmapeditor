@@ -10,7 +10,7 @@ EditorMapMap::EditorMapMap(QWidget* parent) : QWidget(parent) {
     createMapSizePicker();
 
     // Main Layout
-    QVBoxLayout* layoutMain = new QVBoxLayout;
+    QVBoxLayout* layoutMain = new QVBoxLayout();
     layoutMain->addWidget(groupTerTile);
     layoutMain->addWidget(groupMapSize);
     layoutMain->addWidget(groupChecks);
@@ -188,8 +188,8 @@ void EditorMapMap::createViewMapTileGrid() {
 
 void EditorMapMap::createTilesetRangePicker() {
     // Selected Tileset Range Frame
-    QHBoxLayout* layoutRowFile1 = new QHBoxLayout;
-    QHBoxLayout* layoutRowFile2 = new QHBoxLayout;
+    QHBoxLayout* layoutRowFile1 = new QHBoxLayout();
+    QHBoxLayout* layoutRowFile2 = new QHBoxLayout();
 
     layoutRowFile1->setAlignment(Qt::AlignLeft);
     layoutRowFile2->setAlignment(Qt::AlignLeft);
@@ -227,7 +227,7 @@ void EditorMapMap::createTilesetRangePicker() {
     );
 
     // Layout
-    QVBoxLayout* layoutColFile = new QVBoxLayout;
+    QVBoxLayout* layoutColFile = new QVBoxLayout();
     layoutColFile->addLayout(layoutRowFile1);
     layoutColFile->addLayout(layoutRowFile2);
 
@@ -257,19 +257,19 @@ void EditorMapMap::createPickerTerTile() {
     // Layout
 
     // Selected Tile
-    QHBoxLayout* layoutRowTile = new QHBoxLayout;
+    QHBoxLayout* layoutRowTile = new QHBoxLayout();
     layoutRowTile->setAlignment(Qt::AlignLeft);
     layoutRowTile->addWidget(new QLabel("Selected Tile: ", this));
     layoutRowTile->addWidget(labelTerTileImg);
     layoutRowTile->addWidget(labelTerTileName);
 
     // Show Tiles
-    QHBoxLayout* layoutRowShow = new QHBoxLayout;
+    QHBoxLayout* layoutRowShow = new QHBoxLayout();
     layoutRowShow->setAlignment(Qt::AlignLeft);
     layoutRowShow->addWidget(new QLabel("Show: ", this));
     layoutRowShow->addWidget(pickerTerTile->dropdownTerTypes);
 
-    QVBoxLayout* layoutColTile = new QVBoxLayout;
+    QVBoxLayout* layoutColTile = new QVBoxLayout();
     layoutColTile->addLayout(layoutRowTile);
     layoutColTile->addWidget(line);
     layoutColTile->addLayout(layoutRowShow);
@@ -302,7 +302,7 @@ void EditorMapMap::createMapSizePicker() {
     );
 
     // Layout
-    QHBoxLayout* layoutRowMapSize = new QHBoxLayout;
+    QHBoxLayout* layoutRowMapSize = new QHBoxLayout();
     layoutRowMapSize->setAlignment(Qt::AlignLeft);
     layoutRowMapSize->addWidget(new QLabel("Width: ", this));
     layoutRowMapSize->addWidget(comboMapSizeX);

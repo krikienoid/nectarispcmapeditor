@@ -9,13 +9,9 @@
 namespace Nec {
 
 class PlayerStance {
-private:
-    Raw::Byte                   data;
-    int                         index;
-
     struct PlayerStanceType {
                                 PlayerStanceType(
-                                    const Raw::Byte& value,
+                                    const Raw::Byte value,
                                     const std::string& name
                                 ) : value(value), name(name) {}
 
@@ -27,20 +23,16 @@ public:
     static std::vector<PlayerStanceType> DATA;
 
                                 PlayerStance() : data(0), index(0) {}
-                                PlayerStance(const int i) {
-                                    if (i >= int(DATA.size())) {
-                                        index = DATA.size() - 1;
-                                    } else {
-                                        index = i;
-                                    }
+    explicit                    PlayerStance(const int);
 
-                                    data = DATA.at(index).value;
-                                }
-
-    Raw::Byte                   toByte() const { return data; }
-    int                         getIndex() const { return index; }
+    Raw::Byte                   toByte() const;
+    int                         getIndex() const;
 
     static std::vector<PlayerStanceType> initData();
+
+private:
+    Raw::Byte                   data;
+    int                         index;
 };
 
 } // namespace Nec

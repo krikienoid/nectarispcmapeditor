@@ -30,7 +30,7 @@ class EditorMapMap : public QWidget {
     Q_OBJECT
 
 public:
-    explicit                    EditorMapMap(QWidget* parent = 0);
+    explicit                    EditorMapMap(QWidget* parent = nullptr);
 
     void                        loadNecData(Nec::MapInfo*, Nec::MapMap*);
     void                        updateNecData();

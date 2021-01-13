@@ -2,6 +2,24 @@
 
 namespace Nec {
 
+PlayerStance::PlayerStance(const int i) {
+    if (i >= int(DATA.size())) {
+        index = DATA.size() - 1;
+    } else {
+        index = i;
+    }
+
+    data = DATA.at(index).value;
+}
+
+Raw::Byte PlayerStance::toByte() const {
+    return data;
+}
+
+int PlayerStance::getIndex() const {
+    return index;
+}
+
 std::vector<PlayerStance::PlayerStanceType> PlayerStance::initData() {
     std::vector<PlayerStanceType> result;
 

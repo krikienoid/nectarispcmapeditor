@@ -13,7 +13,7 @@ class ByteString {
 public:
                                 ByteString();
     explicit                    ByteString(const std::size_t);
-                                ByteString(const Byte);
+    explicit                    ByteString(const Byte);
                                 ByteString(const ByteString&);
                                 ~ByteString();
 
@@ -39,7 +39,7 @@ public:
     std::string                 toString() const;
     int                         toInt() const;
 
-    static ByteString           fromInt(int n);
+    static ByteString           fromInt(int);
 
 private:
     void                        swap(ByteString&);

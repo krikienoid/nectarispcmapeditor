@@ -11,31 +11,31 @@ SOURCES += \
     biginfo.cpp \
     bigmap.cpp \
     bigunit.cpp \
-    datamanager.cpp \
     coordinates.cpp \
+    datamanager.cpp \
     mapinfo.cpp \
     mapmap.cpp \
     mapname.cpp \
+    mapunit.cpp \
     playerrole.cpp \
     playerstance.cpp \
     ter.cpp \
-    tertype.cpp \
-    mapunit.cpp
+    tertype.cpp
 
 HEADERS += \
     biginfo.h \
     bigmap.h \
     bigunit.h \
-    datamanager.h \
     coordinates.h \
+    datamanager.h \
     mapinfo.h \
     mapmap.h \
     mapname.h \
+    mapunit.h \
     playerrole.h \
     playerstance.h \
     ter.h \
-    tertype.h \
-    mapunit.h
+    tertype.h
 
 # Byte Lib
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../raw/release/ -lblib

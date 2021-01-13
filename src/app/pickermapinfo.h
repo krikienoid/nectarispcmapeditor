@@ -19,7 +19,7 @@ class PickerMapInfo : public QWidget {
     Q_OBJECT
 
 public:
-    explicit                    PickerMapInfo(QWidget* parent = 0);
+    explicit                    PickerMapInfo(QWidget* parent = nullptr);
 
     void                        loadNecData(Nec::DataManager*);
     void                        updateNecData();

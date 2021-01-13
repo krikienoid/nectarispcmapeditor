@@ -21,12 +21,10 @@ class EditorPlayers : public QWidget {
     Q_OBJECT
 
 public:
-    explicit                    EditorPlayers(QWidget* parent = 0);
+    explicit                    EditorPlayers(QWidget* parent = nullptr);
 
     void                        loadNecData(Nec::MapInfo*);
     void                        updateNecData();
-
-signals:
 
 public slots:
     void                        changePlayerRole(int);

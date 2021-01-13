@@ -18,7 +18,7 @@ EditorMapInfo::EditorMapInfo(QWidget* parent) : QWidget(parent) {
     line->setFrameShadow(QFrame::Sunken);
 
     // Layout
-    QVBoxLayout* layoutMain = new QVBoxLayout;
+    QVBoxLayout* layoutMain = new QVBoxLayout();
     layoutMain->addWidget(new QLabel("Map:", this));
     layoutMain->addWidget(editMapName);
     layoutMain->addWidget(line);
@@ -27,7 +27,7 @@ EditorMapInfo::EditorMapInfo(QWidget* parent) : QWidget(parent) {
 }
 
 void EditorMapInfo::enterMapName() {
-    necMapInfo->mapName = editMapName->text().toStdString();
+    necMapInfo->mapName = Nec::MapName(editMapName->text().toStdString());
 
     emit signaledUpdate();
 }

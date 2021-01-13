@@ -18,17 +18,15 @@ PickerTerTile::PickerTerTile(QWidget* parent) :
     terBin.close();
 
     // Init tileset
-    PixmapTerTiles* pixmapTerTiles = new PixmapTerTiles;
+    PixmapTerTiles pixmapTerTiles;
 
     // Terrain tiles
     for (int i = 0; i < PixmapTerTiles::TILE_MAX; ++i) {
-        QIcon* tileIcon = new QIcon(pixmapTerTiles->getTerTile(i));
-        QListWidgetItem* newItem = new QListWidgetItem(*tileIcon, NULL);
+        QIcon* tileIcon = new QIcon(pixmapTerTiles.getTerTile(i));
+        QListWidgetItem* newItem = new QListWidgetItem(*tileIcon, nullptr);
         newItem->setData(TILE_TYPE, QVariant(i));
         this->addItem(newItem);
     }
-
-    delete pixmapTerTiles;
 
     // Standard view settings
     setViewMode(QListView::IconMode);
@@ -45,7 +43,7 @@ PickerTerTile::PickerTerTile(QWidget* parent) :
     setDragEnabled(false);
 
     // Terrain Filter Dropdown list
-    dropdownTerTypes = new QComboBox;
+    dropdownTerTypes = new QComboBox();
     dropdownTerTypes->addItem(tr("All"), QVariant(0));
     dropdownTerTypes->insertSeparator(1);
 

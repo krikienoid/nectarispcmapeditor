@@ -6,7 +6,7 @@ namespace Raw {
 
 ByteString::ByteString() {
     length = 0;
-    data   = 0;
+    data   = nullptr;
 }
 
 ByteString::ByteString(const std::size_t n) {
@@ -194,10 +194,10 @@ int ByteString::toInt() const {
 }
 
 ByteString ByteString::fromInt(int n) {
-    ByteString result(sizeof(int));
+    ByteString result(sizeof(n));
 
     for (std::size_t i = result.length; i; --i, n >>= 8) {
-        result.data[result.length - i] = static_cast<char>(n & 0xFF);
+        result.data[result.length - i] = static_cast<char>(n & 0xff);
     }
 
     return result;

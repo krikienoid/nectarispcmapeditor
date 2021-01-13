@@ -10,7 +10,7 @@ class PixmapTerTiles : public QWidget {
     Q_OBJECT
 
 public:
-    explicit                    PixmapTerTiles(QWidget* parent = 0);
+    explicit                    PixmapTerTiles(QWidget* parent = nullptr);
                                 ~PixmapTerTiles();
 
     QPixmap                     getTerTile(int) const;

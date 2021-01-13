@@ -34,20 +34,20 @@ EditorMain::EditorMain(QWidget* parent) : QWidget(parent) {
     pickerMapInfo->setFixedWidth(180);
     editorMapInfo->setFixedWidth(180);
 
-    QVBoxLayout* layoutMapInfo = new QVBoxLayout;
+    QVBoxLayout* layoutMapInfo = new QVBoxLayout();
     layoutMapInfo->addWidget(editorMapInfo);
     layoutMapInfo->addWidget(pickerMapInfo);
 
     QTabWidget* tabsMapEdit = new QTabWidget(this);
     tabsMapEdit->addTab(editorMapMap,  "Terrain");
     tabsMapEdit->addTab(editorPlayers, "Players");
-    tabsMapEdit->addTab(new QWidget, "Units");
+    tabsMapEdit->addTab(new QWidget(), "Units");
 
     QSplitter* splitMapEditor = new QSplitter(this);
     splitMapEditor->addWidget(editorMapMap->viewMapTileGrid);
     splitMapEditor->addWidget(tabsMapEdit);
 
-    QHBoxLayout* layoutMain = new QHBoxLayout;
+    QHBoxLayout* layoutMain = new QHBoxLayout();
     layoutMain->addLayout(layoutMapInfo);
     layoutMain->addWidget(splitMapEditor);
 
@@ -60,6 +60,22 @@ void EditorMain::selectMapInfo(int i) {
 
 void EditorMain::signalUpdate() {
     updateNecData();
+}
+
+void EditorMain::zoomMapFull() {
+    zoomMap(1.0, false);
+}
+
+void EditorMain::zoomMapIn() {
+    zoomMap(2.0, true);
+}
+
+void EditorMain::zoomMapOut() {
+    zoomMap(0.5, true);
+}
+
+void EditorMain::toggleMapGrid(bool mapGridOn) {
+    editorMapMap->setMapGridVisible(mapGridOn);
 }
 
 void EditorMain::loadNecData(Nec::DataManager* newNecData) {
