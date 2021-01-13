@@ -17,9 +17,9 @@ public:
     const static std::size_t    BITS = 8;
 
                                 Byte() : data(0) {}
-                                Byte(const int n) : data(n) {}
                                 Byte(const unsigned char uc) : data(uc) {}
-                                Byte(const bool[BITS]);
+    explicit                    Byte(const int n) : data(n) {}
+    explicit                    Byte(const bool[BITS]);
 
     operator                    int() const;
 

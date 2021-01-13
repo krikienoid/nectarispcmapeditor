@@ -18,7 +18,7 @@ class EditorMain : public QWidget {
     Q_OBJECT
 
 public:
-    explicit                    EditorMain(QWidget* parent = 0);
+    explicit                    EditorMain(QWidget* parent = nullptr);
 
     void                        loadNecData(Nec::DataManager*);
     void                        updateNecData();
@@ -28,12 +28,10 @@ public slots:
     void                        selectMapInfo(int);
     void                        signalUpdate();
 
-    void                        zoomMapFull() { zoomMap(1.0, false); }
-    void                        zoomMapIn() { zoomMap(2.0, true); }
-    void                        zoomMapOut() { zoomMap(0.5, true); }
-    void                        toggleMapGrid(bool mapGridOn) {
-                                    editorMapMap->setMapGridVisible(mapGridOn);
-                                }
+    void                        zoomMapFull();
+    void                        zoomMapIn();
+    void                        zoomMapOut();
+    void                        toggleMapGrid(bool);
 
 private:
     void                        loadSelectedMapData(const std::size_t);

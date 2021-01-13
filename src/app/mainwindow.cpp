@@ -5,8 +5,8 @@ namespace App {
 std::string getFileExtension(const std::string&);
 
 MainWindow::MainWindow() {
-    necData    = new Nec::DataManager;
-    editorMain = new EditorMain;
+    necData    = new Nec::DataManager();
+    editorMain = new EditorMain();
     editorMain->loadNecData(necData);
     setCentralWidget(editorMain);
 
@@ -171,7 +171,7 @@ void MainWindow::loadFile(const QString& fileName) {
         // Load data from file
         delete necData;
 
-        necData = new Nec::DataManager;
+        necData = new Nec::DataManager();
         necData->read(fileName.toStdString());
         editorMain->loadNecData(necData);
 

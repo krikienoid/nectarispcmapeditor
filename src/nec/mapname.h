@@ -13,9 +13,9 @@ public:
     static const char           CHAR_OFFSET[LENGTH];
 
                                 MapName() : std::string(LENGTH, FILLER_CHAR) {}
-                                MapName(const std::string& str) :
+    explicit                    MapName(const std::string& str) :
                                     std::string(str) { resize(LENGTH, FILLER_CHAR); }
-                                MapName(const char* s) :
+    explicit                    MapName(const char* s) :
                                     std::string(s) { resize(LENGTH, FILLER_CHAR); }
 
     std::istream&               read(std::istream&);

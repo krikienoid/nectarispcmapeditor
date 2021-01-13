@@ -2,6 +2,24 @@
 
 namespace Nec {
 
+PlayerRole::PlayerRole(const int i) {
+    if (i >= int(DATA.size())) {
+        index = DATA.size() - 1;
+    } else {
+        index = i;
+    }
+
+    data = DATA.at(index).value;
+}
+
+Raw::Byte PlayerRole::toByte() const {
+    return data;
+}
+
+int PlayerRole::getIndex() const {
+    return index;
+}
+
 std::vector<PlayerRole::PlayerRoleType> PlayerRole::initData() {
     std::vector<PlayerRoleType> result;
 

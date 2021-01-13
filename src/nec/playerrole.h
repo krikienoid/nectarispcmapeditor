@@ -9,13 +9,9 @@
 namespace Nec {
 
 class PlayerRole {
-private:
-    Raw::Byte                   data;
-    int                         index;
-
     struct PlayerRoleType {
                                 PlayerRoleType(
-                                    const Raw::Byte& value,
+                                    const Raw::Byte value,
                                     const std::string& name
                                 ) : value(value), name(name) {}
 
@@ -27,20 +23,16 @@ public:
     static std::vector<PlayerRoleType> DATA;
 
                                 PlayerRole() : data(0), index(0) {}
-                                PlayerRole(const int i) {
-                                    if (i >= int(DATA.size())) {
-                                        index = DATA.size() - 1;
-                                    } else {
-                                        index = i;
-                                    }
+    explicit                    PlayerRole(const int);
 
-                                    data = DATA.at(index).value;
-                                }
-
-    Raw::Byte                   toByte() const { return data; }
-    int                         getIndex() const { return index; }
+    Raw::Byte                   toByte() const;
+    int                         getIndex() const;
 
     static std::vector<PlayerRoleType> initData();
+
+private:
+    Raw::Byte                   data;
+    int                         index;
 };
 
 } // namespace Nec

@@ -13,7 +13,7 @@ class ByteString {
 public:
                                 ByteString();
     explicit                    ByteString(const std::size_t);
-                                ByteString(const Byte);
+    explicit                    ByteString(const Byte);
                                 ByteString(const ByteString&);
                                 ~ByteString();
 

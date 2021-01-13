@@ -21,7 +21,7 @@ class SceneMapTileGrid : public QGraphicsScene {
     Q_OBJECT
 
 public:
-    explicit                    SceneMapTileGrid(QWidget* parent = 0);
+    explicit                    SceneMapTileGrid(QWidget* parent = nullptr);
 
     void                        mousePressEvent(QGraphicsSceneMouseEvent*);
 
@@ -38,8 +38,6 @@ public:
 
 signals:
     void                        selectedMapTile(int);
-
-public slots:
 
 private:
     void                        updateTerTiles();

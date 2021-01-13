@@ -19,7 +19,7 @@ PickerMapInfo::PickerMapInfo(QWidget* parent) : QWidget(parent) {
     }
 
     // Layout
-    QVBoxLayout* layoutColMapPicker = new QVBoxLayout;
+    QVBoxLayout* layoutColMapPicker = new QVBoxLayout();
     layoutColMapPicker->addWidget(listMapInfo);
 
     QGroupBox* groupMapPicker = new QGroupBox(tr("Map List"), this);

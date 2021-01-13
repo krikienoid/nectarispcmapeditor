@@ -15,7 +15,6 @@
 QT_BEGIN_NAMESPACE
 class QAction;
 class QMenu;
-class QPlainTextEdit;
 QT_END_NAMESPACE
 
 namespace App {

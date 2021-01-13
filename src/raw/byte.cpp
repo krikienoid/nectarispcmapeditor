@@ -33,7 +33,7 @@ std::ostream& Byte::write(std::ostream& outs) const {
 }
 
 std::string Byte::toStringHex() const {
-    char* buffer = new char[2];
+    char buffer[3];
     std::sprintf(buffer, "%x", data);
     std::string result(buffer);
 
@@ -45,7 +45,7 @@ std::string Byte::toStringHex() const {
 }
 
 std::string Byte::toStringDec() const {
-    char* buffer = new char[3];
+    char buffer[4];
     std::sprintf(buffer, "%d", data);
     std::string result(buffer);
 

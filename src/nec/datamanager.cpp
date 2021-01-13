@@ -9,8 +9,8 @@ const std::ios_base::openmode   DataManager::FILEREADMODE     = std::ios::in  | 
 const std::ios_base::openmode   DataManager::FILEWRITEMODE    = std::ios::out | std::ios::binary;
 
 DataManager::DataManager() {
-    bigInfo = new BigInfo;
-    // bigUnit = new BigUnit;
+    bigInfo = new BigInfo();
+    // bigUnit = new BigUnit();
     bigMap  = new BigMap(bigInfo);
 }
 

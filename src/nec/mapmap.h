@@ -16,7 +16,7 @@ public:
     static const std::size_t    MAX_SIZE;
 
                                 MapMap();
-                                MapMap(const std::size_t, const std::size_t);
+    explicit                    MapMap(const std::size_t, const std::size_t);
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
