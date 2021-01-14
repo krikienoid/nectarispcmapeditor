@@ -2,7 +2,7 @@
 
 namespace App {
 
-PixmapTerTiles::PixmapTerTiles(QWidget* parent) : QWidget(parent) {
+PixmapTerTiles::PixmapTerTiles(QWidget* const parent) : QWidget(parent) {
     terTileset = new QPixmap(":/data/images/terraintiles.png");
 }
 

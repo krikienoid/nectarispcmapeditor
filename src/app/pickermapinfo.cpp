@@ -2,7 +2,7 @@
 
 namespace App {
 
-PickerMapInfo::PickerMapInfo(QWidget* parent) : QWidget(parent) {
+PickerMapInfo::PickerMapInfo(QWidget* const parent) : QWidget(parent) {
     // List Widget
     listMapInfo = new QListWidget(this);
 
@@ -13,36 +13,36 @@ PickerMapInfo::PickerMapInfo(QWidget* parent) : QWidget(parent) {
 
     // Build MapInfo List
     for (int i = 0, ii = Nec::BigInfo::LENGTH; i < ii; ++i) {
-        QListWidgetItem* listItem = new QListWidgetItem(listMapInfo);
+        QListWidgetItem* const listItem = new QListWidgetItem(listMapInfo);
         setListItemData(listItem, i);
         listMapInfo->addItem(listItem);
     }
 
     // Layout
-    QVBoxLayout* layoutColMapPicker = new QVBoxLayout();
+    QVBoxLayout* const layoutColMapPicker = new QVBoxLayout();
     layoutColMapPicker->addWidget(listMapInfo);
 
-    QGroupBox* groupMapPicker = new QGroupBox(tr("Map List"), this);
+    QGroupBox* const groupMapPicker = new QGroupBox(tr("Map List"), this);
     groupMapPicker->setContentsMargins(0, 8, 0, 0);
     groupMapPicker->setLayout(layoutColMapPicker);
 
-    QHBoxLayout* layoutMain = new QHBoxLayout(this);
+    QHBoxLayout* const layoutMain = new QHBoxLayout(this);
     layoutMain->addWidget(groupMapPicker);
     setLayout(layoutMain);
 }
 
-void PickerMapInfo::clickMapList(QListWidgetItem* mapItem) {
+void PickerMapInfo::clickMapList(QListWidgetItem* const mapItem) {
     emit selectedMapInfo(getListItemData(mapItem));
 }
 
-void PickerMapInfo::loadNecData(Nec::DataManager* newNecData) {
+void PickerMapInfo::loadNecData(Nec::DataManager* const newNecData) {
     necData = newNecData;
 }
 
 void PickerMapInfo::updateNecData() {
     // Reset MapInfo List
     for (int i = 0, ii = Nec::BigInfo::LENGTH; i < ii; ++i) {
-        QListWidgetItem* listItem = listMapInfo->item(i);
+        QListWidgetItem* const listItem = listMapInfo->item(i);
 
         if (necData->bigInfo->mapInfoExists(i)) {
             listItem->setHidden(false);
@@ -60,11 +60,11 @@ void PickerMapInfo::updateNecData() {
     }
 }
 
-int PickerMapInfo::getListItemData(QListWidgetItem* listItem) {
+int PickerMapInfo::getListItemData(QListWidgetItem* const listItem) {
     return listItem->data(Qt::UserRole).toInt();
 }
 
-void PickerMapInfo::setListItemData(QListWidgetItem* listItem, const int i) {
+void PickerMapInfo::setListItemData(QListWidgetItem* const listItem, const int i) {
     listItem->setData(Qt::UserRole, QVariant(i));
 }
 

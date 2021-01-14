@@ -12,14 +12,14 @@ namespace Raw {
 class ByteString {
 public:
                                 ByteString();
-    explicit                    ByteString(const std::size_t);
-    explicit                    ByteString(const Byte);
+    explicit                    ByteString(std::size_t);
+    explicit                    ByteString(Byte);
                                 ByteString(const ByteString&);
                                 ~ByteString();
 
     ByteString&                 operator=(ByteString);
-    Byte                        operator[](const std::size_t) const;
-    Byte&                       operator[](const std::size_t);
+    Byte                        operator[](std::size_t) const;
+    Byte&                       operator[](std::size_t);
     ByteString                  operator+(const ByteString&) const;
 
     std::istream&               read(std::istream&);
@@ -31,11 +31,15 @@ public:
     std::ostream&               writeBig(std::ostream&) const;
 
     int                         size() const;
-    void                        push(const Byte);
-    ByteString                  substr(const std::size_t, const std::size_t) const;
-    ByteString                  substr(const std::size_t) const;
-    void                        insertSubstr(const std::size_t, const std::size_t, const ByteString&);
-    void                        resize(const std::size_t);
+    void                        push(Byte);
+    ByteString                  substr(std::size_t, std::size_t) const;
+    ByteString                  substr(std::size_t) const;
+    void                        insertSubstr(
+                                    std::size_t,
+                                    std::size_t,
+                                    const ByteString&
+                                );
+    void                        resize(std::size_t);
     std::string                 toString() const;
     int                         toInt() const;
 
@@ -48,7 +52,7 @@ private:
     Byte*                       data;
 };
 
-ByteString                      operator+(const Byte, const ByteString&);
+ByteString                      operator+(Byte, const ByteString&);
 
 } // namespace Raw
 

@@ -2,7 +2,7 @@
 
 namespace App {
 
-EditorMapMap::EditorMapMap(QWidget* parent) : QWidget(parent) {
+EditorMapMap::EditorMapMap(QWidget* const parent) : QWidget(parent) {
     // Init Children
     createViewMapTileGrid();
     createPickerTerTile();
@@ -10,7 +10,7 @@ EditorMapMap::EditorMapMap(QWidget* parent) : QWidget(parent) {
     createMapSizePicker();
 
     // Main Layout
-    QVBoxLayout* layoutMain = new QVBoxLayout();
+    QVBoxLayout* const layoutMain = new QVBoxLayout();
     layoutMain->addWidget(groupTerTile);
     layoutMain->addWidget(groupMapSize);
     layoutMain->addWidget(groupChecks);
@@ -21,12 +21,12 @@ EditorMapMap::EditorMapMap(QWidget* parent) : QWidget(parent) {
     toolMode = TOOL_TER;
 }
 
-void EditorMapMap::selectTerTile(int i) {
+void EditorMapMap::selectTerTile(const int i) {
     toolMode = TOOL_TER;
     updateSelectedTerTile(i);
 }
 
-void EditorMapMap::selectMapTile(int i) {
+void EditorMapMap::selectMapTile(const int i) {
     if (toolMode == TOOL_TER && i < int(necMapMap->size())) {
         necMapMap->at(i) = Raw::ByteString::fromInt(selectedTerTile);
         necMapMap->at(i).resize(2);
@@ -60,21 +60,21 @@ void EditorMapMap::changeTilesetRange(int) {
     updateEnabledTilesetRange();
 }
 
-void EditorMapMap::changeMapSizeX(int qX) {
+void EditorMapMap::changeMapSizeX(const int qX) {
     necMapInfo->quadrantsX = qX;
     necMapMap->qX = qX;
     updateNecData();
 }
 
-void EditorMapMap::changeMapSizeY(int qY) {
+void EditorMapMap::changeMapSizeY(const int qY) {
     necMapInfo->quadrantsY = qY;
     necMapMap->qY = qY;
     updateNecData();
 }
 
 void EditorMapMap::loadNecData(
-    Nec::MapInfo* newNecMapInfo,
-    Nec::MapMap* newNecMapMap
+    Nec::MapInfo* const newNecMapInfo,
+    Nec::MapMap* const newNecMapMap
 ) {
     necMapInfo = newNecMapInfo;
     necMapMap  = newNecMapMap;
@@ -118,7 +118,7 @@ void EditorMapMap::updateSelectedTerTile(int terTileNum) {
 
     selectedTerTile = terTileNum;
 
-    int terTypeNum = pickerTerTile->bytesTerBin.at(terTileNum);
+    const int terTypeNum = pickerTerTile->bytesTerBin.at(terTileNum);
 
     if (terTypeNum < int(Nec::TER_TYPE_DATA.size())) {
         labelTerTileImg->setPixmap(
@@ -176,16 +176,16 @@ void EditorMapMap::createViewMapTileGrid() {
 
 void EditorMapMap::createTilesetRangePicker() {
     // Selected Tileset Range Frame
-    QHBoxLayout* layoutRowFile1 = new QHBoxLayout();
-    QHBoxLayout* layoutRowFile2 = new QHBoxLayout();
+    QHBoxLayout* const layoutRowFile1 = new QHBoxLayout();
+    QHBoxLayout* const layoutRowFile2 = new QHBoxLayout();
     layoutRowFile1->setAlignment(Qt::AlignLeft);
     layoutRowFile2->setAlignment(Qt::AlignLeft);
 
     // QComboBoxes
-    QSignalMapper* signalMapper = new QSignalMapper(this);
+    QSignalMapper* const signalMapper = new QSignalMapper(this);
 
     for (int i = 0; i < TILESETS; ++i) {
-        QCheckBox* newCheckBox = new QCheckBox(this);
+        QCheckBox* const newCheckBox = new QCheckBox(this);
         newCheckBox->setText(
             QString("bg") +
             QString::number(i + 1)
@@ -213,7 +213,7 @@ void EditorMapMap::createTilesetRangePicker() {
     );
 
     // Layout
-    QVBoxLayout* layoutColFile = new QVBoxLayout();
+    QVBoxLayout* const layoutColFile = new QVBoxLayout();
     layoutColFile->addLayout(layoutRowFile1);
     layoutColFile->addLayout(layoutRowFile2);
 
@@ -236,26 +236,26 @@ void EditorMapMap::createPickerTerTile() {
     labelTerTileName = new QLabel(this);
 
     // Separator
-    QFrame* line = new QFrame(this);
+    QFrame* const line = new QFrame(this);
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
 
     // Layout
 
     // Selected Tile
-    QHBoxLayout* layoutRowTile = new QHBoxLayout();
+    QHBoxLayout* const layoutRowTile = new QHBoxLayout();
     layoutRowTile->setAlignment(Qt::AlignLeft);
     layoutRowTile->addWidget(new QLabel("Selected Tile: ", this));
     layoutRowTile->addWidget(labelTerTileImg);
     layoutRowTile->addWidget(labelTerTileName);
 
     // Show Tiles
-    QHBoxLayout* layoutRowShow = new QHBoxLayout();
+    QHBoxLayout* const layoutRowShow = new QHBoxLayout();
     layoutRowShow->setAlignment(Qt::AlignLeft);
     layoutRowShow->addWidget(new QLabel("Show: ", this));
     layoutRowShow->addWidget(pickerTerTile->dropdownTerTypes);
 
-    QVBoxLayout* layoutColTile = new QVBoxLayout();
+    QVBoxLayout* const layoutColTile = new QVBoxLayout();
     layoutColTile->addLayout(layoutRowTile);
     layoutColTile->addWidget(line);
     layoutColTile->addLayout(layoutRowShow);
@@ -288,7 +288,7 @@ void EditorMapMap::createMapSizePicker() {
     );
 
     // Layout
-    QHBoxLayout* layoutRowMapSize = new QHBoxLayout();
+    QHBoxLayout* const layoutRowMapSize = new QHBoxLayout();
     layoutRowMapSize->setAlignment(Qt::AlignLeft);
     layoutRowMapSize->addWidget(new QLabel("Width: ", this));
     layoutRowMapSize->addWidget(comboMapSizeX);

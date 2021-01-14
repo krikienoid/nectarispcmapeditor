@@ -2,7 +2,7 @@
 
 namespace App {
 
-PickerTerTile::PickerTerTile(QWidget* parent) :
+PickerTerTile::PickerTerTile(QWidget* const parent) :
     QListWidget(parent),
     terTypeFilter(0)
 {
@@ -15,12 +15,12 @@ PickerTerTile::PickerTerTile(QWidget* parent) :
     terBin.close();
 
     // Init tileset
-    PixmapTerTiles pixmapTerTiles;
+    const PixmapTerTiles pixmapTerTiles;
 
     // Terrain tiles
     for (int i = 0; i < PixmapTerTiles::TILE_MAX; ++i) {
-        QIcon* tileIcon = new QIcon(pixmapTerTiles.getTerTile(i));
-        QListWidgetItem* newItem = new QListWidgetItem(*tileIcon, nullptr);
+        QIcon* const tileIcon = new QIcon(pixmapTerTiles.getTerTile(i));
+        QListWidgetItem* const newItem = new QListWidgetItem(*tileIcon, nullptr);
         newItem->setData(TILE_TYPE, QVariant(i));
         this->addItem(newItem);
     }
@@ -66,12 +66,12 @@ PickerTerTile::PickerTerTile(QWidget* parent) :
     );
 }
 
-void PickerTerTile::selectTerTypeFilter(int i) {
+void PickerTerTile::selectTerTypeFilter(const int i) {
     terTypeFilter = dropdownTerTypes->itemData(i).toInt();
     updateTilesetRanges();
 }
 
-void PickerTerTile::selectTerTile(QListWidgetItem* selectedItem) {
+void PickerTerTile::selectTerTile(QListWidgetItem* const selectedItem) {
     emit selectedTerTile(selectedItem->data(TILE_TYPE).toInt());
 }
 

@@ -25,7 +25,7 @@ void DataManager::read(const std::string& filepath) {
     std::string filename = filepath;
 
     // If directory is given
-    std::size_t slashPos = filepath.find_last_of("/\\");
+    const std::size_t slashPos = filepath.find_last_of("/\\");
 
     if (slashPos != std::string::npos) {
         filedir  = filepath.substr(0, slashPos + 1);
@@ -75,7 +75,7 @@ void DataManager::write(const std::string& filepath) {
     std::string filename = filepath;
 
     // If directory is given
-    std::size_t slashPos = filepath.find_last_of("/\\");
+    const std::size_t slashPos = filepath.find_last_of("/\\");
 
     if (slashPos != std::string::npos) {
         filedir  = filepath.substr(0, slashPos + 1);

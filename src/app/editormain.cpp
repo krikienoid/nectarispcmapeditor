@@ -2,7 +2,7 @@
 
 namespace App {
 
-EditorMain::EditorMain(QWidget* parent) : QWidget(parent) {
+EditorMain::EditorMain(QWidget* const parent) : QWidget(parent) {
     // Init Nec Data
     Nec::initTerTypeData();
 
@@ -34,26 +34,26 @@ EditorMain::EditorMain(QWidget* parent) : QWidget(parent) {
     pickerMapInfo->setFixedWidth(180);
     editorMapInfo->setFixedWidth(180);
 
-    QVBoxLayout* layoutMapInfo = new QVBoxLayout();
+    QVBoxLayout* const layoutMapInfo = new QVBoxLayout();
     layoutMapInfo->addWidget(editorMapInfo);
     layoutMapInfo->addWidget(pickerMapInfo);
 
-    QTabWidget* tabsMapEdit = new QTabWidget(this);
+    QTabWidget* const tabsMapEdit = new QTabWidget(this);
     tabsMapEdit->addTab(editorMapMap,  "Terrain");
     tabsMapEdit->addTab(editorPlayers, "Players");
     tabsMapEdit->addTab(new QWidget(), "Units");
 
-    QSplitter* splitMapEditor = new QSplitter(this);
+    QSplitter* const splitMapEditor = new QSplitter(this);
     splitMapEditor->addWidget(editorMapMap->viewMapTileGrid);
     splitMapEditor->addWidget(tabsMapEdit);
 
-    QHBoxLayout* layoutMain = new QHBoxLayout();
+    QHBoxLayout* const layoutMain = new QHBoxLayout();
     layoutMain->addLayout(layoutMapInfo);
     layoutMain->addWidget(splitMapEditor);
     setLayout(layoutMain);
 }
 
-void EditorMain::selectMapInfo(int i) {
+void EditorMain::selectMapInfo(const int i) {
     loadSelectedMapData(i);
 }
 
@@ -73,11 +73,11 @@ void EditorMain::zoomMapOut() {
     zoomMap(0.5, true);
 }
 
-void EditorMain::toggleMapGrid(bool mapGridOn) {
+void EditorMain::toggleMapGrid(const bool mapGridOn) {
     editorMapMap->setMapGridVisible(mapGridOn);
 }
 
-void EditorMain::loadNecData(Nec::DataManager* newNecData) {
+void EditorMain::loadNecData(Nec::DataManager* const newNecData) {
     necData = newNecData;
     pickerMapInfo->loadNecData(necData);
 
@@ -97,8 +97,8 @@ void EditorMain::zoomMap(const double level, const bool combine) {
 }
 
 void EditorMain::loadSelectedMapData(const std::size_t i) {
-    Nec::MapInfo* necMapInfo = &(necData->bigInfo->at(i));
-    Nec::MapMap* necMapMap = &(necData->bigMap->at(i));
+    Nec::MapInfo* const necMapInfo = &(necData->bigInfo->at(i));
+    Nec::MapMap* const necMapMap = &(necData->bigMap->at(i));
 
     editorMapInfo->loadNecData(necMapInfo);
     editorPlayers->loadNecData(necMapInfo);

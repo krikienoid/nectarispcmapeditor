@@ -2,29 +2,29 @@
 
 namespace App {
 
-EditorPlayers::EditorPlayers(QWidget* parent) : QWidget(parent) {
+EditorPlayers::EditorPlayers(QWidget* const parent) : QWidget(parent) {
     // Init
     createPlayerRoleComboBoxes();
     createPlayerStanceComboBoxes();
 
     // Layout
-    QVBoxLayout* layoutMain = new QVBoxLayout();
+    QVBoxLayout* const layoutMain = new QVBoxLayout();
     layoutMain->addWidget(groupPlayerRole);
     layoutMain->addWidget(groupPlayerStance);
     setLayout(layoutMain);
 }
 
-void EditorPlayers::changePlayerRole(int i) {
+void EditorPlayers::changePlayerRole(const int i) {
     necMapInfo->playerRole[i] =
         Nec::PlayerRole(combosPlayerRole[i]->currentIndex()).toByte();
 }
 
-void EditorPlayers::changePlayerStance(int i) {
+void EditorPlayers::changePlayerStance(const int i) {
     necMapInfo->playerStance[i] =
         Nec::PlayerStance(combosPlayerStance[i]->currentIndex()).toByte();
 }
 
-void EditorPlayers::loadNecData(Nec::MapInfo* mapInfo) {
+void EditorPlayers::loadNecData(Nec::MapInfo* const mapInfo) {
     necMapInfo = mapInfo;
 }
 
@@ -43,7 +43,7 @@ void EditorPlayers::updateNecData() {
 }
 
 QComboBox* EditorPlayers::createPlayerRoleComboBox() {
-    QComboBox* newComboBox = new QComboBox(this);
+    QComboBox* const newComboBox = new QComboBox(this);
 
     for (int i = 0, ii = Nec::PlayerRole::DATA.size(); i < ii; ++i) {
         newComboBox->addItem(
@@ -55,7 +55,7 @@ QComboBox* EditorPlayers::createPlayerRoleComboBox() {
 }
 
 QComboBox* EditorPlayers::createPlayerStanceComboBox() {
-    QComboBox* newComboBox = new QComboBox(this);
+    QComboBox* const newComboBox = new QComboBox(this);
 
     for (int i = 0, ii = Nec::PlayerStance::DATA.size(); i < ii; ++i) {
         newComboBox->addItem(
@@ -68,14 +68,14 @@ QComboBox* EditorPlayers::createPlayerStanceComboBox() {
 
 void EditorPlayers::createPlayerRoleComboBoxes() {
     // Player Roles
-    QGridLayout* layoutGridPlayerRoles = new QGridLayout();
+    QGridLayout* const layoutGridPlayerRoles = new QGridLayout();
     layoutGridPlayerRoles->setAlignment(Qt::AlignTop);
 
     // ComboBoxes
-    QSignalMapper* signalMapper = new QSignalMapper(this);
+    QSignalMapper* const signalMapper = new QSignalMapper(this);
 
     for (int i = 0; i < PLAYERS_COUNT; ++i) {
-        QComboBox* newComboBoxPlayerRole = createPlayerRoleComboBox();
+        QComboBox* const newComboBoxPlayerRole = createPlayerRoleComboBox();
         layoutGridPlayerRoles->addWidget(
             new QLabel("P" + QString::number(i + 1)),
             0,
@@ -104,7 +104,7 @@ void EditorPlayers::createPlayerRoleComboBoxes() {
 
 void EditorPlayers::createPlayerStanceComboBoxes() {
     // Player Stances
-    QGridLayout* layoutGridPlayerStances = new QGridLayout();
+    QGridLayout* const layoutGridPlayerStances = new QGridLayout();
     layoutGridPlayerStances->setAlignment(Qt::AlignTop);
 
     // Labels
@@ -123,11 +123,11 @@ void EditorPlayers::createPlayerStanceComboBoxes() {
     }
 
     // ComboBoxes
-    QSignalMapper* signalMapper = new QSignalMapper(this);
+    QSignalMapper* const signalMapper = new QSignalMapper(this);
 
     for (int i = 0, k = 0; i < PLAYERS_COUNT; ++i) {
         for (int j = 0; j < PLAYERS_COUNT; ++j, ++k) {
-            QComboBox* newComboBoxPlayerStance =
+            QComboBox* const newComboBoxPlayerStance =
                 createPlayerStanceComboBox();
 
             layoutGridPlayerStances->addWidget(

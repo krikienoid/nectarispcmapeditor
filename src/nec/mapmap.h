@@ -16,16 +16,16 @@ public:
     static const std::size_t    MAX_SIZE;
 
                                 MapMap();
-    explicit                    MapMap(const std::size_t, const std::size_t);
+    explicit                    MapMap(std::size_t, std::size_t);
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    void                        resize(const std::size_t);
+    void                        resize(std::size_t);
 
-    static std::size_t          getWidth(const std::size_t qX);
-    static std::size_t          getHeight(const std::size_t qY);
-    static std::size_t          getSize(const std::size_t qX, const std::size_t qY);
+    static std::size_t          getWidth(std::size_t);
+    static std::size_t          getHeight(std::size_t);
+    static std::size_t          getSize(std::size_t, std::size_t);
 
     std::size_t                 qX;
     std::size_t                 qY;

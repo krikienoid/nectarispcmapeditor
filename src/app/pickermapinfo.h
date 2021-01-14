@@ -28,7 +28,7 @@ signals:
 
 private:
     int                         getListItemData(QListWidgetItem*);
-    void                        setListItemData(QListWidgetItem*, const int);
+    void                        setListItemData(QListWidgetItem*, int);
 
     QListWidget*                listMapInfo;
 

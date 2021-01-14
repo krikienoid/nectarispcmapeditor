@@ -23,7 +23,7 @@ public:
     static std::vector<PlayerRoleType> DATA;
 
                                 PlayerRole() : data(0), index(0) {}
-    explicit                    PlayerRole(const int);
+    explicit                    PlayerRole(int);
 
     Raw::Byte                   toByte() const;
     int                         getIndex() const;

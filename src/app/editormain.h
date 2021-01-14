@@ -22,7 +22,7 @@ public:
 
     void                        loadNecData(Nec::DataManager*);
     void                        updateNecData();
-    void                        zoomMap(const double, const bool);
+    void                        zoomMap(double, bool);
 
 public slots:
     void                        selectMapInfo(int);
@@ -34,7 +34,7 @@ public slots:
     void                        toggleMapGrid(bool);
 
 private:
-    void                        loadSelectedMapData(const std::size_t);
+    void                        loadSelectedMapData(std::size_t);
 
     EditorMapInfo*              editorMapInfo;
     PickerMapInfo*              pickerMapInfo;

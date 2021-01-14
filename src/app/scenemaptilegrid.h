@@ -27,7 +27,7 @@ public:
 
     void                        loadNecData(Nec::MapInfo*, Nec::MapMap*);
     void                        updateNecData();
-    void                        setMapGridVisible(const bool);
+    void                        setMapGridVisible(bool);
 
     static const int            TILE_WIDTH      = 16;
     static const int            TILE_HEIGHT     = 16;
