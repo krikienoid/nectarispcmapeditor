@@ -26,9 +26,12 @@ public:
 
     void                        mousePressEvent(QGraphicsSceneMouseEvent*);
 
-    void                        loadNecData(Nec::MapInfo*, Nec::MapMap*);
+    void                        loadNecData(
+                                    const Nec::MapInfo*,
+                                    const Nec::MapMap*
+                                );
     void                        updateNecData();
-    void                        setMapGridVisible(const bool);
+    void                        setMapGridVisible(bool);
 
     static const int            TILE_WIDTH      = 16;
     static const int            TILE_HEIGHT     = 16;
@@ -49,8 +52,8 @@ private:
 
     bool                        isMapGridVisible;
 
-    Nec::MapInfo*               necMapInfo;
-    Nec::MapMap*                necMapMap;
+    const Nec::MapInfo*         necMapInfo;
+    const Nec::MapMap*          necMapMap;
 };
 
 } // namespace App

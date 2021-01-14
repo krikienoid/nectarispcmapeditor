@@ -2,7 +2,7 @@
 
 namespace App {
 
-EditorMapInfo::EditorMapInfo(QWidget* parent) : QWidget(parent) {
+EditorMapInfo::EditorMapInfo(QWidget* const parent) : QWidget(parent) {
     // Map Name Text Input
     editMapName = new QLineEdit(this);
     editMapName->setMaxLength(Nec::MapName::LENGTH);
@@ -13,12 +13,12 @@ EditorMapInfo::EditorMapInfo(QWidget* parent) : QWidget(parent) {
     );
 
     // Separator
-    QFrame* line = new QFrame(this);
+    const auto line = new QFrame(this);
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
 
     // Layout
-    QVBoxLayout* layoutMain = new QVBoxLayout();
+    const auto layoutMain = new QVBoxLayout();
     layoutMain->addWidget(new QLabel("Map:", this));
     layoutMain->addWidget(editMapName);
     layoutMain->addWidget(line);
@@ -32,7 +32,7 @@ void EditorMapInfo::enterMapName() {
     emit signaledUpdate();
 }
 
-void EditorMapInfo::loadNecData(Nec::MapInfo* mapInfo) {
+void EditorMapInfo::loadNecData(Nec::MapInfo* const mapInfo) {
     necMapInfo = mapInfo;
 }
 

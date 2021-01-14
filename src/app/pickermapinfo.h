@@ -21,7 +21,7 @@ class PickerMapInfo : public QWidget {
 public:
     explicit                    PickerMapInfo(QWidget* parent = nullptr);
 
-    void                        loadNecData(Nec::DataManager*);
+    void                        loadNecData(const Nec::DataManager*);
     void                        updateNecData();
 
 public slots:
@@ -32,11 +32,11 @@ signals:
 
 private:
     int                         getListItemData(QListWidgetItem*);
-    void                        setListItemData(QListWidgetItem*, const int);
+    void                        setListItemData(QListWidgetItem*, int);
 
     QListWidget*                listMapInfo;
 
-    Nec::DataManager*           necData;
+    const Nec::DataManager*     necData;
 };
 
 } // namespace App

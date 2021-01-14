@@ -113,7 +113,7 @@ void MainWindow::createToolBars() {
 
 void MainWindow::open() {
     // if (maybeSave()) {
-        QString fileName = QFileDialog::getOpenFileName(this);
+        const QString fileName = QFileDialog::getOpenFileName(this);
 
         loadFile(fileName);
     // }
@@ -133,7 +133,7 @@ bool MainWindow::saveAs() {
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.exec();
 
-    QStringList files = dialog.selectedFiles();
+    const QStringList files = dialog.selectedFiles();
 
     if (files.isEmpty()) {
         return false;
@@ -161,7 +161,7 @@ void MainWindow::loadFile(const QString& fileName) {
     #endif
 
     // Check file extension
-    std::string fileType = getFileExtension(fileName.toStdString());
+    const std::string fileType = getFileExtension(fileName.toStdString());
 
     if (fileType != "bin") {
         QMessageBox::warning(

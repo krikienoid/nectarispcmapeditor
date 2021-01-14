@@ -23,19 +23,19 @@ public:
 
     operator                    int() const;
 
-    bool                        operator==(const Byte) const;
-    bool                        operator!=(const Byte) const;
-    bool                        operator<=(const Byte) const;
-    bool                        operator>=(const Byte) const;
-    bool                        operator<(const Byte) const;
-    bool                        operator>(const Byte) const;
-    // bool                        operator[](const std::size_t) const;
-    // bool&                       operator[](const std::size_t);
+    bool                        operator==(Byte) const;
+    bool                        operator!=(Byte) const;
+    bool                        operator<=(Byte) const;
+    bool                        operator>=(Byte) const;
+    bool                        operator<(Byte) const;
+    bool                        operator>(Byte) const;
+    // bool                        operator[](std::size_t) const;
+    // bool&                       operator[](std::size_t);
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    std::string                 printString(const Print print = HEX) const;
+    std::string                 printString(Print print = HEX) const;
 
 private:
     std::string                 toStringHex() const;

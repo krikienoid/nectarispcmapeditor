@@ -2,7 +2,7 @@
 
 namespace Nec {
 
-BigMap::BigMap(BigInfo* bigInfo) : bigInfo(bigInfo) {
+BigMap::BigMap(BigInfo* const bigInfo) : bigInfo(bigInfo) {
     for (std::size_t i = 0; i < BigInfo::LENGTH; ++i) {
         push_back(MapMap());
     }

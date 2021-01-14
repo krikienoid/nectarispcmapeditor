@@ -14,13 +14,13 @@ MapMap::MapMap(const std::size_t qX, const std::size_t qY) : qX(qX), qY(qY) {
 }
 
 std::istream& MapMap::read(std::istream& ins) {
-    int maxWidth  = MapMap::getWidth(4);
-    int width     = MapMap::getWidth(qX + 1);
-    int height    = MapMap::getHeight(qY + 1);
+    const int maxWidth  = MapMap::getWidth(4);
+    const int width     = MapMap::getWidth(qX + 1);
+    const int height    = MapMap::getHeight(qY + 1);
 
     for (int i = 0, ii = size(); i < ii; ++i) {
-        int x = i % maxWidth;
-        int y = i / maxWidth;
+        const int x = i % maxWidth;
+        const int y = i / maxWidth;
 
         if (x < width && y < height) {
             at(i).readLittle(ins);
@@ -31,13 +31,13 @@ std::istream& MapMap::read(std::istream& ins) {
 }
 
 std::ostream& MapMap::write(std::ostream& outs) const {
-    int maxWidth  = MapMap::getWidth(4);
-    int width     = MapMap::getWidth(qX + 1);
-    int height    = MapMap::getHeight(qY + 1);
+    const int maxWidth  = MapMap::getWidth(4);
+    const int width     = MapMap::getWidth(qX + 1);
+    const int height    = MapMap::getHeight(qY + 1);
 
     for (int i = 0, ii = MapMap::getSize(4, 4); i < ii; ++i) {
-        int x = i % maxWidth;
-        int y = i / maxWidth;
+        const int x = i % maxWidth;
+        const int y = i / maxWidth;
 
         if (x < width && y < height) {
             at(i).writeLittle(outs);

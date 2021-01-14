@@ -34,8 +34,8 @@ public:
 
     void                        loadNecData(Nec::MapInfo*, Nec::MapMap*);
     void                        updateNecData();
-    void                        zoomMap(const double, const bool);
-    void                        setMapGridVisible(const bool);
+    void                        zoomMap(double, bool);
+    void                        setMapGridVisible(bool);
 
     QGraphicsView*              viewMapTileGrid;
 

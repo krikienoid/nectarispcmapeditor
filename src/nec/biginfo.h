@@ -18,7 +18,7 @@ public:
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    bool                        mapInfoExists(const std::size_t) const;
+    bool                        mapInfoExists(std::size_t) const;
 };
 
 } // namespace Nec

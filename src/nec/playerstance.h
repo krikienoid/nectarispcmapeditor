@@ -23,7 +23,7 @@ public:
     static std::vector<PlayerStanceType> DATA;
 
                                 PlayerStance() : data(0), index(0) {}
-    explicit                    PlayerStance(const int);
+    explicit                    PlayerStance(int);
 
     Raw::Byte                   toByte() const;
     int                         getIndex() const;

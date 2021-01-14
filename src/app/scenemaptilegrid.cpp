@@ -2,7 +2,9 @@
 
 namespace App {
 
-SceneMapTileGrid::SceneMapTileGrid(QWidget* parent) : QGraphicsScene(parent) {
+SceneMapTileGrid::SceneMapTileGrid(QWidget* const parent) :
+    QGraphicsScene(parent)
+{
     // Init tileset
     pixmapTerTiles = new PixmapTerTiles(parent);
 
@@ -14,32 +16,32 @@ SceneMapTileGrid::SceneMapTileGrid(QWidget* parent) : QGraphicsScene(parent) {
     painter.drawRect(0, 0, 16, 16);
 
     // Build terrain tile graphics
-    int maxWidth = Nec::MapMap::getWidth(4);
+    const int maxWidth = Nec::MapMap::getWidth(4);
 
     for (int i = 0, ii = Nec::MapMap::getSize(4, 4); i < ii; ++i) {
-        int x        = i % maxWidth;
-        int y        = i / maxWidth;
-        int shift    = (x % 2) ? TILE_HEIGHT / 2 : 0;
-        int pX       = x * TILE_WIDTH;
-        int pY       = y * TILE_HEIGHT + shift;
-        int tileType = 0;
+        const int x        = i % maxWidth;
+        const int y        = i / maxWidth;
+        const int shift    = (x % 2) ? TILE_HEIGHT / 2 : 0;
+        const int pX       = x * TILE_WIDTH;
+        const int pY       = y * TILE_HEIGHT + shift;
+        const int tileType = 0;
 
         // Tile
-        QGraphicsPixmapItem* terTile = addPixmap(pixmapTerTiles->getTerTile(tileType));
+        const auto terTile = addPixmap(pixmapTerTiles->getTerTile(tileType));
         terTile->setPos(pX, pY);
         terTile->setData(0, QVariant(i));
 
         listTerTiles.append(terTile);
 
         // Grid Tile
-        QGraphicsPixmapItem* gridTile = addPixmap(gridSquare);
+        const auto gridTile = addPixmap(gridSquare);
         gridTile->setPos(pX, pY);
 
         listGridTiles.append(gridTile);
     }
 }
 
-void SceneMapTileGrid::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+void SceneMapTileGrid::mousePressEvent(QGraphicsSceneMouseEvent* const event) {
     emit selectedMapTile(itemAt(
         event->scenePos(),
         QTransform()
@@ -47,8 +49,8 @@ void SceneMapTileGrid::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 }
 
 void SceneMapTileGrid::loadNecData(
-    Nec::MapInfo* newNecMapInfo,
-    Nec::MapMap* newNecMapMap
+    const Nec::MapInfo* const newNecMapInfo,
+    const Nec::MapMap* const newNecMapMap
 ) {
     necMapMap  = newNecMapMap;
     necMapInfo = newNecMapInfo;
@@ -66,13 +68,13 @@ void SceneMapTileGrid::setMapGridVisible(const bool mapGridOn) {
 }
 
 void SceneMapTileGrid::updateTerTiles() {
-    int maxWidth  = Nec::MapMap::getWidth(4);
-    int width     = Nec::MapMap::getWidth(necMapInfo->quadrantsX + 1);
-    int height    = Nec::MapMap::getHeight(necMapInfo->quadrantsY + 1);
+    const int maxWidth  = Nec::MapMap::getWidth(4);
+    const int width     = Nec::MapMap::getWidth(necMapInfo->quadrantsX + 1);
+    const int height    = Nec::MapMap::getHeight(necMapInfo->quadrantsY + 1);
 
     for (int i = 0, ii = listTerTiles.size(); i < ii; ++i) {
-        int x = i % maxWidth;
-        int y = i / maxWidth;
+        const int x = i % maxWidth;
+        const int y = i / maxWidth;
         int tileType = 0;
 
         if (x < width && y < height && i < int(necMapMap->size())) {
@@ -89,13 +91,13 @@ void SceneMapTileGrid::updateTerTiles() {
 }
 
 void SceneMapTileGrid::updateGridTiles() {
-    int maxWidth  = Nec::MapMap::getWidth(4);
-    int width     = Nec::MapMap::getWidth(necMapInfo->quadrantsX + 1);
-    int height    = Nec::MapMap::getHeight(necMapInfo->quadrantsY + 1);
+    const int maxWidth  = Nec::MapMap::getWidth(4);
+    const int width     = Nec::MapMap::getWidth(necMapInfo->quadrantsX + 1);
+    const int height    = Nec::MapMap::getHeight(necMapInfo->quadrantsY + 1);
 
     for (int i = 0, ii = listGridTiles.size(); i < ii; ++i) {
-        int x = i % maxWidth;
-        int y = i / maxWidth;
+        const int x = i % maxWidth;
+        const int y = i / maxWidth;
 
         listGridTiles[i]->setVisible(
             isMapGridVisible && x < width && y < height
