@@ -5,8 +5,6 @@ namespace Nec {
 const std::string               DataManager::FILENAME_BIGINFO = "biginfo.bin";
 const std::string               DataManager::FILENAME_BIGUNIT = "bigunit.bin";
 const std::string               DataManager::FILENAME_BIGMAP  = "bigmap.bin";
-const std::ios_base::openmode   DataManager::FILEREADMODE     = std::ios::in  | std::ios::binary;
-const std::ios_base::openmode   DataManager::FILEWRITEMODE    = std::ios::out | std::ios::binary;
 
 DataManager::DataManager() {
     bigInfo = new BigInfo();
@@ -45,14 +43,16 @@ void DataManager::read(const std::string& filepath) {
         filename == FILENAME_BIGUNIT ||
         filename == FILENAME_BIGMAP
     ) {
+        constexpr auto fileReadMode = std::ios::in | std::ios::binary;
+
         // Open files for reading
         std::ifstream bigInfoBin;
         std::ifstream bigUnitBin;
         std::ifstream bigMapBin;
 
-        bigInfoBin.open((filedir + FILENAME_BIGINFO).c_str(), FILEREADMODE);
-        bigUnitBin.open((filedir + FILENAME_BIGUNIT).c_str(), FILEREADMODE);
-        bigMapBin.open((filedir + FILENAME_BIGMAP).c_str(), FILEREADMODE);
+        bigInfoBin.open((filedir + FILENAME_BIGINFO).c_str(), fileReadMode);
+        bigUnitBin.open((filedir + FILENAME_BIGUNIT).c_str(), fileReadMode);
+        bigMapBin.open((filedir + FILENAME_BIGMAP).c_str(), fileReadMode);
 
         // Read Data
         if (bigInfoBin.good() && bigUnitBin.good() && bigMapBin.good()) {
@@ -96,14 +96,16 @@ void DataManager::write(const std::string& filepath) {
         filename == FILENAME_BIGUNIT ||
         filename == FILENAME_BIGMAP
     ) {
+        constexpr auto fileWriteMode = std::ios::out | std::ios::binary;
+
         // Open files for writing
         std::ofstream bigInfoBin;
         std::ofstream bigUnitBin;
         std::ofstream bigMapBin;
 
-        bigInfoBin.open((filedir + FILENAME_BIGINFO).c_str(), FILEWRITEMODE);
-        // bigUnitBin.open((filedir + FILENAME_BIGUNIT).c_str(), FILEWRITEMODE);
-        bigMapBin.open((filedir + FILENAME_BIGMAP).c_str(), FILEWRITEMODE);
+        bigInfoBin.open((filedir + FILENAME_BIGINFO).c_str(), fileWriteMode);
+        // bigUnitBin.open((filedir + FILENAME_BIGUNIT).c_str(), fileWriteMode);
+        bigMapBin.open((filedir + FILENAME_BIGMAP).c_str(), fileWriteMode);
 
         if (bigInfoBin.good() && bigUnitBin.good() && bigMapBin.good()) {
             // bigmap.bin

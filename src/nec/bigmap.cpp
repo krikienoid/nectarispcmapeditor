@@ -13,7 +13,7 @@ std::istream& BigMap::read(std::istream& ins) {
         if (bigInfo->mapInfoExists(i)) {
             at(i).qX = bigInfo->at(i).quadrantsX;
             at(i).qY = bigInfo->at(i).quadrantsY;
-            at(i).resize(MapMap::getSize(4, 4));
+            at(i).resize(MapSize::MAX_SIZE);
             ins.seekg(bigInfo->at(i).addressMap.toInt());
             at(i).read(ins);
         }

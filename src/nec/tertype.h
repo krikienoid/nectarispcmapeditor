@@ -7,7 +7,7 @@
 namespace Nec {
 
 struct TerTypeData {
-    enum TerGroup {
+    enum class TerGroup {
         TER_PLAINS,
         TER_ROADS,
         TER_HILLS,

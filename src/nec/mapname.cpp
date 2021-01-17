@@ -2,7 +2,7 @@
 
 namespace Nec {
 
-const char MapName::CHAR_OFFSET[MapName::LENGTH] = {72, -33, 88, 62, -22, 92};
+constexpr char MapName::CHAR_OFFSET[];
 
 MapName::MapName() : std::string(LENGTH, FILLER_CHAR) {}
 

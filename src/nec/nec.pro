@@ -31,6 +31,7 @@ HEADERS += \
     mapinfo.h \
     mapmap.h \
     mapname.h \
+    mapsize.h \
     mapunit.h \
     playerrole.h \
     playerstance.h \

@@ -3,8 +3,8 @@
 namespace Nec {
 
 MapInfo::MapInfo() :
-    playerRole(4),
-    playerStance(16),
+    playerRole(PLAYER_COUNT),
+    playerStance(PLAYER_COUNT * PLAYER_COUNT),
     bgFiles(5),
     unknown2(3),
     unknown3(10),
@@ -23,7 +23,7 @@ std::istream& MapInfo::read(std::istream& ins) {
     unknown2.read(ins);
     mapName.read(ins);
 
-    for (std::size_t i = 0; i < 4; ++i) {
+    for (std::size_t i = 0; i < PLAYER_COUNT; ++i) {
         playerHQs[i].read(ins);
     }
 
@@ -45,7 +45,7 @@ std::ostream& MapInfo::write(std::ostream& outs) const {
     unknown2.write(outs);
     mapName.write(outs);
 
-    for (std::size_t i = 0; i < 4; ++i) {
+    for (std::size_t i = 0; i < PLAYER_COUNT; ++i) {
         playerHQs[i].write(outs);
     }
 

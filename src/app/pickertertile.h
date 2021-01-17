@@ -41,7 +41,7 @@ signals:
     void                        selectedTerTile(int);
 
 private:
-    enum DATA_ROLES {
+    enum class DATA_ROLES {
         TILE_TYPE = Qt::UserRole + 10,
         TER_TYPE  = Qt::UserRole + 11,
         TER_NAME  = Qt::UserRole + 12

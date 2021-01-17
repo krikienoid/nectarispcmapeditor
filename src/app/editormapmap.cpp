@@ -20,17 +20,17 @@ EditorMapMap::EditorMapMap(QWidget* const parent) : QWidget(parent) {
     // Init State
     updateSelectedTerTile(0);
 
-    toolMode = TOOL_TER;
+    toolMode = ToolMode::TOOL_TER;
 }
 
 void EditorMapMap::selectTerTile(const int i) {
-    toolMode = TOOL_TER;
+    toolMode = ToolMode::TOOL_TER;
 
     updateSelectedTerTile(i);
 }
 
 void EditorMapMap::selectMapTile(const int i) {
-    if (toolMode == TOOL_TER && i < int(necMapMap->size())) {
+    if (toolMode == ToolMode::TOOL_TER && i < int(necMapMap->size())) {
         necMapMap->at(i) = Raw::ByteString::fromInt(selectedTerTile);
         necMapMap->at(i).resize(2);
 
@@ -101,9 +101,9 @@ void EditorMapMap::updateNecData() {
     viewMapTileGrid->setSceneRect(
         0,
         0,
-        Nec::MapMap::getWidth(necMapInfo->quadrantsX + 1) *
+        Nec::MapSize::getWidth(necMapInfo->quadrantsX + 1) *
             SceneMapTileGrid::TILE_WIDTH,
-        Nec::MapMap::getHeight(necMapInfo->quadrantsY + 1) *
+        Nec::MapSize::getHeight(necMapInfo->quadrantsY + 1) *
             SceneMapTileGrid::TILE_HEIGHT
     );
 
@@ -176,8 +176,8 @@ void EditorMapMap::createViewMapTileGrid() {
     viewMapTileGrid->setSceneRect(
         0,
         0,
-        Nec::MapMap::getWidth(1) * SceneMapTileGrid::TILE_WIDTH,
-        Nec::MapMap::getHeight(1) * SceneMapTileGrid::TILE_HEIGHT
+        Nec::MapSize::getWidth(1) * SceneMapTileGrid::TILE_WIDTH,
+        Nec::MapSize::getHeight(1) * SceneMapTileGrid::TILE_HEIGHT
     );
 
     connect(

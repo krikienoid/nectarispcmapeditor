@@ -12,7 +12,8 @@ namespace Nec {
 
 struct MapInfo {
 public:
-    static const std::size_t    SIZE = 0x40;
+    static constexpr std::size_t    PLAYER_COUNT = 4;
+    static constexpr std::size_t    SIZE = 0x40;
 
                                 MapInfo();
 
@@ -30,7 +31,7 @@ public:
     Raw::ByteString             unknown2;                       // size:  3
 
     MapName                     mapName;                        // size:  6
-    Coordinates                 playerHQs[4];                   // size:  8
+    Coordinates                 playerHQs[PLAYER_COUNT];        // size:  8
     Raw::ByteString             unknown3;                       // size: 10
     Raw::ByteString             addressMap;                     // size:  4
     Raw::ByteString             addressUnit;                    // size:  4

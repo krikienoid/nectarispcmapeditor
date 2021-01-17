@@ -7,6 +7,7 @@
 #include "raw/bytestring.h"
 #include "biginfo.h"
 #include "mapmap.h"
+#include "mapsize.h"
 
 namespace Nec {
 

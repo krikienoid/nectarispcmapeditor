@@ -5,16 +5,12 @@
 #include <vector>
 
 #include "raw/bytestring.h"
+#include "mapsize.h"
 
 namespace Nec {
 
 class MapMap : public std::vector<Raw::ByteString> {
 public:
-    static const std::size_t    QUADRANT_WIDTH  = 15;
-    static const std::size_t    QUADRANT_HEIGHT = 10;
-    static const std::size_t    PADDING         = 2;
-    static const std::size_t    MAX_SIZE;
-
                                 MapMap();
     explicit                    MapMap(std::size_t, std::size_t);
 
@@ -22,10 +18,6 @@ public:
     std::ostream&               write(std::ostream&) const;
 
     void                        resize(std::size_t);
-
-    static std::size_t          getWidth(std::size_t);
-    static std::size_t          getHeight(std::size_t);
-    static std::size_t          getSize(std::size_t, std::size_t);
 
     std::size_t                 qX;
     std::size_t                 qY;

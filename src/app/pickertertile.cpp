@@ -24,7 +24,7 @@ PickerTerTile::PickerTerTile(QWidget* const parent) :
     for (int i = 0; i < PixmapTerTiles::TILE_MAX; ++i) {
         const auto tileIcon = new QIcon(pixmapTerTiles.getTerTile(i));
         const auto newItem = new QListWidgetItem(*tileIcon, nullptr);
-        newItem->setData(TILE_TYPE, QVariant(i));
+        newItem->setData(static_cast<int>(DATA_ROLES::TILE_TYPE), QVariant(i));
         this->addItem(newItem);
     }
 
@@ -48,8 +48,8 @@ PickerTerTile::PickerTerTile(QWidget* const parent) :
     dropdownTerTypes->insertSeparator(1);
 
     for (
-        int i = Nec::TerTypeData::TER_FIRST;
-        i <= Nec::TerTypeData::TER_LAST;
+        int i = static_cast<int>(Nec::TerTypeData::TerGroup::TER_FIRST);
+        i <= static_cast<int>(Nec::TerTypeData::TerGroup::TER_LAST);
         i++
     ) {
         dropdownTerTypes->addItem(
@@ -76,7 +76,9 @@ void PickerTerTile::selectTerTypeFilter(const int i) {
 }
 
 void PickerTerTile::selectTerTile(QListWidgetItem* const selectedItem) {
-    emit selectedTerTile(selectedItem->data(TILE_TYPE).toInt());
+    emit selectedTerTile(selectedItem->data(
+        static_cast<int>(DATA_ROLES::TILE_TYPE)
+    ).toInt());
 }
 
 void PickerTerTile::updateTilesetRanges() {
@@ -85,7 +87,7 @@ void PickerTerTile::updateTilesetRanges() {
             !enabledTilesetRange[i / 128] ||
             (
                 terTypeFilter > 0 &&
-                Nec::TER_TYPE_DATA[bytesTerBin[i]].terGroup + 1 != terTypeFilter
+                static_cast<int>(Nec::TER_TYPE_DATA[bytesTerBin[i]].terGroup) + 1 != terTypeFilter
             )
         );
     }

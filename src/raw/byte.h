@@ -10,11 +10,11 @@ namespace Raw {
 
 class Byte {
 public:
-    enum                        Print { BIN, DEC, HEX };
+    enum class                  Print { BIN, DEC, HEX };
 
-    const static unsigned char  MAX  = 255;
-    const static std::size_t    SIZE = 256;
-    const static std::size_t    BITS = 8;
+    static constexpr unsigned char  MAX  = 255;
+    static constexpr std::size_t    SIZE = 256;
+    static constexpr std::size_t    BITS = 8;
 
                                 Byte() : data(0) {}
                                 Byte(const unsigned char uc) : data(uc) {}
@@ -35,7 +35,7 @@ public:
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    std::string                 printString(Print print = HEX) const;
+    std::string                 printString(Print print = Print::HEX) const;
 
 private:
     std::string                 toStringHex() const;

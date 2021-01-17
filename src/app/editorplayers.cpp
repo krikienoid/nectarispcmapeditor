@@ -75,7 +75,7 @@ void EditorPlayers::createPlayerRoleComboBoxes() {
     // ComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
-    for (int i = 0; i < PLAYERS_COUNT; ++i) {
+    for (int i = 0; i < PLAYER_COUNT; ++i) {
         const auto newComboBoxPlayerRole = createPlayerRoleComboBox();
 
         layoutGridPlayerRoles->addWidget(
@@ -111,7 +111,7 @@ void EditorPlayers::createPlayerStanceComboBoxes() {
     layoutGridPlayerStances->setAlignment(Qt::AlignTop);
 
     // Labels
-    for (int i = 0; i < PLAYERS_COUNT; ++i) {
+    for (int i = 0; i < PLAYER_COUNT; ++i) {
         layoutGridPlayerStances->addWidget(
             new QLabel("P" + QString::number(i + 1)),
             0,
@@ -128,8 +128,8 @@ void EditorPlayers::createPlayerStanceComboBoxes() {
     // ComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
-    for (int i = 0, k = 0; i < PLAYERS_COUNT; ++i) {
-        for (int j = 0; j < PLAYERS_COUNT; ++j, ++k) {
+    for (int i = 0, k = 0; i < PLAYER_COUNT; ++i) {
+        for (int j = 0; j < PLAYER_COUNT; ++j, ++k) {
             const auto newComboBoxPlayerStance = createPlayerStanceComboBox();
 
             layoutGridPlayerStances->addWidget(

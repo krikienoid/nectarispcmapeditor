@@ -12,14 +12,14 @@ int main() {
         Raw::Byte c(0xff01);
 
         std::cout << "0f: " << a.printString() << ' ' <<
-            a.printString(Raw::Byte::BIN) << ' ' <<
-            a.printString(Raw::Byte::DEC) << std::endl;
+            a.printString(Raw::Byte::Print::BIN) << ' ' <<
+            a.printString(Raw::Byte::Print::DEC) << std::endl;
         std::cout << "ff: " << b.printString() << ' ' <<
-            b.printString(Raw::Byte::BIN) << ' ' <<
-            b.printString(Raw::Byte::DEC) << std::endl;
+            b.printString(Raw::Byte::Print::BIN) << ' ' <<
+            b.printString(Raw::Byte::Print::DEC) << std::endl;
         std::cout << "01: " << c.printString() << ' ' <<
-            c.printString(Raw::Byte::BIN) << ' ' <<
-            c.printString(Raw::Byte::DEC) << std::endl;
+            c.printString(Raw::Byte::Print::BIN) << ' ' <<
+            c.printString(Raw::Byte::Print::DEC) << std::endl;
     }
 
     {

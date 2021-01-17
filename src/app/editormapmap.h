@@ -19,6 +19,7 @@
 #include "raw/bytestring.h"
 #include "nec/mapinfo.h"
 #include "nec/mapmap.h"
+#include "nec/mapsize.h"
 #include "nec/tertype.h"
 #include "pickertertile.h"
 #include "pixmaptertiles.h"
@@ -47,9 +48,9 @@ public slots:
     void                        changeMapSizeY(int);
 
 private:
-    enum                        ToolMode { TOOL_TER };
+    enum class                  ToolMode { TOOL_TER };
 
-    static const int            TILESETS = 9;
+    static constexpr int        TILESETS = 9;
 
     void                        updateSelectedTerTile(int);
     void                        updateEnabledTilesetRange();

@@ -27,9 +27,6 @@ private:
     static const std::string    FILENAME_BIGINFO;
     static const std::string    FILENAME_BIGUNIT;
     static const std::string    FILENAME_BIGMAP;
-
-    static const std::ios_base::openmode FILEREADMODE;
-    static const std::ios_base::openmode FILEWRITEMODE;
 };
 
 } // namespace Nec

@@ -8,9 +8,9 @@ namespace Nec {
 
 class MapName : public std::string {
 public:
-    static const char           FILLER_CHAR = '_';
-    static const std::size_t    LENGTH = 6;
-    static const char           CHAR_OFFSET[LENGTH];
+    static constexpr std::size_t    LENGTH = 6;
+    static constexpr char           FILLER_CHAR = '_';
+    static constexpr char           CHAR_OFFSET[] = {72, -33, 88, 62, -22, 92};
 
                                 MapName();
     explicit                    MapName(const std::string&);

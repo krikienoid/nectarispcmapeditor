@@ -6,9 +6,9 @@ MapUnit::MapUnit() {
 }
 
 std::istream& MapUnit::read(std::istream& ins) {
-    /*const int maxWidth  = MapMap::getWidth(4);
-    const int width     = MapMap::getWidth(qX + 1);
-    const int height    = MapMap::getHeight(qY + 1);
+    /*constexpr int maxWidth  = MapSize::getWidth(4);
+    const int width         = MapSize::getWidth(qX + 1);
+    const int height        = MapSize::getHeight(qY + 1);
 
     for (int i = 0, ii = size(); i < ii; ++i) {
         const int x = i % maxWidth;

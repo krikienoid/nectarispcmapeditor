@@ -10,8 +10,8 @@ namespace Nec {
 
 class BigInfo : public std::vector<MapInfo> {
 public:
-    static const std::size_t    LENGTH = 0x100;
-    static const std::size_t    SIZE   = MapInfo::SIZE * LENGTH;
+    static constexpr std::size_t    LENGTH = 0x100;
+    static constexpr std::size_t    SIZE = MapInfo::SIZE * LENGTH;
 
                                 BigInfo();
 

@@ -14,6 +14,7 @@
 
 #include "nec/mapinfo.h"
 #include "nec/mapmap.h"
+#include "nec/mapsize.h"
 #include "pixmaptertiles.h"
 
 namespace App {
@@ -22,6 +23,11 @@ class SceneMapTileGrid : public QGraphicsScene {
     Q_OBJECT
 
 public:
+    static constexpr int        TILE_WIDTH      = 16;
+    static constexpr int        TILE_HEIGHT     = 16;
+    static constexpr int        TILESET_COLUMNS = 16;
+    static constexpr int        TILESET_ROWS    = 144;
+
     explicit                    SceneMapTileGrid(QWidget* parent = nullptr);
 
     void                        mousePressEvent(QGraphicsSceneMouseEvent*);
@@ -32,11 +38,6 @@ public:
                                 );
     void                        updateNecData();
     void                        setMapGridVisible(bool);
-
-    static const int            TILE_WIDTH      = 16;
-    static const int            TILE_HEIGHT     = 16;
-    static const int            TILESET_COLUMNS = 16;
-    static const int            TILESET_ROWS    = 144;
 
     PixmapTerTiles*             pixmapTerTiles;
 

@@ -14,7 +14,7 @@ public:
     explicit                    Ter(std::istream&);
 
 private:
-    static const std::size_t    SIZE = 0x800;
+    static constexpr std::size_t    SIZE = 0x800;
 };
 
 } // namespace Nec

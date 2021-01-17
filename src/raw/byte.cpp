@@ -77,9 +77,9 @@ std::string Byte::printString(const Print print) const {
     std::string result;
 
     switch (print) {
-        case DEC: result = toStringDec(); break;
-        case BIN: result = toStringBin(); break;
-        case HEX:
+        case Print::DEC: result = toStringDec(); break;
+        case Print::BIN: result = toStringBin(); break;
+        case Print::HEX:
         default:  result = toStringHex(); break;
     }
 

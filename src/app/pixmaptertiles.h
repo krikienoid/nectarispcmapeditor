@@ -10,16 +10,16 @@ class PixmapTerTiles : public QWidget {
     Q_OBJECT
 
 public:
+    static constexpr int        TILE_WIDTH      = 16;
+    static constexpr int        TILE_HEIGHT     = 16;
+    static constexpr int        TILESET_COLUMNS = 16;
+    static constexpr int        TILESET_ROWS    = 144;
+    static constexpr int        TILE_MAX        = 0x480;
+
     explicit                    PixmapTerTiles(QWidget* parent = nullptr);
                                 ~PixmapTerTiles();
 
     QPixmap                     getTerTile(int) const;
-
-    static const int            TILE_WIDTH      = 16;
-    static const int            TILE_HEIGHT     = 16;
-    static const int            TILESET_COLUMNS = 16;
-    static const int            TILESET_ROWS    = 144;
-    static const int            TILE_MAX        = 0x480;
 
 private:
     QPixmap*                    terTileset;
