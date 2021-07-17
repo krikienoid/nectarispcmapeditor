@@ -5,7 +5,7 @@ namespace App {
 EditorMapInfo::EditorMapInfo(QWidget* const parent) : QWidget(parent) {
     // Map Name Text Input
     editMapName = new QLineEdit(this);
-    editMapName->setMaxLength(Nec::MapName::LENGTH);
+    editMapName->setMaxLength(static_cast<int>(Nec::MapName::LENGTH));
 
     connect(
         editMapName, SIGNAL(editingFinished()),

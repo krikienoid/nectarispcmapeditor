@@ -17,11 +17,10 @@ public:
     static constexpr std::size_t    BITS = 8;
 
                                 Byte() : data(0) {}
-                                Byte(const unsigned char uc) : data(uc) {}
-    explicit                    Byte(const int n) : data(n) {}
+    explicit                    Byte(const unsigned char uc) : data(uc) {}
+    explicit                    Byte(const int n) :
+                                    data(static_cast<unsigned char>(n)) {}
     explicit                    Byte(const bool[BITS]);
-
-    operator                    int() const;
 
     bool                        operator==(Byte) const;
     bool                        operator!=(Byte) const;
@@ -34,6 +33,8 @@ public:
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
+
+    unsigned char               value() const;
 
     std::string                 printString(Print print = Print::HEX) const;
 

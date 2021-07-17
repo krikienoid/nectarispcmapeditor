@@ -12,7 +12,7 @@ PickerMapInfo::PickerMapInfo(QWidget* const parent) : QWidget(parent) {
     );
 
     // Build MapInfo List
-    for (int i = 0, ii = Nec::BigInfo::LENGTH; i < ii; ++i) {
+    for (int i = 0, ii = static_cast<int>(Nec::BigInfo::LENGTH); i < ii; ++i) {
         const auto listItem = new QListWidgetItem(listMapInfo);
 
         setListItemData(listItem, i);
@@ -44,21 +44,22 @@ void PickerMapInfo::loadNecData(const Nec::DataManager* const newNecData) {
 
 void PickerMapInfo::updateNecData() {
     // Reset MapInfo List
-    for (int i = 0, ii = Nec::BigInfo::LENGTH; i < ii; ++i) {
-        const auto listItem = listMapInfo->item(i);
+    for (std::size_t i = 0, ii = Nec::BigInfo::LENGTH; i < ii; ++i) {
+        const int value = static_cast<int>(i);
+        const auto listItem = listMapInfo->item(value);
 
         if (necData->bigInfo->mapInfoExists(i)) {
             listItem->setHidden(false);
 
             listItem->setText(
-                QString::number(i + 1) +
+                QString::number(value + 1) +
                 QString(" : ") +
                 QString::fromStdString(
                     necData->bigInfo->at(i).mapName
                 )
             );
 
-            // setListItemData(listItem, i);
+            // setListItemData(listItem, value);
         } else {
             listItem->setHidden(true);
         }

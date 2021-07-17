@@ -23,16 +23,16 @@ public:
     static std::vector<PlayerStanceType> DATA;
 
                                 PlayerStance() : data(0), index(0) {}
-    explicit                    PlayerStance(int);
+    explicit                    PlayerStance(std::size_t);
 
     Raw::Byte                   toByte() const;
-    int                         getIndex() const;
+    std::size_t                 getIndex() const;
 
     static std::vector<PlayerStanceType> initData();
 
 private:
     Raw::Byte                   data;
-    int                         index;
+    std::size_t                 index;
 };
 
 } // namespace Nec

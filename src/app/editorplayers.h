@@ -31,7 +31,8 @@ public slots:
     void                        changePlayerStance(int);
 
 private:
-    static constexpr int        PLAYER_COUNT = Nec::MapInfo::PLAYER_COUNT;
+    static constexpr int PLAYER_COUNT =
+        static_cast<int>(Nec::MapInfo::PLAYER_COUNT);
 
     QComboBox*                  createPlayerRoleComboBox();
     QComboBox*                  createPlayerStanceComboBox();

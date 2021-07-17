@@ -23,16 +23,16 @@ public:
     static std::vector<PlayerRoleType> DATA;
 
                                 PlayerRole() : data(0), index(0) {}
-    explicit                    PlayerRole(int);
+    explicit                    PlayerRole(std::size_t);
 
     Raw::Byte                   toByte() const;
-    int                         getIndex() const;
+    std::size_t                 getIndex() const;
 
     static std::vector<PlayerRoleType> initData();
 
 private:
     Raw::Byte                   data;
-    int                         index;
+    std::size_t                 index;
 };
 
 } // namespace Nec

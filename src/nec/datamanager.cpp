@@ -50,9 +50,9 @@ void DataManager::read(const std::string& filepath) {
         std::ifstream bigUnitBin;
         std::ifstream bigMapBin;
 
-        bigInfoBin.open((filedir + FILENAME_BIGINFO).c_str(), fileReadMode);
-        bigUnitBin.open((filedir + FILENAME_BIGUNIT).c_str(), fileReadMode);
-        bigMapBin.open((filedir + FILENAME_BIGMAP).c_str(), fileReadMode);
+        bigInfoBin.open(filedir + FILENAME_BIGINFO, fileReadMode);
+        bigUnitBin.open(filedir + FILENAME_BIGUNIT, fileReadMode);
+        bigMapBin.open(filedir + FILENAME_BIGMAP, fileReadMode);
 
         // Read Data
         if (bigInfoBin.good() && bigUnitBin.good() && bigMapBin.good()) {
@@ -103,9 +103,9 @@ void DataManager::write(const std::string& filepath) {
         std::ofstream bigUnitBin;
         std::ofstream bigMapBin;
 
-        bigInfoBin.open((filedir + FILENAME_BIGINFO).c_str(), fileWriteMode);
-        // bigUnitBin.open((filedir + FILENAME_BIGUNIT).c_str(), fileWriteMode);
-        bigMapBin.open((filedir + FILENAME_BIGMAP).c_str(), fileWriteMode);
+        bigInfoBin.open(filedir + FILENAME_BIGINFO, fileWriteMode);
+        // bigUnitBin.open(filedir + FILENAME_BIGUNIT, fileWriteMode);
+        bigMapBin.open(filedir + FILENAME_BIGMAP, fileWriteMode);
 
         if (bigInfoBin.good() && bigUnitBin.good() && bigMapBin.good()) {
             // bigmap.bin

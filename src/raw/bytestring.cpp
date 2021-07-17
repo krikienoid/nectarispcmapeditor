@@ -40,19 +40,11 @@ ByteString& ByteString::operator=(ByteString bString) {
 }
 
 Byte ByteString::operator[](const std::size_t i) const {
-    if (i < length) {
-        return data[i];
-    } else {
-        return Byte(0);
-    }
+    return data[i];
 }
 
 Byte& ByteString::operator[](const std::size_t i) {
-    if (i < length) {
-        return data[i];
-    } else {
-        return data[length - 1];
-    }
+    return data[i];
 }
 
 ByteString ByteString::operator+(const ByteString& bString) const {
@@ -110,7 +102,7 @@ std::ostream& ByteString::writeBig(std::ostream& outs) const {
     return outs;
 }
 
-int ByteString::size() const {
+std::size_t ByteString::size() const {
     return length;
 }
 
@@ -187,7 +179,7 @@ int ByteString::toInt() const {
     int result = 0;
 
     for (std::size_t i = 0; i < length; ++i) {
-        result |= data[i] << (8 * i);
+        result |= static_cast<int>(data[i].value()) << static_cast<int>(8 * i);
     }
 
     return result;
@@ -197,7 +189,7 @@ ByteString ByteString::fromInt(int n) {
     ByteString result(sizeof(n));
 
     for (std::size_t i = result.length; i; --i, n >>= 8) {
-        result.data[result.length - i] = static_cast<char>(n & 0xff);
+        result.data[result.length - i] = Byte(n & 0xff);
     }
 
     return result;

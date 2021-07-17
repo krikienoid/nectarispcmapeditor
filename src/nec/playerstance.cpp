@@ -2,9 +2,11 @@
 
 namespace Nec {
 
-PlayerStance::PlayerStance(const int i) {
-    if (i >= int(DATA.size())) {
-        index = DATA.size() - 1;
+PlayerStance::PlayerStance(const std::size_t i) {
+    const std::size_t max = DATA.size() - 1;
+
+    if (i > max) {
+        index = max;
     } else {
         index = i;
     }
@@ -16,19 +18,19 @@ Raw::Byte PlayerStance::toByte() const {
     return data;
 }
 
-int PlayerStance::getIndex() const {
+std::size_t PlayerStance::getIndex() const {
     return index;
 }
 
 std::vector<PlayerStance::PlayerStanceType> PlayerStance::initData() {
     std::vector<PlayerStanceType> result;
 
-    result.push_back(PlayerStanceType(0x00, "Enemy"));
-    result.push_back(PlayerStanceType(0x01, "Dislike"));
-    result.push_back(PlayerStanceType(0x02, "Neutral"));
-    result.push_back(PlayerStanceType(0x03, "Like"));
-    result.push_back(PlayerStanceType(0x04, "Ally"));
-    result.push_back(PlayerStanceType(0xff, " - - "));
+    result.push_back(PlayerStanceType(Raw::Byte(0x00), "Enemy"));
+    result.push_back(PlayerStanceType(Raw::Byte(0x01), "Dislike"));
+    result.push_back(PlayerStanceType(Raw::Byte(0x02), "Neutral"));
+    result.push_back(PlayerStanceType(Raw::Byte(0x03), "Like"));
+    result.push_back(PlayerStanceType(Raw::Byte(0x04), "Ally"));
+    result.push_back(PlayerStanceType(Raw::Byte(0xff), " - - "));
 
     return result;
 }

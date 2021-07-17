@@ -30,7 +30,7 @@ public:
     std::istream&               readBig(std::istream&);
     std::ostream&               writeBig(std::ostream&) const;
 
-    int                         size() const;
+    std::size_t                 size() const;
     void                        push(Byte);
     ByteString                  substr(std::size_t, std::size_t) const;
     ByteString                  substr(std::size_t) const;

@@ -16,13 +16,17 @@ EditorPlayers::EditorPlayers(QWidget* const parent) : QWidget(parent) {
 }
 
 void EditorPlayers::changePlayerRole(const int i) {
-    necMapInfo->playerRole[i] =
-        Nec::PlayerRole(combosPlayerRole[i]->currentIndex()).toByte();
+    necMapInfo->playerRole[static_cast<std::size_t>(i)] =
+        Nec::PlayerRole(static_cast<std::size_t>(
+            combosPlayerRole[i]->currentIndex()
+        )).toByte();
 }
 
 void EditorPlayers::changePlayerStance(const int i) {
-    necMapInfo->playerStance[i] =
-        Nec::PlayerStance(combosPlayerStance[i]->currentIndex()).toByte();
+    necMapInfo->playerStance[static_cast<std::size_t>(i)] =
+        Nec::PlayerStance(static_cast<std::size_t>(
+            combosPlayerStance[i]->currentIndex()
+        )).toByte();
 }
 
 void EditorPlayers::loadNecData(Nec::MapInfo* const mapInfo) {
@@ -31,22 +35,26 @@ void EditorPlayers::loadNecData(Nec::MapInfo* const mapInfo) {
 
 void EditorPlayers::updateNecData() {
     for (int i = 0, ii = combosPlayerStance.size(); i < ii; ++i) {
-        combosPlayerStance[i]->setCurrentIndex(
-            Nec::PlayerStance(necMapInfo->playerStance[i]).getIndex()
-        );
+        combosPlayerStance[i]->setCurrentIndex(static_cast<int>(
+            Nec::PlayerStance(
+                necMapInfo->playerStance[static_cast<std::size_t>(i)].value()
+            ).getIndex()
+        ));
     }
 
     for (int i = 0, ii = combosPlayerRole.size(); i < ii; ++i) {
-        combosPlayerRole[i]->setCurrentIndex(
-            Nec::PlayerRole(necMapInfo->playerRole[i]).getIndex()
-        );
+        combosPlayerRole[i]->setCurrentIndex(static_cast<int>(
+            Nec::PlayerRole(
+                necMapInfo->playerRole[static_cast<std::size_t>(i)].value()
+            ).getIndex()
+        ));
     }
 }
 
 QComboBox* EditorPlayers::createPlayerRoleComboBox() {
     const auto newComboBox = new QComboBox(this);
 
-    for (int i = 0, ii = Nec::PlayerRole::DATA.size(); i < ii; ++i) {
+    for (std::size_t i = 0, ii = Nec::PlayerRole::DATA.size(); i < ii; ++i) {
         newComboBox->addItem(
             QString::fromStdString(Nec::PlayerRole::DATA[i].name)
         );
@@ -58,7 +66,7 @@ QComboBox* EditorPlayers::createPlayerRoleComboBox() {
 QComboBox* EditorPlayers::createPlayerStanceComboBox() {
     const auto newComboBox = new QComboBox(this);
 
-    for (int i = 0, ii = Nec::PlayerStance::DATA.size(); i < ii; ++i) {
+    for (std::size_t i = 0, ii = Nec::PlayerStance::DATA.size(); i < ii; ++i) {
         newComboBox->addItem(
             QString::fromStdString(Nec::PlayerStance::DATA[i].name)
         );
@@ -79,7 +87,7 @@ void EditorPlayers::createPlayerRoleComboBoxes() {
         const auto newComboBoxPlayerRole = createPlayerRoleComboBox();
 
         layoutGridPlayerRoles->addWidget(
-            new QLabel("P" + QString::number(i + 1)),
+            new QLabel(QString("P") + QString::number(i + 1)),
             0,
             i + 1
         );
@@ -113,13 +121,13 @@ void EditorPlayers::createPlayerStanceComboBoxes() {
     // Labels
     for (int i = 0; i < PLAYER_COUNT; ++i) {
         layoutGridPlayerStances->addWidget(
-            new QLabel("P" + QString::number(i + 1)),
+            new QLabel(QString("P") + QString::number(i + 1)),
             0,
             i + 1
         );
 
         layoutGridPlayerStances->addWidget(
-            new QLabel("P" + QString::number(i + 1)),
+            new QLabel(QString("P") + QString::number(i + 1)),
             i + 1,
             0
         );

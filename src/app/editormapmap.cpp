@@ -29,8 +29,10 @@ void EditorMapMap::selectTerTile(const int i) {
     updateSelectedTerTile(i);
 }
 
-void EditorMapMap::selectMapTile(const int i) {
-    if (toolMode == ToolMode::TOOL_TER && i < int(necMapMap->size())) {
+void EditorMapMap::selectMapTile(const int value) {
+    const std::size_t i = static_cast<std::size_t>(value);
+
+    if (toolMode == ToolMode::TOOL_TER && i < necMapMap->size()) {
         necMapMap->at(i) = Raw::ByteString::fromInt(selectedTerTile);
         necMapMap->at(i).resize(2);
 
@@ -38,7 +40,7 @@ void EditorMapMap::selectMapTile(const int i) {
     }
 }
 
-void EditorMapMap::changeTilesetRange(int) {
+void EditorMapMap::changeTilesetRange() {
     // Widget Data
     for (int i = 0; i < TILESETS; ++i) {
         pickerTerTile->enabledTilesetRange[i] =
@@ -46,17 +48,17 @@ void EditorMapMap::changeTilesetRange(int) {
     }
 
     // Nec Data
-    for (int i = 0, ii = necMapInfo->bgFiles.size(); i < ii; ++i) {
-        necMapInfo->bgFiles[i] = 0;
+    for (std::size_t i = 0, ii = necMapInfo->bgFiles.size(); i < ii; ++i) {
+        necMapInfo->bgFiles[i] = Raw::Byte(0);
     }
 
     for (
-        int j = 0, k = 0, kk = necMapInfo->bgFiles.size();
+        int j = 0, k = 0, kk = static_cast<int>(necMapInfo->bgFiles.size());
         j < TILESETS && k < kk;
         ++j
     ) {
         if (pickerTerTile->enabledTilesetRange[j]) {
-            necMapInfo->bgFiles[k++] = j;
+            necMapInfo->bgFiles[static_cast<std::size_t>(k++)] = Raw::Byte(j);
         }
     }
 
@@ -65,15 +67,15 @@ void EditorMapMap::changeTilesetRange(int) {
 }
 
 void EditorMapMap::changeMapSizeX(const int qX) {
-    necMapInfo->quadrantsX = qX;
-    necMapMap->qX = qX;
+    necMapInfo->quadrantsX = Raw::Byte(qX);
+    necMapMap->qX = static_cast<std::size_t>(qX);
 
     updateNecData();
 }
 
 void EditorMapMap::changeMapSizeY(const int qY) {
-    necMapInfo->quadrantsY = qY;
-    necMapMap->qY = qY;
+    necMapInfo->quadrantsY = Raw::Byte(qY);
+    necMapMap->qY = static_cast<std::size_t>(qY);
 
     updateNecData();
 }
@@ -93,18 +95,20 @@ void EditorMapMap::loadNecData(
 }
 
 void EditorMapMap::updateNecData() {
-    comboMapSizeX->setCurrentIndex(necMapInfo->quadrantsX);
-    comboMapSizeY->setCurrentIndex(necMapInfo->quadrantsY);
+    comboMapSizeX->setCurrentIndex(necMapInfo->quadrantsX.value());
+    comboMapSizeY->setCurrentIndex(necMapInfo->quadrantsY.value());
 
     sceneMapTileGrid->updateNecData();
 
     viewMapTileGrid->setSceneRect(
         0,
         0,
-        Nec::MapSize::getWidth(necMapInfo->quadrantsX + 1) *
-            SceneMapTileGrid::TILE_WIDTH,
-        Nec::MapSize::getHeight(necMapInfo->quadrantsY + 1) *
-            SceneMapTileGrid::TILE_HEIGHT
+        static_cast<int>(
+            Nec::MapSize::getWidth(necMapInfo->quadrantsX.value()) + 1
+        ) * SceneMapTileGrid::TILE_WIDTH,
+        static_cast<int>(
+            Nec::MapSize::getHeight(necMapInfo->quadrantsY.value()) + 1
+        ) * SceneMapTileGrid::TILE_HEIGHT
     );
 
     viewMapTileGrid->verticalScrollBar()->setValue(0);
@@ -128,9 +132,11 @@ void EditorMapMap::updateSelectedTerTile(int terTileNum) {
 
     selectedTerTile = terTileNum;
 
-    const int terTypeNum = pickerTerTile->bytesTerBin.at(terTileNum);
+    const std::size_t terTypeNum = static_cast<std::size_t>(
+        pickerTerTile->bytesTerBin.at(terTileNum)
+    );
 
-    if (terTypeNum < int(Nec::TER_TYPE_DATA.size())) {
+    if (terTypeNum < Nec::TER_TYPE_DATA.size()) {
         labelTerTileImg->setPixmap(
             sceneMapTileGrid->pixmapTerTiles->getTerTile(terTileNum)
         );
@@ -155,8 +161,8 @@ void EditorMapMap::updateEnabledTilesetRange() {
 }
 
 bool EditorMapMap::hasTilesetEnabled(int bgN) {
-    for (int i = 0, ii = necMapInfo->bgFiles.size(); i < ii; ++i) {
-        if (int(necMapInfo->bgFiles[i]) == bgN) {
+    for (std::size_t i = 0, ii = necMapInfo->bgFiles.size(); i < ii; ++i) {
+        if (necMapInfo->bgFiles[i].value() == bgN) {
             return true;
         }
     }
@@ -176,8 +182,10 @@ void EditorMapMap::createViewMapTileGrid() {
     viewMapTileGrid->setSceneRect(
         0,
         0,
-        Nec::MapSize::getWidth(1) * SceneMapTileGrid::TILE_WIDTH,
-        Nec::MapSize::getHeight(1) * SceneMapTileGrid::TILE_HEIGHT
+        static_cast<int>(Nec::MapSize::getWidth(1)) *
+            SceneMapTileGrid::TILE_WIDTH,
+        static_cast<int>(Nec::MapSize::getHeight(1)) *
+            SceneMapTileGrid::TILE_HEIGHT
     );
 
     connect(
@@ -223,7 +231,7 @@ void EditorMapMap::createTilesetRangePicker() {
 
     connect(
         signalMapper, SIGNAL(mapped(int)),
-        this,         SLOT(changeTilesetRange(int))
+        this,         SLOT(changeTilesetRange())
     );
 
     // Layout

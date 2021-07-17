@@ -16,6 +16,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "raw/byte.h"
 #include "raw/bytestring.h"
 #include "nec/mapinfo.h"
 #include "nec/mapmap.h"
@@ -43,7 +44,7 @@ public:
 public slots:
     void                        selectTerTile(int);
     void                        selectMapTile(int);
-    void                        changeTilesetRange(int);
+    void                        changeTilesetRange();
     void                        changeMapSizeX(int);
     void                        changeMapSizeY(int);
 

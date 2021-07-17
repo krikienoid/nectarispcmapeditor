@@ -16,9 +16,10 @@ SceneMapTileGrid::SceneMapTileGrid(QWidget* const parent) :
     painter.drawRect(0, 0, 16, 16);
 
     // Build terrain tile graphics
-    constexpr int maxWidth = Nec::MapSize::getWidth(4);
+    constexpr int maxWidth = static_cast<int>(Nec::MapSize::getWidth(4));
+    constexpr int mapSize  = static_cast<int>(Nec::MapSize::MAX_SIZE);
 
-    for (int i = 0, ii = Nec::MapSize::MAX_SIZE; i < ii; ++i) {
+    for (int i = 0, ii = mapSize; i < ii; ++i) {
         const int x        = i % maxWidth;
         const int y        = i / maxWidth;
         const int shift    = (x % 2) ? TILE_HEIGHT / 2 : 0;
@@ -68,19 +69,24 @@ void SceneMapTileGrid::setMapGridVisible(const bool mapGridOn) {
 }
 
 void SceneMapTileGrid::updateTerTiles() {
-    constexpr int maxWidth = Nec::MapSize::getWidth(4);
-    const int width     = Nec::MapSize::getWidth(necMapInfo->quadrantsX + 1);
-    const int height    = Nec::MapSize::getHeight(necMapInfo->quadrantsY + 1);
+    constexpr int maxWidth = static_cast<int>(Nec::MapSize::getWidth(4));
+    const int width        = static_cast<int>(
+        Nec::MapSize::getWidth(necMapInfo->quadrantsX.value() + 1)
+    );
+    const int height       = static_cast<int>(
+        Nec::MapSize::getHeight(necMapInfo->quadrantsY.value() + 1)
+    );
+    const int mapSize      = static_cast<int>(necMapMap->size());
 
     for (int i = 0, ii = listTerTiles.size(); i < ii; ++i) {
         const int x = i % maxWidth;
         const int y = i / maxWidth;
         int tileType = 0;
 
-        if (x < width && y < height && i < int(necMapMap->size())) {
+        if (x < width && y < height && i < mapSize) {
             listTerTiles[i]->setVisible(true);
             listTerTiles[i]->setData(0, QVariant(i));
-            tileType = necMapMap->at(i).toInt();
+            tileType = necMapMap->at(static_cast<std::size_t>(i)).toInt();
         } else {
             listTerTiles[i]->setVisible(false);
             listTerTiles[i]->setData(0, QVariant(0xffff));
@@ -91,9 +97,13 @@ void SceneMapTileGrid::updateTerTiles() {
 }
 
 void SceneMapTileGrid::updateGridTiles() {
-    constexpr int maxWidth = Nec::MapSize::getWidth(4);
-    const int width     = Nec::MapSize::getWidth(necMapInfo->quadrantsX + 1);
-    const int height    = Nec::MapSize::getHeight(necMapInfo->quadrantsY + 1);
+    constexpr int maxWidth = static_cast<int>(Nec::MapSize::getWidth(4));
+    const int width        = static_cast<int>(
+        Nec::MapSize::getWidth(necMapInfo->quadrantsX.value() + 1)
+    );
+    const int height       = static_cast<int>(
+        Nec::MapSize::getHeight(necMapInfo->quadrantsY.value() + 1)
+    );
 
     for (int i = 0, ii = listGridTiles.size(); i < ii; ++i) {
         const int x = i % maxWidth;

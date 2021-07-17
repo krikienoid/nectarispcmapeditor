@@ -9,8 +9,6 @@ Byte::Byte(const bool bits[BITS]) {
     }
 }
 
-Byte::operator int() const { return int(data); }
-
 bool Byte::operator==(const Byte b) const { return data == b.data; }
 bool Byte::operator!=(const Byte b) const { return data != b.data; }
 bool Byte::operator<=(const Byte b) const { return data <= b.data; }
@@ -23,15 +21,19 @@ std::istream& Byte::read(std::istream& ins) {
 
     ins.get(c);
 
-    data = c;
+    data = static_cast<unsigned char>(c);
 
     return ins;
 }
 
 std::ostream& Byte::write(std::ostream& outs) const {
-    outs.put(data);
+    outs.put(static_cast<char>(data));
 
     return outs;
+}
+
+unsigned char Byte::value() const {
+    return data;
 }
 
 std::string Byte::toStringHex() const {

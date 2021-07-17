@@ -36,7 +36,7 @@ public slots:
     void                        toggleMapGrid(bool);
 
 private:
-    void                        loadSelectedMapData(std::size_t);
+    void                        loadSelectedMapData(int);
 
     EditorMapInfo*              editorMapInfo;
     PickerMapInfo*              pickerMapInfo;

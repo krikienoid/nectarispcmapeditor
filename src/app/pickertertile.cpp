@@ -24,6 +24,7 @@ PickerTerTile::PickerTerTile(QWidget* const parent) :
     for (int i = 0; i < PixmapTerTiles::TILE_MAX; ++i) {
         const auto tileIcon = new QIcon(pixmapTerTiles.getTerTile(i));
         const auto newItem = new QListWidgetItem(*tileIcon, nullptr);
+
         newItem->setData(static_cast<int>(DATA_ROLES::TILE_TYPE), QVariant(i));
         this->addItem(newItem);
     }
@@ -53,7 +54,9 @@ PickerTerTile::PickerTerTile(QWidget* const parent) :
         i++
     ) {
         dropdownTerTypes->addItem(
-            QString::fromStdString(Nec::TER_GROUP_NAMES[i]),
+            QString::fromStdString(
+                Nec::TER_GROUP_NAMES[static_cast<std::size_t>(i)]
+            ),
             QVariant(i + 1)
         );
     }
@@ -87,7 +90,10 @@ void PickerTerTile::updateTilesetRanges() {
             !enabledTilesetRange[i / 128] ||
             (
                 terTypeFilter > 0 &&
-                static_cast<int>(Nec::TER_TYPE_DATA[bytesTerBin[i]].terGroup) + 1 != terTypeFilter
+                static_cast<int>(
+                    Nec::TER_TYPE_DATA[static_cast<std::size_t>(bytesTerBin[i])]
+                        .terGroup
+                ) + 1 != terTypeFilter
             )
         );
     }
