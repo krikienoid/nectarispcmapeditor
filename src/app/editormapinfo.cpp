@@ -37,7 +37,9 @@ void EditorMapInfo::loadNecData(Nec::MapInfo* const mapInfo) {
 }
 
 void EditorMapInfo::updateNecData() {
-    editMapName->setText(QString::fromStdString(necMapInfo->mapName));
+    editMapName->setText(
+        QString::fromStdString(necMapInfo->mapName.toString())
+    );
 }
 
 } // namespace App

@@ -101,8 +101,8 @@ void EditorMain::zoomMap(const double level, const bool combine) {
 void EditorMain::loadSelectedMapData(const int value) {
     const std::size_t i = static_cast<std::size_t>(value);
 
-    const auto necMapInfo = &(necData->bigInfo->at(i));
-    const auto necMapMap = &(necData->bigMap->at(i));
+    const auto necMapInfo = &(necData->bigInfo->items[i]);
+    const auto necMapMap = &(necData->bigMap->items[i]);
 
     editorMapInfo->loadNecData(necMapInfo);
     editorPlayers->loadNecData(necMapInfo);

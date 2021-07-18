@@ -15,7 +15,7 @@ std::istream& MapUnit::read(std::istream& ins) {
         const std::size_t y = i / maxWidth;
 
         if (x < width && y < height) {
-            at(i).readLittle(ins);
+            data[i].readLittle(ins);
         }
     }*/
 

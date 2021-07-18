@@ -76,7 +76,7 @@ void SceneMapTileGrid::updateTerTiles() {
     const int height       = static_cast<int>(
         Nec::MapSize::getHeight(necMapInfo->quadrantsY.value() + 1)
     );
-    const int mapSize      = static_cast<int>(necMapMap->size());
+    const int mapSize      = static_cast<int>(necMapMap->data.size());
 
     for (int i = 0, ii = listTerTiles.size(); i < ii; ++i) {
         const int x = i % maxWidth;
@@ -86,7 +86,7 @@ void SceneMapTileGrid::updateTerTiles() {
         if (x < width && y < height && i < mapSize) {
             listTerTiles[i]->setVisible(true);
             listTerTiles[i]->setData(0, QVariant(i));
-            tileType = necMapMap->at(static_cast<std::size_t>(i)).toInt();
+            tileType = necMapMap->data[static_cast<std::size_t>(i)].toInt();
         } else {
             listTerTiles[i]->setVisible(false);
             listTerTiles[i]->setData(0, QVariant(0xffff));

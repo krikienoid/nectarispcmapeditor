@@ -8,7 +8,7 @@ MapMap::MapMap() {
 }
 
 MapMap::MapMap(const std::size_t qX, const std::size_t qY) : qX(qX), qY(qY) {
-    resize(MapSize::MAX_SIZE);
+    data.resize(MapSize::MAX_SIZE);
 }
 
 std::istream& MapMap::read(std::istream& ins) {
@@ -16,12 +16,12 @@ std::istream& MapMap::read(std::istream& ins) {
     const std::size_t width         = MapSize::getWidth(qX + 1);
     const std::size_t height        = MapSize::getHeight(qY + 1);
 
-    for (std::size_t i = 0, ii = size(); i < ii; ++i) {
+    for (std::size_t i = 0, ii = data.size(); i < ii; ++i) {
         const std::size_t x = i % maxWidth;
         const std::size_t y = i / maxWidth;
 
         if (x < width && y < height) {
-            at(i).readLittle(ins);
+            data[i].readLittle(ins);
         }
     }
 
@@ -38,7 +38,7 @@ std::ostream& MapMap::write(std::ostream& outs) const {
         const std::size_t y = i / maxWidth;
 
         if (x < width && y < height) {
-            at(i).writeLittle(outs);
+            data[i].writeLittle(outs);
         }
     }
 
@@ -46,7 +46,7 @@ std::ostream& MapMap::write(std::ostream& outs) const {
 }
 
 void MapMap::resize(const std::size_t n) {
-    std::vector<Raw::ByteString>::resize(n, Raw::ByteString(2));
+    data.resize(n, Raw::ByteString(2));
 }
 
 } // namespace Nec

@@ -55,7 +55,7 @@ void PickerMapInfo::updateNecData() {
                 QString::number(value + 1) +
                 QString(" : ") +
                 QString::fromStdString(
-                    necData->bigInfo->at(i).mapName
+                    necData->bigInfo->items[i].mapName.toString()
                 )
             );
 

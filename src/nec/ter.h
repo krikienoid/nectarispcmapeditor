@@ -8,13 +8,15 @@
 
 namespace Nec {
 
-class Ter : public std::vector<Raw::Byte> {
+class Ter {
 public:
                                 Ter();
     explicit                    Ter(std::istream&);
 
 private:
     static constexpr std::size_t    SIZE = 0x800;
+
+    std::vector<Raw::Byte>      data;
 };
 
 } // namespace Nec

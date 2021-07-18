@@ -139,7 +139,7 @@ bool MainWindow::saveAs() {
         return false;
     }
 
-    return saveFile(files.at(0));
+    return saveFile(files[0]);
 }
 
 void MainWindow::setCurrentFile(const QString& fileName) {

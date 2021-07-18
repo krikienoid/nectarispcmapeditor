@@ -6,7 +6,7 @@
 
 namespace Nec {
 
-class MapName : public std::string {
+class MapName {
 public:
     static constexpr std::size_t    LENGTH = 6;
     static constexpr char           FILLER_CHAR = '_';
@@ -18,6 +18,11 @@ public:
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
+
+    std::string                 toString() const;
+
+private:
+    std::string                 data;
 };
 
 } // namespace Nec

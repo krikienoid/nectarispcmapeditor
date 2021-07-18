@@ -4,14 +4,14 @@ namespace Nec {
 
 constexpr char MapName::CHAR_OFFSET[];
 
-MapName::MapName() : std::string(LENGTH, FILLER_CHAR) {}
+MapName::MapName() : data(LENGTH, FILLER_CHAR) {}
 
-MapName::MapName(const std::string& str) : std::string(str) {
-    resize(LENGTH, FILLER_CHAR);
+MapName::MapName(const std::string& str) : data(str) {
+    data.resize(LENGTH, FILLER_CHAR);
 }
 
-MapName::MapName(const char* s) : std::string(s) {
-    resize(LENGTH, FILLER_CHAR);
+MapName::MapName(const char* s) : data(s) {
+    data.resize(LENGTH, FILLER_CHAR);
 }
 
 std::istream& MapName::read(std::istream& ins) {
@@ -20,7 +20,7 @@ std::istream& MapName::read(std::istream& ins) {
 
         ins.get(c);
 
-        at(i) = c - CHAR_OFFSET[i];
+        data[i] = c - CHAR_OFFSET[i];
     }
 
     return ins;
@@ -28,10 +28,14 @@ std::istream& MapName::read(std::istream& ins) {
 
 std::ostream& MapName::write(std::ostream& outs) const {
     for (std::size_t i = 0; i < LENGTH; ++i) {
-        outs.put(at(i) + CHAR_OFFSET[i]);
+        outs.put(data[i] + CHAR_OFFSET[i]);
     }
 
     return outs;
+}
+
+std::string MapName::toString() const {
+    return data;
 }
 
 } // namespace Nec

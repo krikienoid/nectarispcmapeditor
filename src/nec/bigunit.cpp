@@ -8,8 +8,8 @@ BigUnit::BigUnit() {
 std::istream& BigUnit::read(std::istream& ins) {
     /*for (std::size_t i = 0; i < BigInfo::LENGTH; ++i) {
         if (bigInfo->mapInfoExists(i)) {
-            ins.seekg(bigInfo->at(i).addressUnit.toInt());
-            at(i).read(ins);
+            ins.seekg(bigInfo->items[i].addressUnit.toInt());
+            items[i].read(ins);
         }
     }
     */
@@ -18,10 +18,10 @@ std::istream& BigUnit::read(std::istream& ins) {
 }
 
 std::ostream& BigUnit::write(std::ostream& outs) const {
-    /*for (std::size_t i = 0, ii = bigInfo->size(); i < ii; ++i) {
+    /*for (std::size_t i = 0, ii = bigInfo->items.size(); i < ii; ++i) {
         if (bigInfo->mapInfoExists(i)) {
-            bigInfo->at(i).addressUnit = Raw::ByteString::fromInt(outs.tellp());
-            at(i).write(outs);
+            bigInfo->items[i].addressUnit = Raw::ByteString::fromInt(outs.tellp());
+            items[i].write(outs);
         }
     }*/
 

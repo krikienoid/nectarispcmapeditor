@@ -11,12 +11,14 @@
 
 namespace Nec {
 
-class BigMap : public std::vector<MapMap> {
+class BigMap {
 public:
     explicit                    BigMap(BigInfo*);
 
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
+
+    std::vector<MapMap>         items;
 
 private:
     BigInfo*                    bigInfo;

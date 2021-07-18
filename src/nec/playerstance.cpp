@@ -11,7 +11,7 @@ PlayerStance::PlayerStance(const std::size_t i) {
         index = i;
     }
 
-    data = DATA.at(index).value;
+    data = DATA[index].value;
 }
 
 Raw::Byte PlayerStance::toByte() const {

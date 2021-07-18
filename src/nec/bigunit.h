@@ -10,7 +10,7 @@
 
 namespace Nec {
 
-class BigUnit : public std::vector<MapUnit> {
+class BigUnit {
 public:
     explicit                    BigUnit();
 

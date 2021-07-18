@@ -32,9 +32,9 @@ void EditorMapMap::selectTerTile(const int i) {
 void EditorMapMap::selectMapTile(const int value) {
     const std::size_t i = static_cast<std::size_t>(value);
 
-    if (toolMode == ToolMode::TOOL_TER && i < necMapMap->size()) {
-        necMapMap->at(i) = Raw::ByteString::fromInt(selectedTerTile);
-        necMapMap->at(i).resize(2);
+    if (toolMode == ToolMode::TOOL_TER && i < necMapMap->data.size()) {
+        necMapMap->data[i] = Raw::ByteString::fromInt(selectedTerTile);
+        necMapMap->data[i].resize(2);
 
         updateNecData();
     }
@@ -133,7 +133,7 @@ void EditorMapMap::updateSelectedTerTile(int terTileNum) {
     selectedTerTile = terTileNum;
 
     const std::size_t terTypeNum = static_cast<std::size_t>(
-        pickerTerTile->bytesTerBin.at(terTileNum)
+        pickerTerTile->bytesTerBin[terTileNum]
     );
 
     if (terTypeNum < Nec::TER_TYPE_DATA.size()) {

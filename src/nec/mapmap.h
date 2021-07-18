@@ -9,7 +9,7 @@
 
 namespace Nec {
 
-class MapMap : public std::vector<Raw::ByteString> {
+class MapMap {
 public:
                                 MapMap();
     explicit                    MapMap(std::size_t, std::size_t);
@@ -21,6 +21,8 @@ public:
 
     std::size_t                 qX;
     std::size_t                 qY;
+
+    std::vector<Raw::ByteString>    data;
 };
 
 } // namespace Nec

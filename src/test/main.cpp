@@ -25,7 +25,7 @@ int main() {
     {
         std::cout << std::endl << "Nec::MapName" << std::endl << std::endl;
         Nec::MapName mapname("revolt");
-        std::cout << mapname << std::endl;
+        std::cout << mapname.toString() << std::endl;
     }
 
     return 0;

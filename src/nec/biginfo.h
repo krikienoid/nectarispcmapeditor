@@ -8,7 +8,7 @@
 
 namespace Nec {
 
-class BigInfo : public std::vector<MapInfo> {
+class BigInfo {
 public:
     static constexpr std::size_t    LENGTH = 0x100;
     static constexpr std::size_t    SIZE = MapInfo::SIZE * LENGTH;
@@ -19,6 +19,8 @@ public:
     std::ostream&               write(std::ostream&) const;
 
     bool                        mapInfoExists(std::size_t) const;
+
+    std::vector<MapInfo>        items;
 };
 
 } // namespace Nec
