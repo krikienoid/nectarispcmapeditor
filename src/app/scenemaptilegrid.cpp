@@ -20,12 +20,12 @@ SceneMapTileGrid::SceneMapTileGrid(QWidget* const parent) :
     constexpr int mapSize  = static_cast<int>(Nec::MapSize::MAX_SIZE);
 
     for (int i = 0, ii = mapSize; i < ii; ++i) {
-        const int x        = i % maxWidth;
-        const int y        = i / maxWidth;
-        const int shift    = (x % 2) ? TILE_HEIGHT / 2 : 0;
-        const int pX       = x * TILE_WIDTH;
-        const int pY       = y * TILE_HEIGHT + shift;
-        const int tileType = 0;
+        const auto x        = i % maxWidth;
+        const auto y        = i / maxWidth;
+        const auto shift    = (x % 2) ? TILE_HEIGHT / 2 : 0;
+        const auto pX       = x * TILE_WIDTH;
+        const auto pY       = y * TILE_HEIGHT + shift;
+        const int tileType  = 0;
 
         // Tile
         const auto terTile = addPixmap(pixmapTerTiles->getTerTile(tileType));
@@ -79,8 +79,8 @@ void SceneMapTileGrid::updateTerTiles() {
     const int mapSize      = static_cast<int>(necMapMap->data.size());
 
     for (int i = 0, ii = listTerTiles.size(); i < ii; ++i) {
-        const int x = i % maxWidth;
-        const int y = i / maxWidth;
+        const auto x = i % maxWidth;
+        const auto y = i / maxWidth;
         int tileType = 0;
 
         if (x < width && y < height && i < mapSize) {
@@ -106,8 +106,8 @@ void SceneMapTileGrid::updateGridTiles() {
     );
 
     for (int i = 0, ii = listGridTiles.size(); i < ii; ++i) {
-        const int x = i % maxWidth;
-        const int y = i / maxWidth;
+        const auto x = i % maxWidth;
+        const auto y = i / maxWidth;
 
         listGridTiles[i]->setVisible(
             isMapGridVisible && x < width && y < height

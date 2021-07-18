@@ -13,6 +13,7 @@ namespace Nec {
 struct MapInfo {
 public:
     static constexpr std::size_t    PLAYER_COUNT = 4;
+    static constexpr std::size_t    BG_FILE_MAX = 5;
     static constexpr std::size_t    SIZE = 0x40;
 
                                 MapInfo();
@@ -27,7 +28,7 @@ public:
 
     Raw::ByteString             playerRole;                     // size:  4
     Raw::ByteString             playerStance;                   // size: 16
-    Raw::ByteString             bgFiles;                        // size:  5
+    Raw::Byte                   bgFiles[BG_FILE_MAX];           // size:  5
     Raw::ByteString             unknown2;                       // size:  3
 
     MapName                     mapName;                        // size:  6

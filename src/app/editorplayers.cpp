@@ -54,10 +54,8 @@ void EditorPlayers::updateNecData() {
 QComboBox* EditorPlayers::createPlayerRoleComboBox() {
     const auto newComboBox = new QComboBox(this);
 
-    for (std::size_t i = 0, ii = Nec::PlayerRole::DATA.size(); i < ii; ++i) {
-        newComboBox->addItem(
-            QString::fromStdString(Nec::PlayerRole::DATA[i].name)
-        );
+    for (const auto& item : Nec::PlayerRole::DATA) {
+        newComboBox->addItem(QString::fromStdString(item.name));
     }
 
     return newComboBox;
@@ -66,10 +64,8 @@ QComboBox* EditorPlayers::createPlayerRoleComboBox() {
 QComboBox* EditorPlayers::createPlayerStanceComboBox() {
     const auto newComboBox = new QComboBox(this);
 
-    for (std::size_t i = 0, ii = Nec::PlayerStance::DATA.size(); i < ii; ++i) {
-        newComboBox->addItem(
-            QString::fromStdString(Nec::PlayerStance::DATA[i].name)
-        );
+    for (const auto& item : Nec::PlayerStance::DATA) {
+        newComboBox->addItem(QString::fromStdString(item.name));
     }
 
     return newComboBox;

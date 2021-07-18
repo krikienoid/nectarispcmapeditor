@@ -17,8 +17,8 @@ std::istream& MapMap::read(std::istream& ins) {
     const std::size_t height        = MapSize::getHeight(qY + 1);
 
     for (std::size_t i = 0, ii = data.size(); i < ii; ++i) {
-        const std::size_t x = i % maxWidth;
-        const std::size_t y = i / maxWidth;
+        const auto x = i % maxWidth;
+        const auto y = i / maxWidth;
 
         if (x < width && y < height) {
             data[i].readLittle(ins);
@@ -34,8 +34,8 @@ std::ostream& MapMap::write(std::ostream& outs) const {
     const std::size_t height        = MapSize::getHeight(qY + 1);
 
     for (std::size_t i = 0, ii = MapSize::MAX_SIZE; i < ii; ++i) {
-        const std::size_t x = i % maxWidth;
-        const std::size_t y = i / maxWidth;
+        const auto x = i % maxWidth;
+        const auto y = i / maxWidth;
 
         if (x < width && y < height) {
             data[i].writeLittle(outs);

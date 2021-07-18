@@ -48,12 +48,12 @@ void EditorMapMap::changeTilesetRange() {
     }
 
     // Nec Data
-    for (std::size_t i = 0, ii = necMapInfo->bgFiles.size(); i < ii; ++i) {
+    for (std::size_t i = 0, ii = Nec::MapInfo::BG_FILE_MAX; i < ii; ++i) {
         necMapInfo->bgFiles[i] = Raw::Byte(0);
     }
 
     for (
-        int j = 0, k = 0, kk = static_cast<int>(necMapInfo->bgFiles.size());
+        int j = 0, k = 0, kk = static_cast<int>(Nec::MapInfo::BG_FILE_MAX);
         j < TILESETS && k < kk;
         ++j
     ) {
@@ -161,8 +161,8 @@ void EditorMapMap::updateEnabledTilesetRange() {
 }
 
 bool EditorMapMap::hasTilesetEnabled(int bgN) {
-    for (std::size_t i = 0, ii = necMapInfo->bgFiles.size(); i < ii; ++i) {
-        if (necMapInfo->bgFiles[i].value() == bgN) {
+    for (const auto& b : necMapInfo->bgFiles) {
+        if (b.value() == bgN) {
             return true;
         }
     }
