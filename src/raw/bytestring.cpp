@@ -114,7 +114,8 @@ void ByteString::push(const Byte b) {
         result.data[i] = data[i];
     }
 
-    data[i] = b;
+    result.data[i] = b;
+
     operator=(result);
 }
 
