@@ -1,10 +1,9 @@
 #ifndef APP_MAINWINDOW_H
 #define APP_MAINWINDOW_H
 
-#include <string>
-
 #include <QAction>
 #include <QApplication>
+#include <QChar>
 #include <QFile>
 #include <QFileDialog>
 #include <QKeySequence>

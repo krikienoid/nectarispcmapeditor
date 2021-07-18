@@ -2,7 +2,7 @@
 
 namespace App {
 
-std::string getFileExtension(const std::string&);
+QString getFileExtension(const QString&);
 
 MainWindow::MainWindow() {
     necData    = new Nec::DataManager();
@@ -161,7 +161,7 @@ void MainWindow::loadFile(const QString& fileName) {
     #endif
 
     // Check file extension
-    const std::string fileType = getFileExtension(fileName.toStdString());
+    const QString fileType = getFileExtension(fileName);
 
     if (fileType != "bin") {
         QMessageBox::warning(
@@ -220,12 +220,14 @@ bool MainWindow::saveFile(const QString& fileName) {
     return true;
 }
 
-std::string getFileExtension(const std::string& fileName) {
-    if (fileName.find_last_of(".") != std::string::npos) {
-        return fileName.substr(fileName.find_last_of(".") + 1);
+QString getFileExtension(const QString& fileName) {
+    const auto pos = fileName.lastIndexOf(QChar('.'));
+
+    if (pos != -1 && pos + 1 < fileName.size()) {
+        return fileName.mid(pos + 1);
     }
 
-    return "";
+    return QString("");
 }
 
 } // namespace App

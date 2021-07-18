@@ -19,7 +19,7 @@ EditorMapInfo::EditorMapInfo(QWidget* const parent) : QWidget(parent) {
 
     // Layout
     const auto layoutMain = new QVBoxLayout();
-    layoutMain->addWidget(new QLabel("Map:", this));
+    layoutMain->addWidget(new QLabel(tr("Map:"), this));
     layoutMain->addWidget(editMapName);
     layoutMain->addWidget(line);
 

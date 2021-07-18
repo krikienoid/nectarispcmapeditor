@@ -209,7 +209,7 @@ void EditorMapMap::createTilesetRangePicker() {
         const auto newCheckBox = new QCheckBox(this);
 
         newCheckBox->setText(
-            QString("bg") +
+            QString(tr("bg")) +
             QString::number(i + 1)
         );
 
@@ -240,7 +240,7 @@ void EditorMapMap::createTilesetRangePicker() {
     layoutColFile->addLayout(layoutRowFile2);
 
     groupChecks = new QGroupBox(tr("Tilesets"));
-    groupChecks->setToolTip("Pick up to 5 tileset files to load");
+    groupChecks->setToolTip(tr("Pick up to 5 tileset files to load"));
     groupChecks->setLayout(layoutColFile);
 }
 
@@ -267,14 +267,14 @@ void EditorMapMap::createPickerTerTile() {
     // Selected Tile
     const auto layoutRowTile = new QHBoxLayout();
     layoutRowTile->setAlignment(Qt::AlignLeft);
-    layoutRowTile->addWidget(new QLabel("Selected Tile: ", this));
+    layoutRowTile->addWidget(new QLabel(tr("Selected Tile: "), this));
     layoutRowTile->addWidget(labelTerTileImg);
     layoutRowTile->addWidget(labelTerTileName);
 
     // Show Tiles
     const auto layoutRowShow = new QHBoxLayout();
     layoutRowShow->setAlignment(Qt::AlignLeft);
-    layoutRowShow->addWidget(new QLabel("Show: ", this));
+    layoutRowShow->addWidget(new QLabel(tr("Show: "), this));
     layoutRowShow->addWidget(pickerTerTile->dropdownTerTypes);
 
     const auto layoutColTile = new QVBoxLayout();
@@ -312,9 +312,9 @@ void EditorMapMap::createMapSizePicker() {
     // Layout
     const auto layoutRowMapSize = new QHBoxLayout();
     layoutRowMapSize->setAlignment(Qt::AlignLeft);
-    layoutRowMapSize->addWidget(new QLabel("Width: ", this));
+    layoutRowMapSize->addWidget(new QLabel(tr("Width: "), this));
     layoutRowMapSize->addWidget(comboMapSizeX);
-    layoutRowMapSize->addWidget(new QLabel("Height: ", this));
+    layoutRowMapSize->addWidget(new QLabel(tr("Height: "), this));
     layoutRowMapSize->addWidget(comboMapSizeY);
 
     groupMapSize = new QGroupBox(tr("Map Size"));

@@ -39,9 +39,9 @@ EditorMain::EditorMain(QWidget* const parent) : QWidget(parent) {
     layoutMapInfo->addWidget(pickerMapInfo);
 
     const auto tabsMapEdit = new QTabWidget(this);
-    tabsMapEdit->addTab(editorMapMap,  "Terrain");
-    tabsMapEdit->addTab(editorPlayers, "Players");
-    tabsMapEdit->addTab(new QWidget(), "Units");
+    tabsMapEdit->addTab(editorMapMap,  tr("Terrain"));
+    tabsMapEdit->addTab(editorPlayers, tr("Players"));
+    tabsMapEdit->addTab(new QWidget(), tr("Units"));
 
     const auto splitMapEditor = new QSplitter(this);
     splitMapEditor->addWidget(editorMapMap->viewMapTileGrid);
