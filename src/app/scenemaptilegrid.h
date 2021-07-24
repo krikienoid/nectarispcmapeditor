@@ -8,6 +8,7 @@
 #include <QList>
 #include <QPainter>
 #include <QPixmap>
+#include <QString>
 #include <QTransform>
 #include <QVariant>
 #include <QWidget>

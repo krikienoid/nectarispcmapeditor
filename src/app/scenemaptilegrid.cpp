@@ -84,9 +84,20 @@ void SceneMapTileGrid::updateTerTiles() {
         int tileType = 0;
 
         if (x < width && y < height && i < mapSize) {
+            tileType = necMapMap->data[static_cast<std::size_t>(i)].toInt();
+
             listTerTiles[i]->setVisible(true);
             listTerTiles[i]->setData(0, QVariant(i));
-            tileType = necMapMap->data[static_cast<std::size_t>(i)].toInt();
+
+            listTerTiles[i]->setToolTip(
+                QString("(") +
+                QString::number(x) +
+                QString(", ") +
+                QString::number(y) +
+                QString(")\n") +
+                QString(tr("Ter: ")) +
+                QString::number(tileType)
+            );
         } else {
             listTerTiles[i]->setVisible(false);
             listTerTiles[i]->setData(0, QVariant(0xffff));

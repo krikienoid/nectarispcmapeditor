@@ -26,6 +26,12 @@ PickerTerTile::PickerTerTile(QWidget* const parent) :
         const auto newItem = new QListWidgetItem(*tileIcon, nullptr);
 
         newItem->setData(static_cast<int>(DATA_ROLES::TILE_TYPE), QVariant(i));
+
+        newItem->setToolTip(
+            QString(tr("Ter: ")) +
+            QString::number(i)
+        );
+
         this->addItem(newItem);
     }
 
