@@ -4,9 +4,9 @@
 #include <iostream>
 #include <vector>
 
-#include "raw/bytestring.h"
+#include "raw/bytearray.h"
 #include "biginfo.h"
-#include "mapunit.h"
+#include "levelunit.h"
 
 namespace Nec {
 

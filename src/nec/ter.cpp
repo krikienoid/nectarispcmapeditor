@@ -2,9 +2,9 @@
 
 namespace Nec {
 
-Ter::Ter() : data(SIZE) {}
+Ter::Ter() : data(size) {}
 
-Ter::Ter(std::istream& ins) : data(SIZE) {
+Ter::Ter(std::istream& ins) : data(size) {
     for (auto& b : data) {
         b.read(ins);
     }

@@ -3,18 +3,18 @@
 namespace Nec {
 
 BigInfo::BigInfo() {
-    for (std::size_t i = 0; i < LENGTH; ++i) {
-        items.push_back(MapInfo());
+    for (std::size_t i = 0; i < levelCount; ++i) {
+        items.push_back(LevelInfo());
     }
 }
 
-bool BigInfo::mapInfoExists(const std::size_t i) const {
-    return (i + 1) == items[i].mapNumber.value();
+bool BigInfo::levelInfoExists(const std::size_t i) const {
+    return (i + 1) == items[i].levelNumber.value();
 }
 
 std::istream& BigInfo::read(std::istream& ins) {
-    for (std::size_t i = 0; i < LENGTH; ++i) {
-        ins.seekg(i * MapInfo::SIZE);
+    for (std::size_t i = 0; i < levelCount; ++i) {
+        ins.seekg(i * LevelInfo::size);
         items[i].read(ins);
     }
 
@@ -22,8 +22,8 @@ std::istream& BigInfo::read(std::istream& ins) {
 }
 
 std::ostream& BigInfo::write(std::ostream& outs) const {
-    for (std::size_t i = 0; i < LENGTH; ++i) {
-        outs.seekp(i * MapInfo::SIZE);
+    for (std::size_t i = 0; i < levelCount; ++i) {
+        outs.seekp(i * LevelInfo::size);
         items[i].write(outs);
     }
 

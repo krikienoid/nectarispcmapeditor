@@ -10,17 +10,17 @@ namespace Raw {
 
 class Byte {
 public:
-    enum class                  Print { BIN, DEC, HEX };
+    enum class                  Format { Bin, Dec, Hex };
 
-    static constexpr unsigned char  MAX  = 255;
-    static constexpr std::size_t    SIZE = 256;
-    static constexpr std::size_t    BITS = 8;
+    static constexpr unsigned char  max  = 255;
+    static constexpr std::size_t    size = 256;
+    static constexpr std::size_t    bitCount = 8;
 
                                 Byte() : data(0) {}
     explicit                    Byte(const unsigned char uc) : data(uc) {}
     explicit                    Byte(const int n) :
                                     data(static_cast<unsigned char>(n)) {}
-    explicit                    Byte(const bool[BITS]);
+    explicit                    Byte(const bool[bitCount]);
 
     bool                        operator==(Byte) const;
     bool                        operator!=(Byte) const;
@@ -36,7 +36,7 @@ public:
 
     unsigned char               value() const;
 
-    std::string                 printString(Print print = Print::HEX) const;
+    std::string                 printString(Format format = Format::Hex) const;
 
 private:
     std::string                 toStringHex() const;

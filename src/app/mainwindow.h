@@ -15,8 +15,8 @@
 #include <QToolBar>
 #include <QtWidgets>
 
-#include "nec/datamanager.h"
-#include "editormain.h"
+#include "nec/filedata.h"
+#include "maineditor.h"
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -38,35 +38,35 @@ private slots:
     bool                        saveAs();
 
 private:
-    void                        createActions();
-    void                        createMenus();
-    void                        createToolBars();
+    void                        initActions();
+    void                        initMenus();
+    void                        initToolBars();
 
-    void                        setCurrentFile(const QString& fileName);
-    void                        loadFile(const QString& fileName);
-    bool                        saveFile(const QString& fileName);
+    void                        setTargetFilePath(const QString& filePath);
+    void                        loadFile(const QString& filePath);
+    bool                        saveFile(const QString& filePath);
 
-    QString                     currentFile;
+    QString                     targetFilePath;
 
-    QMenu*                      menuFile;
-    QMenu*                      menuEdit;
-    QMenu*                      menuView;
-    QMenu*                      menuWindow;
-    QMenu*                      menuHelp;
-    QToolBar*                   toolBarFile;
-    QToolBar*                   toolBarWindow;
-    QAction*                    actOpen;
-    QAction*                    actSave;
-    QAction*                    actSaveAs;
-    QAction*                    actExit;
-    QAction*                    actZoomMapFull;
-    QAction*                    actZoomMapIn;
-    QAction*                    actZoomMapOut;
-    QAction*                    actToggleMapGrid;
+    QMenu*                      fileMenu;
+    QMenu*                      editMenu;
+    QMenu*                      viewMenu;
+    QMenu*                      windowMenu;
+    QMenu*                      helpMenu;
+    QToolBar*                   fileToolBar;
+    QToolBar*                   windowToolBar;
+    QAction*                    openAction;
+    QAction*                    saveAction;
+    QAction*                    saveAsAction;
+    QAction*                    exitAction;
+    QAction*                    zoomMapFullAction;
+    QAction*                    zoomMapInAction;
+    QAction*                    zoomMapOutAction;
+    QAction*                    toggleMapGridAction;
 
-    EditorMain*                 editorMain;
+    MainEditor*                 mainEditor;
 
-    Nec::DataManager*           necData;
+    Nec::FileData*              fileData;
 };
 
 } // namespace App

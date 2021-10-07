@@ -14,7 +14,7 @@ public:
     explicit                    Ter(std::istream&);
 
 private:
-    static constexpr std::size_t    SIZE = 0x800;
+    static constexpr std::size_t    size = 0x800;
 
     std::vector<Raw::Byte>      data;
 };

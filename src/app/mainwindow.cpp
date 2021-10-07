@@ -5,125 +5,125 @@ namespace App {
 QString getFileExtension(const QString&);
 
 MainWindow::MainWindow() {
-    necData    = new Nec::DataManager();
-    editorMain = new EditorMain();
+    fileData   = new Nec::FileData();
+    mainEditor = new MainEditor();
 
-    editorMain->loadNecData(necData);
+    mainEditor->setTargetData(fileData);
 
-    setCentralWidget(editorMain);
+    setCentralWidget(mainEditor);
 
-    createActions();
-    createMenus();
-    createToolBars();
+    initActions();
+    initMenus();
+    initToolBars();
 }
 
 MainWindow::~MainWindow() {
-    delete necData;
-    delete editorMain;
+    delete fileData;
+    delete mainEditor;
 }
 
-void MainWindow::createActions() {
+void MainWindow::initActions() {
     // Open file
-    actOpen = new QAction(tr("&Open..."), this);
-    actOpen->setShortcuts(QKeySequence::Open);
-    actOpen->setStatusTip(tr("Open an existing file"));
+    openAction = new QAction(tr("&Open..."), this);
+    openAction->setShortcuts(QKeySequence::Open);
+    openAction->setStatusTip(tr("Open an existing file"));
 
-    connect(actOpen, SIGNAL(triggered()), this, SLOT(open()));
+    connect(openAction, SIGNAL(triggered()), this, SLOT(open()));
 
     // Save file
-    actSave = new QAction(tr("&Save"), this);
-    actSave->setShortcuts(QKeySequence::Save);
-    actSave->setStatusTip(tr("Save the file to disk"));
+    saveAction = new QAction(tr("&Save"), this);
+    saveAction->setShortcuts(QKeySequence::Save);
+    saveAction->setStatusTip(tr("Save the file to disk"));
 
-    connect(actSave, SIGNAL(triggered()), this, SLOT(save()));
+    connect(saveAction, SIGNAL(triggered()), this, SLOT(save()));
 
     // Save file as copy
-    actSaveAs = new QAction(tr("Save &As..."), this);
-    actSaveAs->setShortcuts(QKeySequence::SaveAs);
-    actSaveAs->setStatusTip(tr("Save the file to a new location"));
+    saveAsAction = new QAction(tr("Save &As..."), this);
+    saveAsAction->setShortcuts(QKeySequence::SaveAs);
+    saveAsAction->setStatusTip(tr("Save the file to a new location"));
 
-    connect(actSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
+    connect(saveAsAction, SIGNAL(triggered()), this, SLOT(saveAs()));
 
     // Exit Application
-    actExit = new QAction(tr("E&xit"), this);
-    actExit->setShortcuts(QKeySequence::Quit);
-    actExit->setStatusTip(tr("Exit the application"));
+    exitAction = new QAction(tr("E&xit"), this);
+    exitAction->setShortcuts(QKeySequence::Quit);
+    exitAction->setStatusTip(tr("Exit the application"));
 
-    connect(actExit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 
     // Zoom
-    actZoomMapFull = new QAction(tr("Actual Size"), this);
-    actZoomMapIn   = new QAction(tr("Zoom In"),     this);
-    actZoomMapOut  = new QAction(tr("Zoom Out"),    this);
-    actZoomMapFull->setShortcut(tr("Ctrl+0"));
-    actZoomMapIn->setShortcut(tr("Ctrl++"));
-    actZoomMapOut->setShortcut(tr("Ctrl+-"));
+    zoomMapFullAction = new QAction(tr("Actual Size"), this);
+    zoomMapInAction   = new QAction(tr("Zoom In"),     this);
+    zoomMapOutAction  = new QAction(tr("Zoom Out"),    this);
+    zoomMapFullAction->setShortcut(tr("Ctrl+0"));
+    zoomMapInAction->setShortcut(tr("Ctrl++"));
+    zoomMapOutAction->setShortcut(tr("Ctrl+-"));
 
     connect(
-        actZoomMapFull, SIGNAL(triggered()),
-        editorMain,     SLOT(zoomMapFull())
+        zoomMapFullAction, SIGNAL(triggered()),
+        mainEditor,        SLOT(zoomMapFull())
     );
 
     connect(
-        actZoomMapIn,   SIGNAL(triggered()),
-        editorMain,     SLOT(zoomMapIn())
+        zoomMapInAction,   SIGNAL(triggered()),
+        mainEditor,        SLOT(zoomMapIn())
     );
 
     connect(
-        actZoomMapOut,  SIGNAL(triggered()),
-        editorMain,     SLOT(zoomMapOut())
+        zoomMapOutAction,  SIGNAL(triggered()),
+        mainEditor,        SLOT(zoomMapOut())
     );
 
     // Show/Hide Grid
-    actToggleMapGrid = new QAction(tr("Show Map Grid"), this);
-    actToggleMapGrid->setCheckable(true);
+    toggleMapGridAction = new QAction(tr("Show Map Grid"), this);
+    toggleMapGridAction->setCheckable(true);
 
     connect(
-        actToggleMapGrid, SIGNAL(triggered(bool)),
-        editorMain,       SLOT(toggleMapGrid(bool))
+        toggleMapGridAction, SIGNAL(triggered(bool)),
+        mainEditor,          SLOT(toggleMapGrid(bool))
     );
 }
 
-void MainWindow::createMenus() {
+void MainWindow::initMenus() {
     // File
-    menuFile = menuBar()->addMenu(tr("&File"));
-    menuFile->addAction(actOpen);
-    menuFile->addAction(actSave);
-    menuFile->addAction(actSaveAs);
-    menuFile->addSeparator();
-    menuFile->addAction(actExit);
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(openAction);
+    fileMenu->addAction(saveAction);
+    fileMenu->addAction(saveAsAction);
+    fileMenu->addSeparator();
+    fileMenu->addAction(exitAction);
 
     // View
-    menuView = menuBar()->addMenu(tr("&View"));
-    menuView->addAction(actZoomMapFull);
-    menuView->addAction(actZoomMapIn);
-    menuView->addAction(actZoomMapOut);
-    menuView->addSeparator();
-    menuView->addAction(actToggleMapGrid);
+    viewMenu = menuBar()->addMenu(tr("&View"));
+    viewMenu->addAction(zoomMapFullAction);
+    viewMenu->addAction(zoomMapInAction);
+    viewMenu->addAction(zoomMapOutAction);
+    viewMenu->addSeparator();
+    viewMenu->addAction(toggleMapGridAction);
 
     // Window
-    menuWindow = menuBar()->addMenu(tr("&Window"));
+    windowMenu = menuBar()->addMenu(tr("&Window"));
 }
 
-void MainWindow::createToolBars() {
-    toolBarFile = addToolBar(tr("File"));
-    toolBarFile->addAction(actOpen);
-    toolBarFile->addAction(actSave);
+void MainWindow::initToolBars() {
+    fileToolBar = addToolBar(tr("File"));
+    fileToolBar->addAction(openAction);
+    fileToolBar->addAction(saveAction);
 }
 
 void MainWindow::open() {
     // if (maybeSave()) {
-        const QString fileName = QFileDialog::getOpenFileName(this);
+        const QString filePath = QFileDialog::getOpenFileName(this);
 
-        loadFile(fileName);
+        loadFile(filePath);
     // }
 }
 
 bool MainWindow::save() {
-    if (currentFile.isEmpty()) {
+    if (targetFilePath.isEmpty()) {
         return saveAs();
     } else {
-        return saveFile(currentFile);
+        return saveFile(targetFilePath);
     }
 }
 
@@ -142,44 +142,44 @@ bool MainWindow::saveAs() {
     return saveFile(files[0]);
 }
 
-void MainWindow::setCurrentFile(const QString& fileName) {
-    currentFile = fileName;
+void MainWindow::setTargetFilePath(const QString& filePath) {
+    targetFilePath = filePath;
     // textEdit->document()->setModified(false);
     // setWindowModified(false);
-    QString shownName = currentFile;
+    QString displayedFilename = targetFilePath;
 
-    if (currentFile.isEmpty()) {
-        shownName = "biginfo.bin";
+    if (targetFilePath.isEmpty()) {
+        displayedFilename = "biginfo.bin";
     }
 
-    setWindowFilePath(shownName);
+    setWindowFilePath(displayedFilename);
 }
 
-void MainWindow::loadFile(const QString& fileName) {
+void MainWindow::loadFile(const QString& filePath) {
     #ifndef QT_NO_CURSOR
     QApplication::setOverrideCursor(Qt::WaitCursor);
     #endif
 
     // Check file extension
-    const QString fileType = getFileExtension(fileName);
+    const QString fileType = getFileExtension(filePath);
 
     if (fileType != "bin") {
         QMessageBox::warning(
             this,
             tr("Nectaris PC Map Editor"),
-            tr("cannot open file %1.").arg(fileName)
+            tr("cannot open file %1.").arg(filePath)
         );
     } else {
         // Load data from file
-        delete necData;
+        delete fileData;
 
-        necData = new Nec::DataManager();
-        necData->read(fileName.toStdString());
+        fileData = new Nec::FileData();
+        fileData->read(filePath.toStdString());
 
-        editorMain->loadNecData(necData);
+        mainEditor->setTargetData(fileData);
 
         // Finished loading
-        setCurrentFile(fileName);
+        setTargetFilePath(filePath);
         statusBar()->showMessage(tr("File loaded"), 2000);
     }
 
@@ -188,15 +188,15 @@ void MainWindow::loadFile(const QString& fileName) {
     #endif
 }
 
-bool MainWindow::saveFile(const QString& fileName) {
-    QFile file(fileName);
+bool MainWindow::saveFile(const QString& filePath) {
+    QFile file(filePath);
 
     if (!file.open(QFile::WriteOnly)) {
         QMessageBox::warning(
             this,
             tr("Nectaris PC Map Editor"),
             tr("Cannot write file %1:\n%2.")
-                .arg(fileName, file.errorString())
+                .arg(filePath, file.errorString())
         );
 
         return false;
@@ -207,24 +207,24 @@ bool MainWindow::saveFile(const QString& fileName) {
     #endif
 
     // Write data to file
-    necData->write(fileName.toStdString());
+    fileData->write(filePath.toStdString());
 
     #ifndef QT_NO_CURSOR
     QApplication::restoreOverrideCursor();
     #endif
 
     // Finished Saving
-    setCurrentFile(fileName);
+    setTargetFilePath(filePath);
     statusBar()->showMessage(tr("File saved"), 2000);
 
     return true;
 }
 
-QString getFileExtension(const QString& fileName) {
-    const auto pos = fileName.lastIndexOf(QChar('.'));
+QString getFileExtension(const QString& filePath) {
+    const auto pos = filePath.lastIndexOf(QChar('.'));
 
-    if (pos != -1 && pos + 1 < fileName.size()) {
-        return fileName.mid(pos + 1);
+    if (pos != -1 && pos + 1 < filePath.size()) {
+        return filePath.mid(pos + 1);
     }
 
     return QString("");

@@ -11,14 +11,14 @@ SOURCES += \
     biginfo.cpp \
     bigmap.cpp \
     bigunit.cpp \
-    coordinates.cpp \
-    datamanager.cpp \
-    mapinfo.cpp \
-    mapmap.cpp \
-    mapname.cpp \
-    mapunit.cpp \
+    filedata.cpp \
+    levelinfo.cpp \
+    levelmap.cpp \
+    levelname.cpp \
+    levelunit.cpp \
+    mapposition.cpp \
+    playerattitude.cpp \
     playerrole.cpp \
-    playerstance.cpp \
     ter.cpp \
     tertype.cpp
 
@@ -26,15 +26,15 @@ HEADERS += \
     biginfo.h \
     bigmap.h \
     bigunit.h \
-    coordinates.h \
-    datamanager.h \
-    mapinfo.h \
-    mapmap.h \
-    mapname.h \
+    filedata.h \
+    levelinfo.h \
+    levelmap.h \
+    levelname.h \
+    levelunit.h \
+    mapposition.h \
     mapsize.h \
-    mapunit.h \
+    playerattitude.h \
     playerrole.h \
-    playerstance.h \
     ter.h \
     tertype.h
 

@@ -1,5 +1,5 @@
-#ifndef NEC_PLAYERROLE_H
-#define NEC_PLAYERROLE_H
+#ifndef NEC_PLAYERATTITUDE_H
+#define NEC_PLAYERATTITUDE_H
 
 #include <string>
 #include <vector>
@@ -8,9 +8,9 @@
 
 namespace Nec {
 
-class PlayerRole {
-    struct PlayerRoleMeta {
-                                PlayerRoleMeta(
+class PlayerAttitude {
+    struct PlayerAttitudeMeta {
+                                PlayerAttitudeMeta(
                                     const Raw::Byte value,
                                     const std::string& name
                                 ) : value(value), name(name) {}
@@ -20,15 +20,15 @@ class PlayerRole {
     };
 
 public:
-    static std::vector<PlayerRoleMeta> DATA;
+    static std::vector<PlayerAttitudeMeta> DATA;
 
-                                PlayerRole() : data(0), index(0) {}
-    explicit                    PlayerRole(std::size_t);
+                                PlayerAttitude() : data(0), index(0) {}
+    explicit                    PlayerAttitude(std::size_t);
 
     Raw::Byte                   toByte() const;
     std::size_t                 getIndex() const;
 
-    static std::vector<PlayerRoleMeta> initData();
+    static std::vector<PlayerAttitudeMeta> initData();
 
 private:
     Raw::Byte                   data;
@@ -37,4 +37,4 @@ private:
 
 } // namespace Nec
 
-#endif // NEC_PLAYERROLE_H
+#endif // NEC_PLAYERATTITUDE_H

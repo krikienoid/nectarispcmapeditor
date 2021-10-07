@@ -8,25 +8,25 @@ TEMPLATE = app
 QT += qml quick widgets
 
 SOURCES += main.cpp \
-    editormain.cpp \
-    editormapinfo.cpp \
-    editormapmap.cpp \
-    editorplayers.cpp \
-    pickermapinfo.cpp \
-    pickertertile.cpp \
-    pixmaptertiles.cpp \
-    scenemaptilegrid.cpp \
+    levelinfoeditor.cpp \
+    levelinfoselector.cpp \
+    levelmapeditor.cpp \
+    levelmapscene.cpp \
+    maineditor.cpp \
+    playerseditor.cpp \
+    terselector.cpp \
+    tertilespixmap.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    editormain.h \
-    editormapinfo.h \
-    editormapmap.h \
-    editorplayers.h \
-    pickermapinfo.h \
-    pickertertile.h \
-    pixmaptertiles.h \
-    scenemaptilegrid.h \
+    levelinfoeditor.h \
+    levelinfoselector.h \
+    levelmapeditor.h \
+    levelmapscene.h \
+    maineditor.h \
+    playerseditor.h \
+    terselector.h \
+    tertilespixmap.h \
     mainwindow.h
 
 RESOURCES += \

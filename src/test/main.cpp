@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "nec/mapname.h"
+#include "nec/levelname.h"
 #include "raw/byte.h"
 
 int main() {
@@ -12,20 +12,20 @@ int main() {
         Raw::Byte c(0xff01);
 
         std::cout << "0f: " << a.printString() << ' ' <<
-            a.printString(Raw::Byte::Print::BIN) << ' ' <<
-            a.printString(Raw::Byte::Print::DEC) << std::endl;
+            a.printString(Raw::Byte::Format::Bin) << ' ' <<
+            a.printString(Raw::Byte::Format::Dec) << std::endl;
         std::cout << "ff: " << b.printString() << ' ' <<
-            b.printString(Raw::Byte::Print::BIN) << ' ' <<
-            b.printString(Raw::Byte::Print::DEC) << std::endl;
+            b.printString(Raw::Byte::Format::Bin) << ' ' <<
+            b.printString(Raw::Byte::Format::Dec) << std::endl;
         std::cout << "01: " << c.printString() << ' ' <<
-            c.printString(Raw::Byte::Print::BIN) << ' ' <<
-            c.printString(Raw::Byte::Print::DEC) << std::endl;
+            c.printString(Raw::Byte::Format::Bin) << ' ' <<
+            c.printString(Raw::Byte::Format::Dec) << std::endl;
     }
 
     {
-        std::cout << std::endl << "Nec::MapName" << std::endl << std::endl;
-        Nec::MapName mapname("revolt");
-        std::cout << mapname.toString() << std::endl;
+        std::cout << std::endl << "Nec::LevelName" << std::endl << std::endl;
+        Nec::LevelName levelName("revolt");
+        std::cout << levelName.toString() << std::endl;
     }
 
     return 0;

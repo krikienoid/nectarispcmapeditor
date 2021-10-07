@@ -2,8 +2,8 @@
 
 namespace Raw {
 
-Byte::Byte(const bool bits[BITS]) {
-    for (std::size_t i = 0; i < BITS; ++i) {
+Byte::Byte(const bool bits[bitCount]) {
+    for (std::size_t i = 0; i < bitCount; ++i) {
         data += bits[i];
         data <<= 1;
     }
@@ -65,24 +65,24 @@ std::string Byte::toStringDec() const {
 }
 
 std::string Byte::toStringBin() const {
-    std::string result(BITS, '0');
+    std::string result(bitCount, '0');
     unsigned char marker = 1;
 
-    for (std::size_t i = BITS; i; marker <<= 1) {
+    for (std::size_t i = bitCount; i; marker <<= 1) {
         result[--i] = (data & marker) ? '1' : '0';
     }
 
     return result;
 }
 
-std::string Byte::printString(const Print print) const {
+std::string Byte::printString(const Format format) const {
     std::string result;
 
-    switch (print) {
-        case Print::DEC: result = toStringDec(); break;
-        case Print::BIN: result = toStringBin(); break;
-        case Print::HEX:
-        default:  result = toStringHex(); break;
+    switch (format) {
+        case Format::Dec: result = toStringDec(); break;
+        case Format::Bin: result = toStringBin(); break;
+        case Format::Hex:
+        default: result = toStringHex(); break;
     }
 
     return result;

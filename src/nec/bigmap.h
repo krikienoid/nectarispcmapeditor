@@ -4,9 +4,9 @@
 #include <iostream>
 #include <vector>
 
-#include "raw/bytestring.h"
+#include "raw/bytearray.h"
 #include "biginfo.h"
-#include "mapmap.h"
+#include "levelmap.h"
 #include "mapsize.h"
 
 namespace Nec {
@@ -18,7 +18,7 @@ public:
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    std::vector<MapMap>         items;
+    std::vector<LevelMap>       items;
 
 private:
     BigInfo*                    bigInfo;

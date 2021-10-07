@@ -9,8 +9,8 @@ TARGET = blib
 
 SOURCES += \
     byte.cpp \
-    bytestring.cpp
+    bytearray.cpp
 
 HEADERS += \
     byte.h \
-    bytestring.h
+    bytearray.h
