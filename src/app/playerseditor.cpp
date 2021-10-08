@@ -105,7 +105,7 @@ void PlayersEditor::initPlayerRoleComboBoxes() {
     );
 
     // Layout
-    playerRoleGroupBox = new QGroupBox(tr("Player Role"), this);
+    playerRoleGroupBox = new QGroupBox(tr("Player roles"), this);
     playerRoleGroupBox->setLayout(layout);
 }
 
@@ -158,7 +158,7 @@ void PlayersEditor::initPlayerAttitudeComboBoxes() {
     );
 
     // Layout
-    playerAttitudeGroupBox = new QGroupBox(tr("Player Stance"), this);
+    playerAttitudeGroupBox = new QGroupBox(tr("Player attitudes"), this);
     playerAttitudeGroupBox->setLayout(layout);
 }
 

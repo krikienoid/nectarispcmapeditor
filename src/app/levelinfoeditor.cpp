@@ -19,7 +19,7 @@ LevelInfoEditor::LevelInfoEditor(QWidget* const parent) : QWidget(parent) {
 
     // Layout
     const auto layoutMain = new QVBoxLayout();
-    layoutMain->addWidget(new QLabel(tr("Map:"), this));
+    layoutMain->addWidget(new QLabel(tr("Level:"), this));
     layoutMain->addWidget(levelNameEdit);
     layoutMain->addWidget(line);
 

@@ -7,11 +7,11 @@ std::vector<std::string> TER_FILTER_GROUP_NAMES;
 
 void initTerTypeMeta() {
     TER_FILTER_GROUP_NAMES.resize(static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Last) + 1);
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Plain)]        = "Plains";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Road)]         = "Roads";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Hill)]         = "Hills";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Rock)]         = "Rocks";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Mountain)]     = "Mountains";
+        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Plain)]        = "Plain";
+        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Road)]         = "Road";
+        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Hill)]         = "Hill";
+        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Rock)]         = "Rock";
+        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Mountain)]     = "Mountain";
         TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Valley)]       = "Valley";
         TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Sand)]         = "Sand";
         TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Brush)]        = "Brush";
@@ -20,7 +20,7 @@ void initTerTypeMeta() {
         TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::ShallowWater)] = "Shallow Water";
         TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::DeepWater)]    = "Deep Water";
         TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Harbor)]       = "Harbor";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Coast)]        = "Coasts";
+        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Coast)]        = "Coast";
     TER_TYPE_DATA.push_back(TerTypeMeta("Plains",        1.05, TerTypeMeta::TerFilterGroup::Plain));
     TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
     TER_TYPE_DATA.push_back(TerTypeMeta("Hills",         1.20, TerTypeMeta::TerFilterGroup::Hill));

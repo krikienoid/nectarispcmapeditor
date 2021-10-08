@@ -243,7 +243,7 @@ void LevelMapEditor::initTilesetSelector() {
     layout->addLayout(layoutRow2);
 
     tilesetSelectorGroupBox = new QGroupBox(tr("Tilesets"));
-    tilesetSelectorGroupBox->setToolTip(tr("Pick up to 5 tileset files to load"));
+    tilesetSelectorGroupBox->setToolTip(tr("Select up to 5 tilesets to load for this level."));
     tilesetSelectorGroupBox->setLayout(layout);
 }
 
@@ -270,14 +270,14 @@ void LevelMapEditor::initTerSelector() {
     // Selected Tile
     const auto layoutRow1 = new QHBoxLayout();
     layoutRow1->setAlignment(Qt::AlignLeft);
-    layoutRow1->addWidget(new QLabel(tr("Selected Tile: "), this));
+    layoutRow1->addWidget(new QLabel(tr("Selected tile: "), this));
     layoutRow1->addWidget(selectedTerImageLabel);
     layoutRow1->addWidget(selectedTerTypeNameLabel);
 
     // Show Tiles
     const auto layoutRow2 = new QHBoxLayout();
     layoutRow2->setAlignment(Qt::AlignLeft);
-    layoutRow2->addWidget(new QLabel(tr("Show: "), this));
+    layoutRow2->addWidget(new QLabel(tr("Filter by type: "), this));
     layoutRow2->addWidget(terSelector->terFilterGroupComboBox);
 
     const auto layout = new QVBoxLayout();
@@ -286,7 +286,7 @@ void LevelMapEditor::initTerSelector() {
     layout->addLayout(layoutRow2);
     layout->addWidget(terSelector);
 
-    terSelectorGroupBox = new QGroupBox(tr("Terrain Tiles"));
+    terSelectorGroupBox = new QGroupBox(tr("Terrain tiles"));
     terSelectorGroupBox->setLayout(layout);
 }
 
@@ -320,7 +320,7 @@ void LevelMapEditor::initMapSizeSelector() {
     layout->addWidget(new QLabel(tr("Height: "), this));
     layout->addWidget(chunkCountYComboBox);
 
-    mapSizeGroupBox = new QGroupBox(tr("Map Size"));
+    mapSizeGroupBox = new QGroupBox(tr("Map size"));
     mapSizeGroupBox->setLayout(layout);
 }
 

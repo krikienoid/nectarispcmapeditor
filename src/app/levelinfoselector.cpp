@@ -28,7 +28,7 @@ LevelInfoSelector::LevelInfoSelector(QWidget* const parent) : QWidget(parent) {
     const auto layoutCol = new QVBoxLayout();
     layoutCol->addWidget(levelInfoList);
 
-    const auto listGroupBox = new QGroupBox(tr("Map List"), this);
+    const auto listGroupBox = new QGroupBox(tr("Levels"), this);
     listGroupBox->setContentsMargins(0, 8, 0, 0);
     listGroupBox->setLayout(layoutCol);
 

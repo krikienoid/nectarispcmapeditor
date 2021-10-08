@@ -25,16 +25,16 @@ std::size_t PlayerRole::getIndex() const {
 std::vector<PlayerRole::PlayerRoleMeta> PlayerRole::initData() {
     std::vector<PlayerRoleMeta> result;
 
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x00), "User"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x01), "Comp"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x02), "Norm"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x03), "Capi"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x04), "Atck"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x05), "Kill"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x06), "Wall"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x07), "Spec"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0x08), "Auto"));
-    result.push_back(PlayerRoleMeta(Raw::Byte(0xff), "Dead"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x00), "USER"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x01), "COMP"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x02), "NORM"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x03), "CAPI"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x04), "ATCK"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x05), "KILL"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x06), "WALL"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x07), "SPEC"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0x08), "AUTO"));
+    result.push_back(PlayerRoleMeta(Raw::Byte(0xff), "DEAD"));
 
     return result;
 }
