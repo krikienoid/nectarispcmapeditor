@@ -4,18 +4,14 @@
 #include <QPixmap>
 #include <QWidget>
 
+#include "constants.h"
+
 namespace App {
 
 class TerTilesPixmap : public QWidget {
     Q_OBJECT
 
 public:
-    static constexpr int        tileWidth       = 16;
-    static constexpr int        tileHeight      = 16;
-    static constexpr int        tilesetColCount = 16;
-    static constexpr int        tilesetRowCount = 144;
-    static constexpr int        tileCount       = 0x480;
-
     explicit                    TerTilesPixmap(QWidget* parent = nullptr);
                                 ~TerTilesPixmap();
 

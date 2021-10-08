@@ -21,7 +21,7 @@ TerSelector::TerSelector(QWidget* const parent) :
     const TerTilesPixmap terTilesPixmap;
 
     // Terrain tiles
-    for (int i = 0; i < TerTilesPixmap::tileCount; ++i) {
+    for (int i = 0; i < Constants::tileCount; ++i) {
         const auto icon = new QIcon(terTilesPixmap.getTerTile(i));
         const auto terItem = new QListWidgetItem(*icon, nullptr);
 
@@ -93,7 +93,7 @@ void TerSelector::selectTer(QListWidgetItem* const terItem) {
 void TerSelector::updateActiveTilesets() {
     static constexpr int tilesetItemCount = 128;
 
-    for (int i = 0; i < TerTilesPixmap::tileCount; ++i) {
+    for (int i = 0; i < Constants::tileCount; ++i) {
         item(i)->setHidden(
             !tilesetSelections[i / tilesetItemCount] ||
             (

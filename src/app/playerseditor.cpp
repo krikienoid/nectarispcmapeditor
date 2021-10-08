@@ -79,7 +79,7 @@ void PlayersEditor::initPlayerRoleComboBoxes() {
     // ComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
-    for (int i = 0; i < playerCount; ++i) {
+    for (int i = 0; i < static_cast<int>(Nec::LevelInfo::playerCount); ++i) {
         const auto comboBox = createPlayerRoleComboBox();
 
         layout->addWidget(
@@ -110,6 +110,8 @@ void PlayersEditor::initPlayerRoleComboBoxes() {
 }
 
 void PlayersEditor::initPlayerAttitudeComboBoxes() {
+    constexpr int playerCount = static_cast<int>(Nec::LevelInfo::playerCount);
+
     // Player Attitudes
     const auto layout = new QGridLayout();
     layout->setAlignment(Qt::AlignTop);

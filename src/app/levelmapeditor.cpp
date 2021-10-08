@@ -42,7 +42,7 @@ void LevelMapEditor::selectMapCell(const int value) {
 
 void LevelMapEditor::editActiveTilesets() {
     // Widget Data
-    for (int i = 0; i < tilesetCount; ++i) {
+    for (int i = 0; i < Constants::tilesetCount; ++i) {
         terSelector->tilesetSelections[i] = tilesetCheckBoxes[i]->isChecked();
     }
 
@@ -59,7 +59,7 @@ void LevelMapEditor::editActiveTilesets() {
 
     for (
         int i = 0;
-        i < tilesetCount && j < Nec::LevelInfo::activeTilesetCount;
+        i < Constants::tilesetCount && j < Nec::LevelInfo::activeTilesetCount;
         ++i
     ) {
         if (terSelector->tilesetSelections[i]) {
@@ -94,7 +94,7 @@ void LevelMapEditor::setTargetData(
     targetLevelInfo = levelInfo;
     targetLevelMap  = levelMap;
 
-    for (int i = 0; i < tilesetCount; ++i) {
+    for (int i = 0; i < Constants::tilesetCount; ++i) {
         terSelector->tilesetSelections[i] = hasActiveTileset(i);
     }
 
@@ -112,10 +112,10 @@ void LevelMapEditor::updateState() {
         0,
         static_cast<int>(
             Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value()) + 1
-        ) * LevelMapScene::tileWidth,
+        ) * Constants::tileWidth,
         static_cast<int>(
             Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value()) + 1
-        ) * LevelMapScene::tileHeight
+        ) * Constants::tileHeight
     );
 
     mapView->verticalScrollBar()->setValue(0);
@@ -133,7 +133,7 @@ void LevelMapEditor::setMapGridVisible(const bool isOn) {
 }
 
 void LevelMapEditor::updateSelectedTer(int terIndex) {
-    if (terIndex >= TerTilesPixmap::tileCount) {
+    if (terIndex >= Constants::tileCount) {
         terIndex = 0;
     }
 
@@ -160,7 +160,7 @@ void LevelMapEditor::updateSelectedTer(int terIndex) {
 }
 
 void LevelMapEditor::updateActiveTilesets() {
-    for (int i = 0; i < tilesetCount; ++i) {
+    for (int i = 0; i < Constants::tilesetCount; ++i) {
         tilesetCheckBoxes[i]->setChecked(terSelector->tilesetSelections[i]);
     }
 
@@ -189,8 +189,8 @@ void LevelMapEditor::initMapView() {
     mapView->setSceneRect(
         0,
         0,
-        static_cast<int>(Nec::MapSize::getWidth(1)) * LevelMapScene::tileWidth,
-        static_cast<int>(Nec::MapSize::getHeight(1)) * LevelMapScene::tileHeight
+        static_cast<int>(Nec::MapSize::getWidth(1)) * Constants::tileWidth,
+        static_cast<int>(Nec::MapSize::getHeight(1)) * Constants::tileHeight
     );
 
     connect(
@@ -210,7 +210,7 @@ void LevelMapEditor::initTilesetSelector() {
     // QComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
-    for (int i = 0; i < tilesetCount; ++i) {
+    for (int i = 0; i < Constants::tilesetCount; ++i) {
         const auto checkBox = new QCheckBox(this);
 
         checkBox->setText(
@@ -218,7 +218,7 @@ void LevelMapEditor::initTilesetSelector() {
             QString::number(i + 1)
         );
 
-        if (i <= tilesetCount / 2) {
+        if (i <= Constants::tilesetCount / 2) {
             layoutRow1->addWidget(checkBox);
         } else {
             layoutRow2->addWidget(checkBox);

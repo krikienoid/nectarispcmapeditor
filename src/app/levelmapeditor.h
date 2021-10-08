@@ -22,9 +22,9 @@
 #include "nec/levelmap.h"
 #include "nec/mapsize.h"
 #include "nec/tertype.h"
+#include "constants.h"
 #include "levelmapscene.h"
 #include "terselector.h"
-#include "tertilespixmap.h"
 
 namespace App {
 
@@ -50,8 +50,6 @@ public slots:
 
 private:
     enum class                  ToolMode { Ter };
-
-    static constexpr int        tilesetCount = 9;
 
     void                        updateSelectedTer(int);
     void                        updateActiveTilesets();

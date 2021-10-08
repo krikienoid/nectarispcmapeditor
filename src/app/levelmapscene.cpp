@@ -20,9 +20,9 @@ LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
     for (int i = 0, ii = mapSize; i < ii; ++i) {
         const auto x        = i % maxWidth;
         const auto y        = i / maxWidth;
-        const auto offsetY  = (x % 2) ? tileHeight / 2 : 0;
-        const auto posX     = x * tileWidth;
-        const auto posY     = y * tileHeight + offsetY;
+        const auto offsetY  = (x % 2) ? Constants::tileHeight / 2 : 0;
+        const auto posX     = x * Constants::tileWidth;
+        const auto posY     = y * Constants::tileHeight + offsetY;
         const int terIndex  = 0;
 
         // Tile

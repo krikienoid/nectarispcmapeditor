@@ -19,6 +19,7 @@ SOURCES += main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    constants.h \
     levelinfoeditor.h \
     levelinfoselector.h \
     levelmapeditor.h \

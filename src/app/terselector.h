@@ -16,6 +16,7 @@
 #include <QWidget>
 
 #include "nec/tertype.h"
+#include "constants.h"
 #include "tertilespixmap.h"
 
 namespace App {
