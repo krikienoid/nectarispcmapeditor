@@ -85,15 +85,17 @@ void TerSelector::selectTerFilterGroup(const int i) {
 }
 
 void TerSelector::selectTer(QListWidgetItem* const terItem) {
-    emit selectedTer(terItem->data(
-        static_cast<int>(DataRole::TerIndex)
-    ).toInt());
+    emit selectedTer(
+        terItem->data(static_cast<int>(DataRole::TerIndex)).toInt()
+    );
 }
 
 void TerSelector::updateActiveTilesets() {
+    static constexpr int tilesetItemCount = 128;
+
     for (int i = 0; i < TerTilesPixmap::tileCount; ++i) {
         item(i)->setHidden(
-            !tilesetSelections[i / 128] ||
+            !tilesetSelections[i / tilesetItemCount] ||
             (
                 selectedTerFilterGroup > 0 &&
                 static_cast<int>(

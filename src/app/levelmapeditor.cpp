@@ -55,13 +55,17 @@ void LevelMapEditor::editActiveTilesets() {
         targetLevelInfo->activeTilesets[i] = Raw::Byte(0);
     }
 
+    std::size_t j = 0;
+
     for (
-        int i = 0, j = 0, jj = static_cast<int>(Nec::LevelInfo::activeTilesetCount);
-        i < tilesetCount && j < jj;
+        int i = 0;
+        i < tilesetCount && j < Nec::LevelInfo::activeTilesetCount;
         ++i
     ) {
         if (terSelector->tilesetSelections[i]) {
-            targetLevelInfo->activeTilesets[static_cast<std::size_t>(j++)] = Raw::Byte(i);
+            targetLevelInfo->activeTilesets[j] = Raw::Byte(i);
+
+            ++j;
         }
     }
 
@@ -144,10 +148,12 @@ void LevelMapEditor::updateSelectedTer(int terIndex) {
             levelMapScene->terTilesPixmap->getTerTile(terIndex)
         );
 
+        const auto& terTypeMeta = Nec::TER_TYPE_DATA[terTypeIndex];
+
         selectedTerTypeNameLabel->setText(
-            QString::fromStdString(Nec::TER_TYPE_DATA[terTypeIndex].name) +
+            QString::fromStdString(terTypeMeta.name) +
             QString(" (") +
-            QString::number((Nec::TER_TYPE_DATA[terTypeIndex].defense - 1) * 100) +
+            QString::number((terTypeMeta.defense - 1) * 100) +
             QString("%)")
         );
     }
@@ -155,9 +161,7 @@ void LevelMapEditor::updateSelectedTer(int terIndex) {
 
 void LevelMapEditor::updateActiveTilesets() {
     for (int i = 0; i < tilesetCount; ++i) {
-        tilesetCheckBoxes[i]->setChecked(
-            terSelector->tilesetSelections[i]
-        );
+        tilesetCheckBoxes[i]->setChecked(terSelector->tilesetSelections[i]);
     }
 
     terSelector->updateActiveTilesets();
@@ -185,10 +189,8 @@ void LevelMapEditor::initMapView() {
     mapView->setSceneRect(
         0,
         0,
-        static_cast<int>(Nec::MapSize::getWidth(1)) *
-            LevelMapScene::tileWidth,
-        static_cast<int>(Nec::MapSize::getHeight(1)) *
-            LevelMapScene::tileHeight
+        static_cast<int>(Nec::MapSize::getWidth(1)) * LevelMapScene::tileWidth,
+        static_cast<int>(Nec::MapSize::getHeight(1)) * LevelMapScene::tileHeight
     );
 
     connect(
@@ -212,7 +214,7 @@ void LevelMapEditor::initTilesetSelector() {
         const auto checkBox = new QCheckBox(this);
 
         checkBox->setText(
-            QString(tr("bg")) +
+            QString("bg") +
             QString::number(i + 1)
         );
 

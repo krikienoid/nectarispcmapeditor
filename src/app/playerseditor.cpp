@@ -132,8 +132,8 @@ void PlayersEditor::initPlayerAttitudeComboBoxes() {
     // ComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
-    for (int i = 0, k = 0; i < playerCount; ++i) {
-        for (int j = 0; j < playerCount; ++j, ++k) {
+    for (int i = 0; i < playerCount; ++i) {
+        for (int j = 0; j < playerCount; ++j) {
             const auto comboBox = createPlayerAttitudeComboBox();
 
             layout->addWidget(
@@ -147,7 +147,7 @@ void PlayersEditor::initPlayerAttitudeComboBoxes() {
                 signalMapper, SLOT(map())
             );
 
-            signalMapper->setMapping(comboBox, k);
+            signalMapper->setMapping(comboBox, i * playerCount + j);
             playerAttitudeComboBoxes.append(comboBox);
         }
     }

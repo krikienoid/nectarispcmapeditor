@@ -2,9 +2,7 @@
 
 namespace App {
 
-LevelMapScene::LevelMapScene(QWidget* const parent) :
-    QGraphicsScene(parent)
-{
+LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
     // Init tileset
     terTilesPixmap = new TerTilesPixmap(parent);
 
@@ -43,10 +41,9 @@ LevelMapScene::LevelMapScene(QWidget* const parent) :
 }
 
 void LevelMapScene::mousePressEvent(QGraphicsSceneMouseEvent* const event) {
-    emit selectedMapCell(itemAt(
-        event->scenePos(),
-        QTransform()
-    )->data(0).toInt());
+    emit selectedMapCell(
+        itemAt(event->scenePos(), QTransform())->data(0).toInt()
+    );
 }
 
 void LevelMapScene::setTargetData(
@@ -83,13 +80,15 @@ void LevelMapScene::updateTerTiles() {
         const auto y = i / maxWidth;
         int terIndex = 0;
 
+        const auto terTile = terTiles[i];
+
         if (x < width && y < height && i < mapSize) {
             terIndex = targetLevelMap->items[static_cast<std::size_t>(i)].toInt();
 
-            terTiles[i]->setVisible(true);
-            terTiles[i]->setData(0, QVariant(i));
+            terTile->setVisible(true);
+            terTile->setData(0, QVariant(i));
 
-            terTiles[i]->setToolTip(
+            terTile->setToolTip(
                 QString("(") +
                 QString::number(x) +
                 QString(", ") +
@@ -99,11 +98,11 @@ void LevelMapScene::updateTerTiles() {
                 QString::number(terIndex)
             );
         } else {
-            terTiles[i]->setVisible(false);
-            terTiles[i]->setData(0, QVariant(0xffff));
+            terTile->setVisible(false);
+            terTile->setData(0, QVariant(0xffff));
         }
 
-        terTiles[i]->setPixmap(terTilesPixmap->getTerTile(terIndex));
+        terTile->setPixmap(terTilesPixmap->getTerTile(terIndex));
     }
 }
 

@@ -2,10 +2,7 @@
 
 namespace Nec {
 
-LevelMap::LevelMap() {
-    cX = 0;
-    cY = 0;
-}
+LevelMap::LevelMap() : cX(0), cY(0) {}
 
 LevelMap::LevelMap(const std::size_t cX, const std::size_t cY) :
     cX(cX),
