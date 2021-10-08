@@ -29,6 +29,14 @@ ByteArray::ByteArray(const ByteArray& byteArray) {
     }
 }
 
+ByteArray::ByteArray(ByteArray&& tmp) noexcept {
+    length = tmp.length;
+    data   = tmp.data;
+
+    tmp.length = 0;
+    tmp.data   = nullptr;
+}
+
 ByteArray::~ByteArray() {
     delete[] data;
 }
@@ -201,8 +209,10 @@ ByteArray ByteArray::fromInt(int n) {
 void ByteArray::swap(ByteArray& byteArray) {
     std::size_t tmpSize = length;
     Byte*       tmpData = data;
+
     length = byteArray.length;
     data   = byteArray.data;
+
     byteArray.length = tmpSize;
     byteArray.data   = tmpData;
 }
