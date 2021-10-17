@@ -3,9 +3,6 @@
 namespace App {
 
 MainEditor::MainEditor(QWidget* const parent) : QWidget(parent) {
-    // Init Nec Data
-    Nec::initTerTypeMeta();
-
     // Init Children Widgets
 
     // LevelInfo Editor

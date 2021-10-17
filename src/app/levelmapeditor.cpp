@@ -143,12 +143,12 @@ void LevelMapEditor::updateSelectedTer(int terIndex) {
         terSelector->terData[terIndex]
     );
 
-    if (terTypeIndex < Nec::TER_TYPE_DATA.size()) {
+    if (terTypeIndex < Nec::TerType::data.size()) {
         selectedTerImageLabel->setPixmap(
             levelMapScene->terTilesPixmap->getTerTile(terIndex)
         );
 
-        const auto& terTypeMeta = Nec::TER_TYPE_DATA[terTypeIndex];
+        const auto& terTypeMeta = Nec::TerType::data[terTypeIndex];
 
         selectedTerTypeNameLabel->setText(
             QString::fromStdString(terTypeMeta.name) +

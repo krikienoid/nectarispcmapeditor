@@ -16,17 +16,19 @@ PlayersEditor::PlayersEditor(QWidget* const parent) : QWidget(parent) {
 }
 
 void PlayersEditor::editPlayerRole(const int i) {
-    targetLevelInfo->playerRole[static_cast<std::size_t>(i)] =
-        Nec::PlayerRole(static_cast<std::size_t>(
-            playerRoleComboBoxes[i]->currentIndex()
-        )).toByte();
+    const auto comboBox = playerRoleComboBoxes[i];
+
+    targetLevelInfo->playerRole[static_cast<std::size_t>(i)] = Raw::Byte(
+        comboBox->itemData(comboBox->currentIndex()).toInt()
+    );
 }
 
 void PlayersEditor::editPlayerAttitude(const int i) {
-    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)] =
-        Nec::PlayerAttitude(static_cast<std::size_t>(
-            playerAttitudeComboBoxes[i]->currentIndex()
-        )).toByte();
+    const auto comboBox = playerAttitudeComboBoxes[i];
+
+    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)] = Raw::Byte(
+        comboBox->itemData(comboBox->currentIndex()).toInt()
+    );
 }
 
 void PlayersEditor::setTargetData(Nec::LevelInfo* const levelInfo) {
@@ -35,27 +37,30 @@ void PlayersEditor::setTargetData(Nec::LevelInfo* const levelInfo) {
 
 void PlayersEditor::updateState() {
     for (int i = 0, ii = playerAttitudeComboBoxes.size(); i < ii; ++i) {
-        playerAttitudeComboBoxes[i]->setCurrentIndex(static_cast<int>(
-            Nec::PlayerAttitude(
-                targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].value()
-            ).getIndex()
-        ));
+        const auto comboBox = playerAttitudeComboBoxes[i];
+
+        comboBox->setCurrentIndex(comboBox->findData(QVariant(static_cast<int>(
+            targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].value()
+        ))));
     }
 
     for (int i = 0, ii = playerRoleComboBoxes.size(); i < ii; ++i) {
-        playerRoleComboBoxes[i]->setCurrentIndex(static_cast<int>(
-            Nec::PlayerRole(
-                targetLevelInfo->playerRole[static_cast<std::size_t>(i)].value()
-            ).getIndex()
-        ));
+        const auto comboBox = playerRoleComboBoxes[i];
+
+        comboBox->setCurrentIndex(comboBox->findData(QVariant(static_cast<int>(
+            targetLevelInfo->playerRole[static_cast<std::size_t>(i)].value()
+        ))));
     }
 }
 
 QComboBox* PlayersEditor::createPlayerRoleComboBox() {
     const auto comboBox = new QComboBox(this);
 
-    for (const auto& item : Nec::PlayerRole::DATA) {
-        comboBox->addItem(QString::fromStdString(item.name));
+    for (const auto& item : Nec::PlayerRole::data) {
+        comboBox->addItem(
+            QString::fromStdString(item.name),
+            QVariant(static_cast<int>(item.value.value()))
+        );
     }
 
     return comboBox;
@@ -64,8 +69,11 @@ QComboBox* PlayersEditor::createPlayerRoleComboBox() {
 QComboBox* PlayersEditor::createPlayerAttitudeComboBox() {
     const auto comboBox = new QComboBox(this);
 
-    for (const auto& item : Nec::PlayerAttitude::DATA) {
-        comboBox->addItem(QString::fromStdString(item.name));
+    for (const auto& item : Nec::PlayerAttitude::data) {
+        comboBox->addItem(
+            QString::fromStdString(item.name),
+            QVariant(static_cast<int>(item.value.value()))
+        );
     }
 
     return comboBox;
