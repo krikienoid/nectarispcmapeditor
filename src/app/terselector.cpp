@@ -54,16 +54,10 @@ TerSelector::TerSelector(QWidget* const parent) :
     terFilterGroupComboBox->addItem(tr("All"), QVariant(0));
     terFilterGroupComboBox->insertSeparator(1);
 
-    for (
-        int i = static_cast<int>(Nec::TerType::TerFilterGroup::First);
-        i <= static_cast<int>(Nec::TerType::TerFilterGroup::Last);
-        i++
-    ) {
+    for (std::size_t i = 0, ii = Nec::TerMoveType::data.size(); i < ii; ++i) {
         terFilterGroupComboBox->addItem(
-            QString::fromStdString(
-                Nec::TerType::terFilterGroupNames[static_cast<std::size_t>(i)]
-            ),
-            QVariant(i + 1)
+            QString::fromStdString(Nec::TerMoveType::data[i].name),
+            QVariant(static_cast<int>(i) + 1)
         );
     }
 
@@ -100,7 +94,7 @@ void TerSelector::updateActiveTilesets() {
                 selectedTerFilterGroup > 0 &&
                 static_cast<int>(
                     Nec::TerType::data[static_cast<std::size_t>(terData[i])]
-                        .terFilterGroup
+                        .terMoveType
                 ) + 1 != selectedTerFilterGroup
             )
         );
