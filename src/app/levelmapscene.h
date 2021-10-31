@@ -42,6 +42,10 @@ signals:
     void                        selectedMapCell(int);
 
 private:
+    enum DataRole {
+        MapCellIndexDataRole    = Qt::UserRole + 1
+    };
+
     void                        updateTerTiles();
     void                        updateGridTiles();
 

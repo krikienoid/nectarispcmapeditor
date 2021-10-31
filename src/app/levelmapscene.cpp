@@ -26,7 +26,7 @@ LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
         // Tile
         const auto terTile = addPixmap(terTilesPixmap->getTerTile(0));
         terTile->setPos(posX, posY);
-        terTile->setData(0, QVariant(i));
+        terTile->setData(MapCellIndexDataRole, QVariant(i));
 
         terTiles.append(terTile);
 
@@ -40,7 +40,7 @@ LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
 
 void LevelMapScene::mousePressEvent(QGraphicsSceneMouseEvent* const event) {
     emit selectedMapCell(
-        itemAt(event->scenePos(), QTransform())->data(0).toInt()
+        itemAt(event->scenePos(), QTransform())->data(MapCellIndexDataRole).toInt()
     );
 }
 
@@ -88,7 +88,6 @@ void LevelMapScene::updateTerTiles() {
             terIndex = targetLevelMap->items[static_cast<std::size_t>(i)].toInt();
 
             terTile->setVisible(true);
-            terTile->setData(0, QVariant(i));
 
             terTile->setToolTip(
                 QString("(") +
@@ -101,7 +100,6 @@ void LevelMapScene::updateTerTiles() {
             );
         } else {
             terTile->setVisible(false);
-            terTile->setData(0, QVariant(0xffff));
         }
 
         terTile->setPixmap(terTilesPixmap->getTerTile(terIndex));

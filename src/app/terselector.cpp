@@ -25,7 +25,7 @@ TerSelector::TerSelector(QWidget* const parent) :
         const auto icon = new QIcon(terTilesPixmap.getTerTile(i));
         const auto terItem = new QListWidgetItem(*icon, nullptr);
 
-        terItem->setData(static_cast<int>(DataRole::TerIndex), QVariant(i));
+        terItem->setData(TerIndexDataRole, QVariant(i));
 
         terItem->setToolTip(
             QString(tr("Ter: ")) +
@@ -80,7 +80,7 @@ void TerSelector::selectTerFilterGroup(const int i) {
 
 void TerSelector::selectTer(QListWidgetItem* const terItem) {
     emit selectedTer(
-        terItem->data(static_cast<int>(DataRole::TerIndex)).toInt()
+        terItem->data(TerIndexDataRole).toInt()
     );
 }
 

@@ -71,14 +71,14 @@ void LevelInfoSelector::updateState() {
 }
 
 int LevelInfoSelector::getItemData(QListWidgetItem* const levelInfoItem) {
-    return levelInfoItem->data(Qt::UserRole).toInt();
+    return levelInfoItem->data(LevelInfoIndexDataRole).toInt();
 }
 
 void LevelInfoSelector::setItemData(
     QListWidgetItem* const levelInfoItem,
     const int i
 ) {
-    levelInfoItem->setData(Qt::UserRole, QVariant(i));
+    levelInfoItem->setData(LevelInfoIndexDataRole, QVariant(i));
 }
 
 } // namespace App

@@ -42,10 +42,10 @@ signals:
     void                        selectedTer(int);
 
 private:
-    enum class DataRole {
-        TerIndex = Qt::UserRole + 10,
-        TerType  = Qt::UserRole + 11,
-        TerName  = Qt::UserRole + 12
+    enum DataRole {
+        TerIndexDataRole        = Qt::UserRole + 10,
+        TerTypeDataRole         = Qt::UserRole + 11,
+        TerNameDataRole         = Qt::UserRole + 12
     };
 
     int                         selectedTerFilterGroup;
