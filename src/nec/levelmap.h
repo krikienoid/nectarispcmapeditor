@@ -17,8 +17,6 @@ public:
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    void                        resize(std::size_t);
-
     std::size_t                 cX;
     std::size_t                 cY;
 

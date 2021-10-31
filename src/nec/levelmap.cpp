@@ -8,7 +8,7 @@ LevelMap::LevelMap(const std::size_t cX, const std::size_t cY) :
     cX(cX),
     cY(cY)
 {
-    items.resize(MapSize::maxSize);
+    items.resize(MapSize::maxSize, Raw::ByteArray(2));
 }
 
 std::istream& LevelMap::read(std::istream& ins) {
@@ -43,10 +43,6 @@ std::ostream& LevelMap::write(std::ostream& outs) const {
     }
 
     return outs;
-}
-
-void LevelMap::resize(const std::size_t n) {
-    items.resize(n, Raw::ByteArray(2));
 }
 
 } // namespace Nec
