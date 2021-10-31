@@ -14,19 +14,17 @@ LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
     painter.drawRect(0, 0, 16, 16);
 
     // Build terrain tile graphics
-    constexpr int maxWidth = static_cast<int>(Nec::MapSize::getWidth(4));
-    constexpr int mapSize  = static_cast<int>(Nec::MapSize::maxSize);
+    constexpr int maxWidth = static_cast<int>(Nec::MapSize::maxWidth);
 
-    for (int i = 0, ii = mapSize; i < ii; ++i) {
+    for (int i = 0, ii = static_cast<int>(Nec::MapSize::maxSize); i < ii; ++i) {
         const auto x        = i % maxWidth;
         const auto y        = i / maxWidth;
         const auto offsetY  = (x % 2) ? Constants::tileHeight / 2 : 0;
         const auto posX     = x * Constants::tileWidth;
         const auto posY     = y * Constants::tileHeight + offsetY;
-        const int terIndex  = 0;
 
         // Tile
-        const auto terTile = addPixmap(terTilesPixmap->getTerTile(terIndex));
+        const auto terTile = addPixmap(terTilesPixmap->getTerTile(0));
         terTile->setPos(posX, posY);
         terTile->setData(0, QVariant(i));
 
@@ -66,14 +64,16 @@ void LevelMapScene::setMapGridVisible(const bool isOn) {
 }
 
 void LevelMapScene::updateTerTiles() {
-    constexpr int maxWidth = static_cast<int>(Nec::MapSize::getWidth(4));
-    const int width        = static_cast<int>(
-        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1)
-    );
-    const int height       = static_cast<int>(
-        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1)
-    );
-    const int mapSize      = static_cast<int>(targetLevelMap->items.size());
+    if (targetLevelMap->items.size() == 0) {
+        // Exit if LevelMap is not initialized.
+        return;
+    }
+
+    constexpr int maxWidth = static_cast<int>(Nec::MapSize::maxWidth);
+    const auto width  =
+        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1);
+    const auto height =
+        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1);
 
     for (int i = 0, ii = terTiles.size(); i < ii; ++i) {
         const auto x = i % maxWidth;
@@ -82,7 +82,9 @@ void LevelMapScene::updateTerTiles() {
 
         const auto terTile = terTiles[i];
 
-        if (x < width && y < height && i < mapSize) {
+        if (
+            Nec::MapSize::isInBounds(static_cast<std::size_t>(i), width, height)
+        ) {
             terIndex = targetLevelMap->items[static_cast<std::size_t>(i)].toInt();
 
             terTile->setVisible(true);
@@ -107,20 +109,15 @@ void LevelMapScene::updateTerTiles() {
 }
 
 void LevelMapScene::updateGridTiles() {
-    constexpr int maxWidth = static_cast<int>(Nec::MapSize::getWidth(4));
-    const int width        = static_cast<int>(
-        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1)
-    );
-    const int height       = static_cast<int>(
-        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1)
-    );
+    const auto width  =
+        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1);
+    const auto height =
+        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1);
 
     for (int i = 0, ii = gridTiles.size(); i < ii; ++i) {
-        const auto x = i % maxWidth;
-        const auto y = i / maxWidth;
-
         gridTiles[i]->setVisible(
-            isMapGridVisible && x < width && y < height
+            isMapGridVisible &&
+            Nec::MapSize::isInBounds(static_cast<std::size_t>(i), width, height)
         );
     }
 }

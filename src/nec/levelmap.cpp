@@ -12,15 +12,11 @@ LevelMap::LevelMap(const std::size_t cX, const std::size_t cY) :
 }
 
 std::istream& LevelMap::read(std::istream& ins) {
-    constexpr std::size_t maxWidth  = MapSize::getWidth(4);
-    const std::size_t width         = MapSize::getWidth(cX + 1);
-    const std::size_t height        = MapSize::getHeight(cY + 1);
+    const auto width  = MapSize::getWidth(cX + 1);
+    const auto height = MapSize::getHeight(cY + 1);
 
     for (std::size_t i = 0, ii = items.size(); i < ii; ++i) {
-        const auto x = i % maxWidth;
-        const auto y = i / maxWidth;
-
-        if (x < width && y < height) {
+        if (MapSize::isInBounds(i, width, height)) {
             items[i].readLittle(ins);
         }
     }
@@ -29,15 +25,11 @@ std::istream& LevelMap::read(std::istream& ins) {
 }
 
 std::ostream& LevelMap::write(std::ostream& outs) const {
-    constexpr std::size_t maxWidth  = MapSize::getWidth(4);
-    const std::size_t width         = MapSize::getWidth(cX + 1);
-    const std::size_t height        = MapSize::getHeight(cY + 1);
+    const auto width  = MapSize::getWidth(cX + 1);
+    const auto height = MapSize::getHeight(cY + 1);
 
     for (std::size_t i = 0, ii = MapSize::maxSize; i < ii; ++i) {
-        const auto x = i % maxWidth;
-        const auto y = i / maxWidth;
-
-        if (x < width && y < height) {
+        if (MapSize::isInBounds(i, width, height)) {
             items[i].writeLittle(outs);
         }
     }
