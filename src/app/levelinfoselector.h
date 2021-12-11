@@ -31,6 +31,10 @@ signals:
     void                        selectedLevelInfo(int);
 
 private:
+    enum DataRole {
+        LevelInfoIndexDataRole  = Qt::UserRole + 1
+    };
+
     int                         getItemData(QListWidgetItem*);
     void                        setItemData(QListWidgetItem*, int);
 

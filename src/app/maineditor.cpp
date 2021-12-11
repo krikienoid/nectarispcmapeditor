@@ -3,12 +3,9 @@
 namespace App {
 
 MainEditor::MainEditor(QWidget* const parent) : QWidget(parent) {
-    // Init Nec Data
-    Nec::initTerTypeMeta();
+    // Init children widgets.
 
-    // Init Children Widgets
-
-    // LevelInfo Editor
+    // Init LevelInfoEditor.
     levelInfoEditor = new LevelInfoEditor(this);
 
     connect(
@@ -16,7 +13,7 @@ MainEditor::MainEditor(QWidget* const parent) : QWidget(parent) {
         this,            SLOT(signalUpdate())
     );
 
-    // LevelInfo Selector
+    // Init LevelInfoSelector.
     levelInfoSelector = new LevelInfoSelector(this);
 
     connect(
@@ -24,13 +21,13 @@ MainEditor::MainEditor(QWidget* const parent) : QWidget(parent) {
         this,              SLOT(selectLevelInfo(int))
     );
 
-    // LevelMap Editor
+    // Init LevelMapEditor.
     levelMapEditor = new LevelMapEditor(this);
 
-    // Players Editor
+    // Init PlayersEditor.
     playersEditor = new PlayersEditor(this);
 
-    // Build Layout
+    // Init layout.
     levelInfoSelector->setFixedWidth(180);
     levelInfoEditor->setFixedWidth(180);
 
@@ -83,7 +80,7 @@ void MainEditor::setTargetData(Nec::FileData* const fileData) {
 
     levelInfoSelector->setTargetData(targetFileData);
 
-    // Select empty map 0 by default
+    // Select empty map 0 by default.
     loadSelectedLevelData(0);
 }
 
@@ -108,7 +105,7 @@ void MainEditor::loadSelectedLevelData(const int value) {
     playersEditor->setTargetData(levelInfo);
     levelMapEditor->setTargetData(levelInfo, levelMap);
 
-    // All updating is triggered by MainEditor
+    // All updating is triggered by MainEditor.
     updateState();
 }
 

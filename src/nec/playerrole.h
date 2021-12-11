@@ -8,32 +8,16 @@
 
 namespace Nec {
 
-class PlayerRole {
-    struct PlayerRoleMeta {
-                                PlayerRoleMeta(
-                                    const Raw::Byte value,
-                                    const std::string& name
-                                ) : value(value), name(name) {}
+namespace PlayerRole {
 
-        Raw::Byte               value;
-        std::string             name;
-    };
-
-public:
-    static std::vector<PlayerRoleMeta> DATA;
-
-                                PlayerRole() : data(0), index(0) {}
-    explicit                    PlayerRole(std::size_t);
-
-    Raw::Byte                   toByte() const;
-    std::size_t                 getIndex() const;
-
-    static std::vector<PlayerRoleMeta> initData();
-
-private:
-    Raw::Byte                   data;
-    std::size_t                 index;
+struct PlayerRoleMeta {
+    const Raw::Byte             value;
+    const std::string           name;
 };
+
+extern const std::vector<PlayerRoleMeta> data;
+
+} // namespace PlayerRole
 
 } // namespace Nec
 

@@ -15,6 +15,7 @@ public:
     explicit                    ByteArray(std::size_t);
     explicit                    ByteArray(Byte);
                                 ByteArray(const ByteArray&);
+                                ByteArray(ByteArray&&) noexcept;
                                 ~ByteArray();
 
     ByteArray&                  operator=(ByteArray);

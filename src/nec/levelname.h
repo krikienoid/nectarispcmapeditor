@@ -9,8 +9,6 @@ namespace Nec {
 class LevelName {
 public:
     static constexpr std::size_t    length = 6;
-    static constexpr char           filler = '_';
-    static constexpr char           offsets[] = {72, -33, 88, 62, -22, 92};
 
                                 LevelName();
     explicit                    LevelName(const std::string&);
@@ -22,6 +20,9 @@ public:
     std::string                 toString() const;
 
 private:
+    static constexpr char       filler = '_';
+    static constexpr char       offsets[] = {72, -33, 88, 62, -22, 92};
+
     std::string                 data;
 };
 

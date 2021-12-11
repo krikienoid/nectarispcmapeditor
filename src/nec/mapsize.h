@@ -23,10 +23,16 @@ constexpr std::size_t getSize(std::size_t cX, std::size_t cY) {
     return getWidth(cX) * getHeight(cY);
 }
 
+constexpr std::size_t           maxWidth = getWidth(maxChunkCountX);
+
 constexpr std::size_t           maxSize = getSize(
                                     maxChunkCountX,
                                     maxChunkCountY
                                 );
+
+constexpr bool isInBounds(std::size_t i, std::size_t w, std::size_t h) {
+    return (i % maxWidth) < w && (i / maxWidth) < h;
+}
 
 } // namespace MapSize
 

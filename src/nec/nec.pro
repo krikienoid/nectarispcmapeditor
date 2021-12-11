@@ -20,6 +20,7 @@ SOURCES += \
     playerattitude.cpp \
     playerrole.cpp \
     ter.cpp \
+    termovetype.cpp \
     tertype.cpp
 
 HEADERS += \
@@ -36,6 +37,7 @@ HEADERS += \
     playerattitude.h \
     playerrole.h \
     ter.h \
+    termovetype.h \
     tertype.h
 
 # Byte Lib

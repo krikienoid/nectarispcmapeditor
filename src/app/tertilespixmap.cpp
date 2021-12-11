@@ -11,15 +11,15 @@ TerTilesPixmap::~TerTilesPixmap() {
 }
 
 QPixmap TerTilesPixmap::getTerTile(int i) const {
-    if (i >= tileCount) {
+    if (i >= Constants::tileCount) {
         i = 0;
     }
 
     return pixmap->copy(
-        (i % tilesetColCount) * tileWidth,
-        (i / tilesetColCount) * tileHeight,
-        tileWidth,
-        tileHeight
+        (i % Constants::tilesetColCount) * Constants::tileWidth,
+        (i / Constants::tilesetColCount) * Constants::tileHeight,
+        Constants::tileWidth,
+        Constants::tileHeight
     );
 }
 

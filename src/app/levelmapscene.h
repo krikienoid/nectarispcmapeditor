@@ -16,6 +16,7 @@
 #include "nec/levelinfo.h"
 #include "nec/levelmap.h"
 #include "nec/mapsize.h"
+#include "constants.h"
 #include "tertilespixmap.h"
 
 namespace App {
@@ -24,11 +25,6 @@ class LevelMapScene : public QGraphicsScene {
     Q_OBJECT
 
 public:
-    static constexpr int        tileWidth       = 16;
-    static constexpr int        tileHeight      = 16;
-    static constexpr int        tilesetColCount = 16;
-    static constexpr int        tilesetRowCount = 144;
-
     explicit                    LevelMapScene(QWidget* parent = nullptr);
 
     void                        mousePressEvent(QGraphicsSceneMouseEvent*);
@@ -46,6 +42,10 @@ signals:
     void                        selectedMapCell(int);
 
 private:
+    enum DataRole {
+        MapCellIndexDataRole    = Qt::UserRole + 1
+    };
+
     void                        updateTerTiles();
     void                        updateGridTiles();
 

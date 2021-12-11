@@ -6,7 +6,7 @@ TerSelector::TerSelector(QWidget* const parent) :
     QListWidget(parent),
     selectedTerFilterGroup(0)
 {
-    // Initialize internal resource ter.bin
+    // Initialize internal resource from ter.bin file.
     QFile terBin(":data/bin/ter.bin");
 
     terBin.open(QIODevice::ReadOnly);
@@ -17,15 +17,15 @@ TerSelector::TerSelector(QWidget* const parent) :
 
     terBin.close();
 
-    // Init tileset
+    // Init tileset.
     const TerTilesPixmap terTilesPixmap;
 
-    // Terrain tiles
-    for (int i = 0; i < TerTilesPixmap::tileCount; ++i) {
+    // Init terrain tiles.
+    for (int i = 0; i < Constants::tileCount; ++i) {
         const auto icon = new QIcon(terTilesPixmap.getTerTile(i));
         const auto terItem = new QListWidgetItem(*icon, nullptr);
 
-        terItem->setData(static_cast<int>(DataRole::TerIndex), QVariant(i));
+        terItem->setData(TerIndexDataRole, QVariant(i));
 
         terItem->setToolTip(
             QString(tr("Ter: ")) +
@@ -35,7 +35,7 @@ TerSelector::TerSelector(QWidget* const parent) :
         this->addItem(terItem);
     }
 
-    // Standard view settings
+    // Set standard view settings.
     setViewMode(QListView::IconMode);
     setUniformItemSizes(true);
     setIconSize(QSize(16, 16));
@@ -49,21 +49,15 @@ TerSelector::TerSelector(QWidget* const parent) :
     setStyleSheet("QListView { background-color: #222; }");
     setDragEnabled(false);
 
-    // Terrain Filter Dropdown list
+    // Init terrain group filter dropdown.
     terFilterGroupComboBox = new QComboBox();
     terFilterGroupComboBox->addItem(tr("All"), QVariant(0));
     terFilterGroupComboBox->insertSeparator(1);
 
-    for (
-        int i = static_cast<int>(Nec::TerTypeMeta::TerFilterGroup::First);
-        i <= static_cast<int>(Nec::TerTypeMeta::TerFilterGroup::Last);
-        i++
-    ) {
+    for (std::size_t i = 0, ii = Nec::TerMoveType::data.size(); i < ii; ++i) {
         terFilterGroupComboBox->addItem(
-            QString::fromStdString(
-                Nec::TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(i)]
-            ),
-            QVariant(i + 1)
+            QString::fromStdString(Nec::TerMoveType::data[i].name),
+            QVariant(static_cast<int>(i) + 1)
         );
     }
 
@@ -85,20 +79,22 @@ void TerSelector::selectTerFilterGroup(const int i) {
 }
 
 void TerSelector::selectTer(QListWidgetItem* const terItem) {
-    emit selectedTer(terItem->data(
-        static_cast<int>(DataRole::TerIndex)
-    ).toInt());
+    emit selectedTer(
+        terItem->data(TerIndexDataRole).toInt()
+    );
 }
 
 void TerSelector::updateActiveTilesets() {
-    for (int i = 0; i < TerTilesPixmap::tileCount; ++i) {
+    static constexpr int tilesetItemCount = 128;
+
+    for (int i = 0; i < Constants::tileCount; ++i) {
         item(i)->setHidden(
-            !tilesetSelections[i / 128] ||
+            !tilesetSelections[i / tilesetItemCount] ||
             (
                 selectedTerFilterGroup > 0 &&
                 static_cast<int>(
-                    Nec::TER_TYPE_DATA[static_cast<std::size_t>(terData[i])]
-                        .terFilterGroup
+                    Nec::TerType::data[static_cast<std::size_t>(terData[i])]
+                        .terMoveType
                 ) + 1 != selectedTerFilterGroup
             )
         );

@@ -3,19 +3,23 @@
 namespace Nec {
 
 BigMap::BigMap(BigInfo* const bigInfo) : bigInfo(bigInfo) {
-    for (std::size_t i = 0; i < BigInfo::levelCount; ++i) {
-        items.push_back(LevelMap());
-    }
+    items.resize(BigInfo::levelCount);
 }
 
 std::istream& BigMap::read(std::istream& ins) {
     for (std::size_t i = 0; i < BigInfo::levelCount; ++i) {
         if (bigInfo->levelInfoExists(i)) {
-            items[i].cX = bigInfo->items[i].chunkCountX.value();
-            items[i].cY = bigInfo->items[i].chunkCountY.value();
-            items[i].resize(MapSize::maxSize);
-            ins.seekg(bigInfo->items[i].levelMapAddress.toInt());
-            items[i].read(ins);
+            const auto& levelInfo = bigInfo->items[i];
+
+            LevelMap levelMap(
+                levelInfo.chunkCountX.value(),
+                levelInfo.chunkCountY.value()
+            );
+
+            ins.seekg(levelInfo.levelMapAddress.toInt());
+            levelMap.read(ins);
+
+            items[i] = levelMap;
         }
     }
 

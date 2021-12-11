@@ -42,9 +42,9 @@ private:
     void                        initMenus();
     void                        initToolBars();
 
-    void                        setTargetFilePath(const QString& filePath);
-    void                        loadFile(const QString& filePath);
-    bool                        saveFile(const QString& filePath);
+    void                        setTargetFilePath(const QString&);
+    void                        loadFile(const QString&);
+    bool                        saveFile(const QString&);
 
     QString                     targetFilePath;
 

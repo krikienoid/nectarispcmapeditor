@@ -31,9 +31,6 @@ public slots:
     void                        editPlayerAttitude(int);
 
 private:
-    static constexpr int playerCount =
-        static_cast<int>(Nec::LevelInfo::playerCount);
-
     QComboBox*                  createPlayerRoleComboBox();
     QComboBox*                  createPlayerAttitudeComboBox();
     void                        initPlayerRoleComboBoxes();

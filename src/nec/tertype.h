@@ -4,47 +4,23 @@
 #include <string>
 #include <vector>
 
+#include "raw/byte.h"
+#include "termovetype.h"
+
 namespace Nec {
 
+namespace TerType {
+
 struct TerTypeMeta {
-    enum class TerFilterGroup {
-        Plain,
-        Road,
-        Hill,
-        Rock,
-        Mountain,
-        Valley,
-        Sand,
-        Brush,
-        Forest,
-        Beach,
-        ShallowWater,
-        DeepWater,
-        Harbor,
-        Coast,
-        First = Plain,
-        Last  = Coast
-    };
-
-                                TerTypeMeta(
-                                    const std::string& name,
-                                    const double defense,
-                                    const TerFilterGroup terFilterGroup
-                                ) :
-                                    name(name),
-                                    defense(defense),
-                                    terFilterGroup(terFilterGroup)
-                                {}
-
-    std::string                 name;
-    double                      defense;
-    TerFilterGroup              terFilterGroup;
+    const Raw::Byte             value;
+    const std::string           name;
+    const double                defense;
+    const TerMoveTypeKey        terMoveType;
 };
 
-extern std::vector<TerTypeMeta> TER_TYPE_DATA;
-extern std::vector<std::string> TER_FILTER_GROUP_NAMES;
+extern const std::vector<TerTypeMeta> data;
 
-void initTerTypeMeta();
+} // namespace TerType
 
 } // namespace Nec
 

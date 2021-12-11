@@ -2,64 +2,43 @@
 
 namespace Nec {
 
-std::vector<TerTypeMeta> TER_TYPE_DATA;
-std::vector<std::string> TER_FILTER_GROUP_NAMES;
+namespace TerType {
 
-void initTerTypeMeta() {
-    TER_FILTER_GROUP_NAMES.resize(static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Last) + 1);
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Plain)]        = "Plain";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Road)]         = "Road";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Hill)]         = "Hill";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Rock)]         = "Rock";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Mountain)]     = "Mountain";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Valley)]       = "Valley";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Sand)]         = "Sand";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Brush)]        = "Brush";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Forest)]       = "Forest";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Beach)]        = "Beach";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::ShallowWater)] = "Shallow Water";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::DeepWater)]    = "Deep Water";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Harbor)]       = "Harbor";
-        TER_FILTER_GROUP_NAMES[static_cast<std::size_t>(TerTypeMeta::TerFilterGroup::Coast)]        = "Coast";
-    TER_TYPE_DATA.push_back(TerTypeMeta("Plains",        1.05, TerTypeMeta::TerFilterGroup::Plain));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Hills",         1.20, TerTypeMeta::TerFilterGroup::Hill));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Rocks",         1.30, TerTypeMeta::TerFilterGroup::Rock));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Valley",        1.00, TerTypeMeta::TerFilterGroup::Valley));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Mountains",     1.40, TerTypeMeta::TerFilterGroup::Mountain));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Plains",        1.05, TerTypeMeta::TerFilterGroup::Plain));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Forest",        1.25, TerTypeMeta::TerFilterGroup::Forest));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Brush",         1.08, TerTypeMeta::TerFilterGroup::Brush));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Rocks",         1.28, TerTypeMeta::TerFilterGroup::Rock));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Sea Cliff",     1.32, TerTypeMeta::TerFilterGroup::Coast));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Shallow Water", 1.12, TerTypeMeta::TerFilterGroup::ShallowWater));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Deep Water",    1.06, TerTypeMeta::TerFilterGroup::DeepWater));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Harbor",        1.10, TerTypeMeta::TerFilterGroup::Harbor));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Bridge",        1.02, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Valley",        1.00, TerTypeMeta::TerFilterGroup::Valley));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Beach",         1.15, TerTypeMeta::TerFilterGroup::Beach));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Desert Cliff",  1.35, TerTypeMeta::TerFilterGroup::Mountain));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Sand",          1.04, TerTypeMeta::TerFilterGroup::Sand));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Beach Cliff",   1.20, TerTypeMeta::TerFilterGroup::Coast));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Mountains",     1.40, TerTypeMeta::TerFilterGroup::Mountain));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Hills",         1.20, TerTypeMeta::TerFilterGroup::Hill));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Rocks",         1.30, TerTypeMeta::TerFilterGroup::Rock));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Valley",        1.00, TerTypeMeta::TerFilterGroup::Valley));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));   // Valley
-    TER_TYPE_DATA.push_back(TerTypeMeta("Plains",        1.05, TerTypeMeta::TerFilterGroup::Plain));  // Desert
-    TER_TYPE_DATA.push_back(TerTypeMeta("Forest",        1.25, TerTypeMeta::TerFilterGroup::Forest)); // Desert
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Roads",         1.00, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("HQ",            1.35, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("HQ",            1.35, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("HQ",            1.35, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("HQ",            1.35, TerTypeMeta::TerFilterGroup::Road));
-    TER_TYPE_DATA.push_back(TerTypeMeta("Depot",         1.00, TerTypeMeta::TerFilterGroup::Road));
-}
+const std::vector<TerTypeMeta> data = {
+    {Raw::Byte(0x00), "Plains",        1.05, TerMoveTypeKey::Plain},
+    {Raw::Byte(0x01), "Roads",         1.00, TerMoveTypeKey::Road},
+    {Raw::Byte(0x02), "Hills",         1.20, TerMoveTypeKey::Hill},
+    {Raw::Byte(0x03), "Rocks",         1.30, TerMoveTypeKey::Rock},
+    {Raw::Byte(0x04), "Valley",        1.00, TerMoveTypeKey::Valley},
+    {Raw::Byte(0x05), "Mountains",     1.40, TerMoveTypeKey::Mountain},
+    {Raw::Byte(0x06), "Roads",         1.00, TerMoveTypeKey::Road},
+    {Raw::Byte(0x07), "Plains",        1.05, TerMoveTypeKey::Plain},
+    {Raw::Byte(0x08), "Forest",        1.25, TerMoveTypeKey::Forest},
+    {Raw::Byte(0x09), "Brush",         1.08, TerMoveTypeKey::Brush},
+    {Raw::Byte(0x0a), "Rocks",         1.28, TerMoveTypeKey::Rock},
+    {Raw::Byte(0x0b), "Sea Cliff",     1.32, TerMoveTypeKey::Mountain},
+    {Raw::Byte(0x0c), "Shallow Water", 1.12, TerMoveTypeKey::ShallowWater},
+    {Raw::Byte(0x0d), "Deep Water",    1.06, TerMoveTypeKey::DeepWater},
+    {Raw::Byte(0x0e), "Harbor",        1.10, TerMoveTypeKey::DeepWater},
+    {Raw::Byte(0x0f), "Roads",         1.00, TerMoveTypeKey::Road},
+    {Raw::Byte(0x10), "Bridge",        1.02, TerMoveTypeKey::Road},
+    {Raw::Byte(0x11), "Valley",        1.00, TerMoveTypeKey::Valley},
+    {Raw::Byte(0x12), "Beach",         1.15, TerMoveTypeKey::Beach},
+    {Raw::Byte(0x13), "Desert Cliff",  1.35, TerMoveTypeKey::Mountain},
+    {Raw::Byte(0x14), "Sand",          1.04, TerMoveTypeKey::Plain},
+    {Raw::Byte(0x15), "Roads",         1.00, TerMoveTypeKey::Road},
+    {Raw::Byte(0x16), "Beach Cliff",   1.20, TerMoveTypeKey::Mountain},
+    {Raw::Byte(0x17), "Mountains",     1.40, TerMoveTypeKey::Mountain},
+    {Raw::Byte(0x18), "Hills",         1.20, TerMoveTypeKey::Hill},
+    {Raw::Byte(0x19), "Rocks",         1.30, TerMoveTypeKey::Rock},
+    {Raw::Byte(0x1a), "Valley",        1.00, TerMoveTypeKey::Valley},
+    {Raw::Byte(0x1b), "Roads",         1.00, TerMoveTypeKey::Road},   // Valley
+    {Raw::Byte(0x1c), "Plains",        1.05, TerMoveTypeKey::Plain},  // Desert
+    {Raw::Byte(0x1d), "Forest",        1.25, TerMoveTypeKey::Forest}, // Desert
+    {Raw::Byte(0x1e), "Roads",         1.00, TerMoveTypeKey::Road},
+    {Raw::Byte(0x1f), "Roads",         1.00, TerMoveTypeKey::Road}
+};
 
-//
+} // namespace TerType
 
 } // namespace Nec
