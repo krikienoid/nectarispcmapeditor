@@ -37,9 +37,11 @@ LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
 }
 
 void LevelMapScene::mousePressEvent(QGraphicsSceneMouseEvent* const event) {
-    emit selectedMapCell(
-        itemAt(event->scenePos(), QTransform())->data(MapCellIndexDataRole).toInt()
-    );
+    const auto terTile = itemAt(event->scenePos(), QTransform());
+
+    if (terTile) {
+        emit selectedMapCell(terTile->data(MapCellIndexDataRole).toInt());
+    }
 }
 
 void LevelMapScene::setTargetData(
