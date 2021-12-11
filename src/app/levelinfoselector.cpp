@@ -3,7 +3,6 @@
 namespace App {
 
 LevelInfoSelector::LevelInfoSelector(QWidget* const parent) : QWidget(parent) {
-    // List Widget
     levelInfoList = new QListWidget(this);
 
     connect(
@@ -11,7 +10,6 @@ LevelInfoSelector::LevelInfoSelector(QWidget* const parent) : QWidget(parent) {
         this,          SLOT(clickList(QListWidgetItem*))
     );
 
-    // Build LevelInfo List
     for (
         int i = 0, ii = static_cast<int>(Nec::BigInfo::levelCount);
         i < ii;
@@ -24,7 +22,6 @@ LevelInfoSelector::LevelInfoSelector(QWidget* const parent) : QWidget(parent) {
         levelInfoList->addItem(levelInfoItem);
     }
 
-    // Layout
     const auto layoutCol = new QVBoxLayout();
     layoutCol->addWidget(levelInfoList);
 
@@ -47,7 +44,6 @@ void LevelInfoSelector::setTargetData(const Nec::FileData* const fileData) {
 }
 
 void LevelInfoSelector::updateState() {
-    // Reset LevelInfo List
     for (std::size_t i = 0, ii = Nec::BigInfo::levelCount; i < ii; ++i) {
         const int value = static_cast<int>(i);
         const auto levelInfoItem = levelInfoList->item(value);

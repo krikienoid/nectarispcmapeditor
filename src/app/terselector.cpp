@@ -6,7 +6,7 @@ TerSelector::TerSelector(QWidget* const parent) :
     QListWidget(parent),
     selectedTerFilterGroup(0)
 {
-    // Initialize internal resource ter.bin
+    // Initialize internal resource from ter.bin file.
     QFile terBin(":data/bin/ter.bin");
 
     terBin.open(QIODevice::ReadOnly);
@@ -17,10 +17,10 @@ TerSelector::TerSelector(QWidget* const parent) :
 
     terBin.close();
 
-    // Init tileset
+    // Init tileset.
     const TerTilesPixmap terTilesPixmap;
 
-    // Terrain tiles
+    // Init terrain tiles.
     for (int i = 0; i < Constants::tileCount; ++i) {
         const auto icon = new QIcon(terTilesPixmap.getTerTile(i));
         const auto terItem = new QListWidgetItem(*icon, nullptr);
@@ -35,7 +35,7 @@ TerSelector::TerSelector(QWidget* const parent) :
         this->addItem(terItem);
     }
 
-    // Standard view settings
+    // Set standard view settings.
     setViewMode(QListView::IconMode);
     setUniformItemSizes(true);
     setIconSize(QSize(16, 16));
@@ -49,7 +49,7 @@ TerSelector::TerSelector(QWidget* const parent) :
     setStyleSheet("QListView { background-color: #222; }");
     setDragEnabled(false);
 
-    // Terrain Filter Dropdown list
+    // Init terrain group filter dropdown.
     terFilterGroupComboBox = new QComboBox();
     terFilterGroupComboBox->addItem(tr("All"), QVariant(0));
     terFilterGroupComboBox->insertSeparator(1);

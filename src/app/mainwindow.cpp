@@ -23,35 +23,35 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::initActions() {
-    // Open file
+    // Open
     openAction = new QAction(tr("&Open..."), this);
     openAction->setShortcuts(QKeySequence::Open);
     openAction->setStatusTip(tr("Open an existing file."));
 
     connect(openAction, SIGNAL(triggered()), this, SLOT(open()));
 
-    // Save file
+    // Save
     saveAction = new QAction(tr("&Save"), this);
     saveAction->setShortcuts(QKeySequence::Save);
     saveAction->setStatusTip(tr("Save file to disk."));
 
     connect(saveAction, SIGNAL(triggered()), this, SLOT(save()));
 
-    // Save file as copy
+    // Save As...
     saveAsAction = new QAction(tr("Save &As..."), this);
     saveAsAction->setShortcuts(QKeySequence::SaveAs);
     saveAsAction->setStatusTip(tr("Save file to new location."));
 
     connect(saveAsAction, SIGNAL(triggered()), this, SLOT(saveAs()));
 
-    // Exit Application
+    // Exit
     exitAction = new QAction(tr("E&xit"), this);
     exitAction->setShortcuts(QKeySequence::Quit);
     exitAction->setStatusTip(tr("Exit the application."));
 
     connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 
-    // Zoom
+    // Zoom actions
     zoomMapFullAction = new QAction(tr("Actual Size"), this);
     zoomMapInAction   = new QAction(tr("Zoom In"),     this);
     zoomMapOutAction  = new QAction(tr("Zoom Out"),    this);
@@ -74,7 +74,7 @@ void MainWindow::initActions() {
         mainEditor,        SLOT(zoomMapOut())
     );
 
-    // Show/Hide Grid
+    // Show Map Grid
     toggleMapGridAction = new QAction(tr("Show Map Grid"), this);
     toggleMapGridAction->setCheckable(true);
 
@@ -160,7 +160,7 @@ void MainWindow::loadFile(const QString& filePath) {
     QApplication::setOverrideCursor(Qt::WaitCursor);
     #endif
 
-    // Check file extension
+    // Check file extension.
     const QString fileType = getFileExtension(filePath);
 
     if (fileType != "bin") {
@@ -170,7 +170,7 @@ void MainWindow::loadFile(const QString& filePath) {
             tr("Cannot open file %1.").arg(filePath)
         );
     } else {
-        // Load data from file
+        // Load data from file.
         delete fileData;
 
         fileData = new Nec::FileData();
@@ -178,7 +178,7 @@ void MainWindow::loadFile(const QString& filePath) {
 
         mainEditor->setTargetData(fileData);
 
-        // Finished loading
+        // Finished loading.
         setTargetFilePath(filePath);
         statusBar()->showMessage(tr("File loaded."), 2000);
     }
@@ -206,14 +206,14 @@ bool MainWindow::saveFile(const QString& filePath) {
     QApplication::setOverrideCursor(Qt::WaitCursor);
     #endif
 
-    // Write data to file
+    // Write data to file.
     fileData->write(filePath.toStdString());
 
     #ifndef QT_NO_CURSOR
     QApplication::restoreOverrideCursor();
     #endif
 
-    // Finished Saving
+    // Finished saving.
     setTargetFilePath(filePath);
     statusBar()->showMessage(tr("File saved."), 2000);
 

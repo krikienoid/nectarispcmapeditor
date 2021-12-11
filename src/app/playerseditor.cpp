@@ -3,11 +3,9 @@
 namespace App {
 
 PlayersEditor::PlayersEditor(QWidget* const parent) : QWidget(parent) {
-    // Init
     initPlayerRoleComboBoxes();
     initPlayerAttitudeComboBoxes();
 
-    // Layout
     const auto layoutMain = new QVBoxLayout();
     layoutMain->addWidget(playerRoleGroupBox);
     layoutMain->addWidget(playerAttitudeGroupBox);
@@ -80,11 +78,9 @@ QComboBox* PlayersEditor::createPlayerAttitudeComboBox() {
 }
 
 void PlayersEditor::initPlayerRoleComboBoxes() {
-    // Player Roles
     const auto layout = new QGridLayout();
     layout->setAlignment(Qt::AlignTop);
 
-    // ComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
     for (int i = 0; i < static_cast<int>(Nec::LevelInfo::playerCount); ++i) {
@@ -112,7 +108,6 @@ void PlayersEditor::initPlayerRoleComboBoxes() {
         this,         SLOT(editPlayerRole(int))
     );
 
-    // Layout
     playerRoleGroupBox = new QGroupBox(tr("Player roles"), this);
     playerRoleGroupBox->setLayout(layout);
 }
@@ -120,11 +115,9 @@ void PlayersEditor::initPlayerRoleComboBoxes() {
 void PlayersEditor::initPlayerAttitudeComboBoxes() {
     constexpr int playerCount = static_cast<int>(Nec::LevelInfo::playerCount);
 
-    // Player Attitudes
     const auto layout = new QGridLayout();
     layout->setAlignment(Qt::AlignTop);
 
-    // Labels
     for (int i = 0; i < playerCount; ++i) {
         layout->addWidget(
             new QLabel(QString("P") + QString::number(i + 1)),
@@ -139,7 +132,6 @@ void PlayersEditor::initPlayerAttitudeComboBoxes() {
         );
     }
 
-    // ComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
     for (int i = 0; i < playerCount; ++i) {
@@ -167,7 +159,6 @@ void PlayersEditor::initPlayerAttitudeComboBoxes() {
         this,         SLOT(editPlayerAttitude(int))
     );
 
-    // Layout
     playerAttitudeGroupBox = new QGroupBox(tr("Player attitudes"), this);
     playerAttitudeGroupBox->setLayout(layout);
 }

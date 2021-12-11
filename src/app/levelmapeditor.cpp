@@ -3,13 +3,13 @@
 namespace App {
 
 LevelMapEditor::LevelMapEditor(QWidget* const parent) : QWidget(parent) {
-    // Init Children
+    // Init children widgets.
     initMapView();
     initTerSelector();
     initTilesetSelector();
     initMapSizeSelector();
 
-    // Main Layout
+    // Init layout.
     const auto layoutMain = new QVBoxLayout();
     layoutMain->addWidget(terSelectorGroupBox);
     layoutMain->addWidget(mapSizeGroupBox);
@@ -17,7 +17,7 @@ LevelMapEditor::LevelMapEditor(QWidget* const parent) : QWidget(parent) {
 
     setLayout(layoutMain);
 
-    // Init State
+    // Init state.
     updateSelectedTer(0);
 
     toolMode = ToolMode::Ter;
@@ -41,12 +41,12 @@ void LevelMapEditor::selectMapCell(const int value) {
 }
 
 void LevelMapEditor::editActiveTilesets() {
-    // Widget Data
+    // Update widget data.
     for (int i = 0; i < Constants::tilesetCount; ++i) {
         terSelector->tilesetSelections[i] = tilesetCheckBoxes[i]->isChecked();
     }
 
-    // Nec Data
+    // Update file data.
     for (
         std::size_t i = 0, ii = Nec::LevelInfo::activeTilesetCount;
         i < ii;
@@ -69,7 +69,7 @@ void LevelMapEditor::editActiveTilesets() {
         }
     }
 
-    // Widget State
+    // Update widget state.
     updateActiveTilesets();
 }
 
@@ -178,7 +178,6 @@ bool LevelMapEditor::hasActiveTileset(int i) {
 }
 
 void LevelMapEditor::initMapView() {
-    // Map Grid
     levelMapScene = new LevelMapScene(this);
 
     mapView = new QGraphicsView(levelMapScene);
@@ -200,14 +199,12 @@ void LevelMapEditor::initMapView() {
 }
 
 void LevelMapEditor::initTilesetSelector() {
-    // Selected Tileset Range Frame
     const auto layoutRow1 = new QHBoxLayout();
     const auto layoutRow2 = new QHBoxLayout();
 
     layoutRow1->setAlignment(Qt::AlignLeft);
     layoutRow2->setAlignment(Qt::AlignLeft);
 
-    // QComboBoxes
     const auto signalMapper = new QSignalMapper(this);
 
     for (int i = 0; i < Constants::tilesetCount; ++i) {
@@ -239,7 +236,6 @@ void LevelMapEditor::initTilesetSelector() {
         this,         SLOT(editActiveTilesets())
     );
 
-    // Layout
     const auto layout = new QVBoxLayout();
     layout->addLayout(layoutRow1);
     layout->addLayout(layoutRow2);
@@ -250,7 +246,6 @@ void LevelMapEditor::initTilesetSelector() {
 }
 
 void LevelMapEditor::initTerSelector() {
-    // TerSelector
     terSelector = new TerSelector(this);
 
     connect(
@@ -258,25 +253,19 @@ void LevelMapEditor::initTerSelector() {
         this,        SLOT(selectTer(int))
     );
 
-    // Selector Status
     selectedTerImageLabel    = new QLabel(this);
     selectedTerTypeNameLabel = new QLabel(this);
 
-    // Separator
     const auto line = new QFrame(this);
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
 
-    // Layout
-
-    // Selected Tile
     const auto layoutRow1 = new QHBoxLayout();
     layoutRow1->setAlignment(Qt::AlignLeft);
     layoutRow1->addWidget(new QLabel(tr("Selected tile: "), this));
     layoutRow1->addWidget(selectedTerImageLabel);
     layoutRow1->addWidget(selectedTerTypeNameLabel);
 
-    // Show Tiles
     const auto layoutRow2 = new QHBoxLayout();
     layoutRow2->setAlignment(Qt::AlignLeft);
     layoutRow2->addWidget(new QLabel(tr("Filter by type: "), this));
@@ -293,7 +282,6 @@ void LevelMapEditor::initTerSelector() {
 }
 
 void LevelMapEditor::initMapSizeSelector() {
-    // Dropdown Menus
     chunkCountXComboBox = new QComboBox(this);
     chunkCountYComboBox = new QComboBox(this);
     chunkCountXComboBox->setFixedWidth(60);
@@ -314,7 +302,6 @@ void LevelMapEditor::initMapSizeSelector() {
         this,                SLOT(editChunkCountY(int))
     );
 
-    // Layout
     const auto layout = new QHBoxLayout();
     layout->setAlignment(Qt::AlignLeft);
     layout->addWidget(new QLabel(tr("Width: "), this));

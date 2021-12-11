@@ -18,11 +18,11 @@ FileData::~FileData() {
 }
 
 void FileData::read(const std::string& filepath) {
-    // Assume working directory by default
+    // Assume working directory by default.
     std::string filedir  = "";
     std::string filename = filepath;
 
-    // If directory is given
+    // If directory is given...
     const auto slashPos = filepath.find_last_of("/\\");
 
     if (slashPos != std::string::npos) {
@@ -30,7 +30,7 @@ void FileData::read(const std::string& filepath) {
         filename = filepath.substr(slashPos + 1);
     }
 
-    // Check file name
+    // Check filename.
     std::transform(
         filename.begin(),
         filename.end(),
@@ -45,7 +45,7 @@ void FileData::read(const std::string& filepath) {
     ) {
         constexpr auto fileReadMode = std::ios::in | std::ios::binary;
 
-        // Open files for reading
+        // Open files for reading.
         std::ifstream bigInfoBin;
         std::ifstream bigUnitBin;
         std::ifstream bigMapBin;
@@ -54,16 +54,15 @@ void FileData::read(const std::string& filepath) {
         bigUnitBin.open(filedir + bigUnitFilename, fileReadMode);
         bigMapBin.open(filedir + bigMapFilename, fileReadMode);
 
-        // Read Data
+        // Read data.
         if (bigInfoBin.good() && bigUnitBin.good() && bigMapBin.good()) {
-            // biginfo.bin must be read first
+            // biginfo.bin must be read first.
             bigInfo->read(bigInfoBin);
 
-            // bigmap.bin
             bigMap->read(bigMapBin);
         }
 
-        // Close Files
+        // Close files.
         bigInfoBin.close();
         bigUnitBin.close();
         bigMapBin.close();
@@ -71,11 +70,11 @@ void FileData::read(const std::string& filepath) {
 }
 
 void FileData::write(const std::string& filepath) {
-    // Assume working directory by default
+    // Assume working directory by default.
     std::string filedir  = "";
     std::string filename = filepath;
 
-    // If directory is given
+    // If directory is given...
     const auto slashPos = filepath.find_last_of("/\\");
 
     if (slashPos != std::string::npos) {
@@ -83,7 +82,7 @@ void FileData::write(const std::string& filepath) {
         filename = filepath.substr(slashPos + 1);
     }
 
-    // Check file name
+    // Check filename.
     std::transform(
         filename.begin(),
         filename.end(),
@@ -98,7 +97,7 @@ void FileData::write(const std::string& filepath) {
     ) {
         constexpr auto fileWriteMode = std::ios::out | std::ios::binary;
 
-        // Open files for writing
+        // Open files for writing.
         std::ofstream bigInfoBin;
         std::ofstream bigUnitBin;
         std::ofstream bigMapBin;
@@ -108,14 +107,13 @@ void FileData::write(const std::string& filepath) {
         bigMapBin.open(filedir + bigMapFilename, fileWriteMode);
 
         if (bigInfoBin.good() && bigUnitBin.good() && bigMapBin.good()) {
-            // bigmap.bin
             bigMap->write(bigMapBin);
 
-            // biginfo.bin must be written last
+            // biginfo.bin must be written last.
             bigInfo->write(bigInfoBin);
         }
 
-        // Close Files
+        // Close files.
         bigInfoBin.close();
         bigUnitBin.close();
         bigMapBin.close();

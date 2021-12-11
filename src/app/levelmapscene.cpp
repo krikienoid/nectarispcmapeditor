@@ -3,17 +3,17 @@
 namespace App {
 
 LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
-    // Init tileset
+    // Init tileset.
     terTilesPixmap = new TerTilesPixmap(parent);
 
-    // Grid Square template
+    // Init grid square.
     QPixmap gridSquare(16, 16);
     gridSquare.fill(QColor("transparent"));
 
     QPainter painter(&gridSquare);
     painter.drawRect(0, 0, 16, 16);
 
-    // Build terrain tile graphics
+    // Init tiles.
     constexpr int maxWidth = static_cast<int>(Nec::MapSize::maxWidth);
 
     for (int i = 0, ii = static_cast<int>(Nec::MapSize::maxSize); i < ii; ++i) {
@@ -23,14 +23,12 @@ LevelMapScene::LevelMapScene(QWidget* const parent) : QGraphicsScene(parent) {
         const auto posX     = x * Constants::tileWidth;
         const auto posY     = y * Constants::tileHeight + offsetY;
 
-        // Tile
         const auto terTile = addPixmap(terTilesPixmap->getTerTile(0));
         terTile->setPos(posX, posY);
         terTile->setData(MapCellIndexDataRole, QVariant(i));
 
         terTiles.append(terTile);
 
-        // Grid Tile
         const auto gridTile = addPixmap(gridSquare);
         gridTile->setPos(posX, posY);
 
