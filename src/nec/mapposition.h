@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "raw/byte.h"
+#include "raw/int.h"
 
 namespace Nec {
 
@@ -11,8 +11,8 @@ struct MapPosition {
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    Raw::Byte                   x;
-    Raw::Byte                   y;
+    Raw::UInt8                  x;
+    Raw::UInt8                  y;
 };
 
 } // namespace Nec

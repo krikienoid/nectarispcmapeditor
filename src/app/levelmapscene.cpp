@@ -83,7 +83,8 @@ void LevelMapScene::updateTerTiles() {
         if (
             Nec::MapSize::isInBounds(static_cast<std::size_t>(i), width, height)
         ) {
-            terIndex = targetLevelMap->items[static_cast<std::size_t>(i)].toInt();
+            terIndex = targetLevelMap->items[static_cast<std::size_t>(i)]
+                .value();
 
             terTile->setVisible(true);
 

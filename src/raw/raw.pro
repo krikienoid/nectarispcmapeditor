@@ -13,4 +13,5 @@ SOURCES += \
 
 HEADERS += \
     byte.h \
-    bytearray.h
+    bytearray.h \
+    int.h

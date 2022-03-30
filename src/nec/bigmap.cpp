@@ -16,7 +16,7 @@ std::istream& BigMap::read(std::istream& ins) {
                 levelInfo.chunkCountY.value()
             );
 
-            ins.seekg(levelInfo.levelMapAddress.toInt());
+            ins.seekg(levelInfo.levelMapAddress.value());
             levelMap.read(ins);
 
             items[i] = levelMap;
@@ -29,7 +29,7 @@ std::istream& BigMap::read(std::istream& ins) {
 std::ostream& BigMap::write(std::ostream& outs) const {
     for (std::size_t i = 0, ii = bigInfo->items.size(); i < ii; ++i) {
         if (bigInfo->levelInfoExists(i)) {
-            bigInfo->items[i].levelMapAddress = Raw::ByteArray::fromInt(outs.tellp());
+            bigInfo->items[i].levelMapAddress = Raw::UInt32(outs.tellp());
             items[i].write(outs);
         }
     }

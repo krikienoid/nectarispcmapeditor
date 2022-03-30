@@ -8,7 +8,7 @@ LevelMap::LevelMap(const std::size_t cX, const std::size_t cY) :
     cX(cX),
     cY(cY)
 {
-    items.resize(MapSize::maxSize, Raw::ByteArray(2));
+    items.resize(MapSize::maxSize);
 }
 
 std::istream& LevelMap::read(std::istream& ins) {
@@ -17,7 +17,7 @@ std::istream& LevelMap::read(std::istream& ins) {
 
     for (std::size_t i = 0, ii = items.size(); i < ii; ++i) {
         if (MapSize::isInBounds(i, width, height)) {
-            items[i].readLittle(ins);
+            items[i].read(ins);
         }
     }
 
@@ -30,7 +30,7 @@ std::ostream& LevelMap::write(std::ostream& outs) const {
 
     for (std::size_t i = 0, ii = MapSize::maxSize; i < ii; ++i) {
         if (MapSize::isInBounds(i, width, height)) {
-            items[i].writeLittle(outs);
+            items[i].write(outs);
         }
     }
 

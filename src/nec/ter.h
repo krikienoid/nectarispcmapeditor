@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "raw/byte.h"
+#include "raw/int.h"
 
 namespace Nec {
 
@@ -16,7 +16,7 @@ public:
 private:
     static constexpr std::size_t    size = 0x800;
 
-    std::vector<Raw::Byte>      data;
+    std::vector<Raw::UInt8>     data;
 };
 
 } // namespace Nec

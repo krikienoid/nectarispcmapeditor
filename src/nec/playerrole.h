@@ -4,14 +4,14 @@
 #include <string>
 #include <vector>
 
-#include "raw/byte.h"
+#include "raw/int.h"
 
 namespace Nec {
 
 namespace PlayerRole {
 
 struct PlayerRoleMeta {
-    const Raw::Byte             value;
+    const Raw::UInt8            value;
     const std::string           name;
 };
 

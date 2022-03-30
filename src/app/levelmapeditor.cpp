@@ -33,8 +33,7 @@ void LevelMapEditor::selectMapCell(const int value) {
     const std::size_t i = static_cast<std::size_t>(value);
 
     if (toolMode == ToolMode::Ter && i < targetLevelMap->items.size()) {
-        targetLevelMap->items[i] = Raw::ByteArray::fromInt(selectedTer);
-        targetLevelMap->items[i].resize(2);
+        targetLevelMap->items[i] = Raw::UInt16(selectedTer);
 
         updateState();
     }
@@ -52,7 +51,7 @@ void LevelMapEditor::editActiveTilesets() {
         i < ii;
         ++i
     ) {
-        targetLevelInfo->activeTilesets[i] = Raw::Byte(0);
+        targetLevelInfo->activeTilesets[i] = Raw::UInt8(0);
     }
 
     std::size_t j = 0;
@@ -63,7 +62,7 @@ void LevelMapEditor::editActiveTilesets() {
         ++i
     ) {
         if (terSelector->tilesetSelections[i]) {
-            targetLevelInfo->activeTilesets[j] = Raw::Byte(i);
+            targetLevelInfo->activeTilesets[j] = Raw::UInt8(i);
 
             ++j;
         }
@@ -74,14 +73,14 @@ void LevelMapEditor::editActiveTilesets() {
 }
 
 void LevelMapEditor::editChunkCountX(const int cX) {
-    targetLevelInfo->chunkCountX = Raw::Byte(cX);
+    targetLevelInfo->chunkCountX = Raw::UInt8(cX);
     targetLevelMap->cX = static_cast<std::size_t>(cX);
 
     updateState();
 }
 
 void LevelMapEditor::editChunkCountY(const int cY) {
-    targetLevelInfo->chunkCountY = Raw::Byte(cY);
+    targetLevelInfo->chunkCountY = Raw::UInt8(cY);
     targetLevelMap->cY = static_cast<std::size_t>(cY);
 
     updateState();
@@ -168,8 +167,8 @@ void LevelMapEditor::updateActiveTilesets() {
 }
 
 bool LevelMapEditor::hasActiveTileset(int i) {
-    for (const auto& b : targetLevelInfo->activeTilesets) {
-        if (b.value() == i) {
+    for (const auto& item : targetLevelInfo->activeTilesets) {
+        if (item.value() == i) {
             return true;
         }
     }
