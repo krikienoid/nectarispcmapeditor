@@ -8,7 +8,7 @@ BigUnit::BigUnit() {
 std::istream& BigUnit::read(std::istream& ins) {
     /*for (std::size_t i = 0; i < BigInfo::LENGTH; ++i) {
         if (bigInfo->levelInfoExists(i)) {
-            ins.seekg(bigInfo->items[i].levelUnitAddress.toInt());
+            ins.seekg(bigInfo->items[i].levelUnitAddress.value());
             items[i].read(ins);
         }
     }
@@ -20,7 +20,7 @@ std::istream& BigUnit::read(std::istream& ins) {
 std::ostream& BigUnit::write(std::ostream& outs) const {
     /*for (std::size_t i = 0, ii = bigInfo->items.size(); i < ii; ++i) {
         if (bigInfo->levelInfoExists(i)) {
-            bigInfo->items[i].levelUnitAddress = Raw::ByteArray::fromInt(outs.tellp());
+            bigInfo->items[i].levelUnitAddress = Raw::UInt32(outs.tellp());
             items[i].write(outs);
         }
     }*/

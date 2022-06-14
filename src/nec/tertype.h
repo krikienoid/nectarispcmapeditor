@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "raw/byte.h"
+#include "raw/int.h"
 #include "termovetype.h"
 
 namespace Nec {
@@ -12,7 +12,7 @@ namespace Nec {
 namespace TerType {
 
 struct TerTypeMeta {
-    const Raw::Byte             value;
+    const Raw::UInt8            value;
     const std::string           name;
     const double                defense;
     const TerMoveTypeKey        terMoveType;

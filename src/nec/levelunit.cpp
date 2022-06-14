@@ -11,7 +11,7 @@ std::istream& LevelUnit::read(std::istream& ins) {
 
     for (std::size_t i = 0, ii = size(); i < ii; ++i) {
         if (MapSize::isInBounds(i, width, height)) {
-            data[i].readLittle(ins);
+            data[i].read(ins);
         }
     }*/
 

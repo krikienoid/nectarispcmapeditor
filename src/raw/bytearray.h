@@ -2,18 +2,20 @@
 #define RAW_BYTEARRAY_H
 
 #include <cstddef>
+#include <cstdio>
 #include <iostream>
 #include <string>
 
-#include "byte.h"
-
 namespace Raw {
+
+typedef unsigned char           Byte;
 
 class ByteArray {
 public:
+    enum class                  PrintFormat { Bin, Dec, Hex };
+
                                 ByteArray();
     explicit                    ByteArray(std::size_t);
-    explicit                    ByteArray(Byte);
                                 ByteArray(const ByteArray&);
                                 ByteArray(ByteArray&&) noexcept;
                                 ~ByteArray();
@@ -26,11 +28,6 @@ public:
     std::istream&               read(std::istream&);
     std::ostream&               write(std::ostream&) const;
 
-    std::istream&               readLittle(std::istream&);
-    std::ostream&               writeLittle(std::ostream&) const;
-    std::istream&               readBig(std::istream&);
-    std::ostream&               writeBig(std::ostream&) const;
-
     std::size_t                 size() const;
     void                        push(Byte);
     ByteArray                   substr(std::size_t, std::size_t) const;
@@ -41,13 +38,16 @@ public:
                                     const ByteArray&
                                 );
     void                        resize(std::size_t);
-    std::string                 toString() const;
-    int                         toInt() const;
-
-    static ByteArray            fromInt(int);
+    std::string                 toString(
+                                    PrintFormat format = PrintFormat::Hex
+                                ) const;
 
 private:
     void                        swap(ByteArray&);
+
+    static std::string          byteToStringBin(Byte);
+    static std::string          byteToStringDec(Byte);
+    static std::string          byteToStringHex(Byte);
 
     std::size_t                 length;
     Byte*                       data;

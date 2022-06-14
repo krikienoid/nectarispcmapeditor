@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "raw/bytearray.h"
+#include "raw/int.h"
 #include "mapsize.h"
 
 namespace Nec {
@@ -20,7 +20,7 @@ public:
     std::size_t                 cX;
     std::size_t                 cY;
 
-    std::vector<Raw::ByteArray> items;
+    std::vector<Raw::UInt16>    items;
 };
 
 } // namespace Nec

@@ -16,7 +16,7 @@ PlayersEditor::PlayersEditor(QWidget* const parent) : QWidget(parent) {
 void PlayersEditor::editPlayerRole(const int i) {
     const auto comboBox = playerRoleComboBoxes[i];
 
-    targetLevelInfo->playerRole[static_cast<std::size_t>(i)] = Raw::Byte(
+    targetLevelInfo->playerRole[static_cast<std::size_t>(i)] = Raw::UInt8(
         comboBox->itemData(comboBox->currentIndex()).toInt()
     );
 }
@@ -24,7 +24,7 @@ void PlayersEditor::editPlayerRole(const int i) {
 void PlayersEditor::editPlayerAttitude(const int i) {
     const auto comboBox = playerAttitudeComboBoxes[i];
 
-    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)] = Raw::Byte(
+    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)] = Raw::UInt8(
         comboBox->itemData(comboBox->currentIndex()).toInt()
     );
 }

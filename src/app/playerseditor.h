@@ -11,6 +11,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "raw/int.h"
 #include "nec/levelinfo.h"
 #include "nec/playerattitude.h"
 #include "nec/playerrole.h"

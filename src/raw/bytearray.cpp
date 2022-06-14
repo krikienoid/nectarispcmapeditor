@@ -4,35 +4,29 @@ namespace Raw {
 
 // Public
 
-ByteArray::ByteArray() {
-    length = 0;
-    data   = nullptr;
-}
+ByteArray::ByteArray() :
+    length(0),
+    data(nullptr)
+{}
 
-ByteArray::ByteArray(const std::size_t n) {
-    length = n;
-    data   = new Byte[length];
-}
+ByteArray::ByteArray(const std::size_t n) :
+    length(n),
+    data(new Byte[length])
+{}
 
-ByteArray::ByteArray(const Byte b) {
-    length  = 1;
-    data    = new Byte[length];
-    data[0] = b;
-}
-
-ByteArray::ByteArray(const ByteArray& byteArray) {
-    length = byteArray.length;
-    data   = new Byte[length];
-
+ByteArray::ByteArray(const ByteArray& byteArray) :
+    length(byteArray.length),
+    data(new Byte[length])
+{
     for (std::size_t i = 0; i < length; ++i) {
         data[i] = byteArray.data[i];
     }
 }
 
-ByteArray::ByteArray(ByteArray&& tmp) noexcept {
-    length = tmp.length;
-    data   = tmp.data;
-
+ByteArray::ByteArray(ByteArray&& tmp) noexcept :
+    length(tmp.length),
+    data(tmp.data)
+{
     tmp.length = 0;
     tmp.data   = nullptr;
 }
@@ -71,40 +65,20 @@ ByteArray ByteArray::operator+(const ByteArray& byteArray) const {
 }
 
 std::istream& ByteArray::read(std::istream& ins) {
-    return readLittle(ins);
+    char c;
+
+    for (std::size_t i = 0; i < length; ++i) {
+        ins.get(c);
+
+        data[i] = static_cast<Byte>(c);
+    }
+
+    return ins;
 }
 
 std::ostream& ByteArray::write(std::ostream& outs) const {
-    return writeLittle(outs);
-}
-
-std::istream& ByteArray::readLittle(std::istream& ins) {
     for (std::size_t i = 0; i < length; ++i) {
-        data[i].read(ins);
-    }
-
-    return ins;
-}
-
-std::ostream& ByteArray::writeLittle(std::ostream& outs) const {
-    for (std::size_t i = 0; i < length; ++i) {
-        data[i].write(outs);
-    }
-
-    return outs;
-}
-
-std::istream& ByteArray::readBig(std::istream& ins) {
-    for (std::size_t i = length; i;) {
-        data[--i].read(ins);
-    }
-
-    return ins;
-}
-
-std::ostream& ByteArray::writeBig(std::ostream& outs) const {
-    for (std::size_t i = length; i;) {
-        data[--i].write(outs);
+        outs.put(static_cast<char>(data[i]));
     }
 
     return outs;
@@ -174,31 +148,31 @@ void ByteArray::resize(const std::size_t n) {
     operator=(result);
 }
 
-std::string ByteArray::toString() const {
+std::string ByteArray::toString(const PrintFormat format) const {
     std::string result;
 
-    for (std::size_t i = 0; i < length; ++i) {
-        result += data[i].printString() + ' ';
-    }
+    switch (format) {
+        case PrintFormat::Bin:
+            for (std::size_t i = 0; i < length; ++i) {
+                result += byteToStringBin(data[i]);
+            }
 
-    return result;
-}
+            break;
 
-int ByteArray::toInt() const {
-    int result = 0;
+        case PrintFormat::Dec:
+            for (std::size_t i = 0; i < length; ++i) {
+                result += byteToStringDec(data[i]);
+            }
 
-    for (std::size_t i = 0; i < length; ++i) {
-        result |= static_cast<int>(data[i].value()) << static_cast<int>(8 * i);
-    }
+            break;
 
-    return result;
-}
+        case PrintFormat::Hex:
+        default:
+            for (std::size_t i = 0; i < length; ++i) {
+                result += byteToStringHex(data[i]);
+            }
 
-ByteArray ByteArray::fromInt(int n) {
-    ByteArray result(sizeof(n));
-
-    for (std::size_t i = result.length; i; --i, n >>= 8) {
-        result.data[result.length - i] = Byte(n & 0xff);
+            break;
     }
 
     return result;
@@ -217,10 +191,53 @@ void ByteArray::swap(ByteArray& byteArray) {
     byteArray.data   = tmpData;
 }
 
+std::string ByteArray::byteToStringBin(const Byte b) {
+    std::string result(8, '0');
+    Byte marker = 1;
+
+    for (std::size_t i = 8; i; marker <<= 1) {
+        result[--i] = (b & marker) ? '1' : '0';
+    }
+
+    return result;
+}
+
+std::string ByteArray::byteToStringDec(const Byte b) {
+    char buffer[4];
+
+    std::sprintf(buffer, "%d", b);
+
+    std::string result(buffer);
+
+    while (result.size() < 3) {
+        result = '0' + result;
+    }
+
+    return result;
+}
+
+std::string ByteArray::byteToStringHex(const Byte b) {
+    char buffer[3];
+
+    std::sprintf(buffer, "%x", b);
+
+    std::string result(buffer);
+
+    if (result.size() < 2) {
+        result = '0' + result;
+    }
+
+    return result;
+}
+
 // Helpers
 
 ByteArray operator+(const Byte b, const ByteArray& byteArray) {
-    return ByteArray(b) + byteArray;
+    ByteArray ba(1);
+
+    ba[0] = b;
+
+    return ba + byteArray;
 }
 
 } // namespace Raw
