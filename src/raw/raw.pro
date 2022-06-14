@@ -8,10 +8,8 @@ TEMPLATE = lib
 TARGET = blib
 
 SOURCES += \
-    byte.cpp \
     bytearray.cpp
 
 HEADERS += \
-    byte.h \
     bytearray.h \
     int.h

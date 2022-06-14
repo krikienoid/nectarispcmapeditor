@@ -5,7 +5,6 @@
 #include <cstdint>
 #include <iostream>
 
-#include "byte.h"
 #include "bytearray.h"
 
 namespace Raw {
@@ -29,7 +28,7 @@ public:
                                             ? i
                                             : (N - 1) - i;
 
-                                        data[j] = Byte(static_cast<unsigned char>(n));
+                                        data[j] = static_cast<Byte>(n);
                                     }
                                 }
 
@@ -54,7 +53,7 @@ public:
                                             : (N - 1) - i;
 
                                         result |=
-                                            static_cast<T>(data[j].value()) <<
+                                            static_cast<T>(data[j]) <<
                                             static_cast<T>(bitCount * i);
                                     }
 
