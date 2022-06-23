@@ -36,17 +36,15 @@ MainEditor::MainEditor(QWidget* const parent) : QWidget(parent) {
     layoutCol->addWidget(levelInfoSelector);
 
     const auto levelEditorTabGroup = new QTabWidget(this);
+    levelEditorTabGroup->setFixedWidth(512);
     levelEditorTabGroup->addTab(levelMapEditor, tr("Terrain"));
     levelEditorTabGroup->addTab(playersEditor, tr("Players"));
     levelEditorTabGroup->addTab(new QWidget(), tr("Units"));
 
-    const auto mapEditorSplitter = new QSplitter(this);
-    mapEditorSplitter->addWidget(levelMapEditor->mapView);
-    mapEditorSplitter->addWidget(levelEditorTabGroup);
-
     const auto layoutMain = new QHBoxLayout();
     layoutMain->addLayout(layoutCol);
-    layoutMain->addWidget(mapEditorSplitter);
+    layoutMain->addWidget(levelMapEditor->mapView);
+    layoutMain->addWidget(levelEditorTabGroup);
 
     setLayout(layoutMain);
 }

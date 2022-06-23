@@ -2,7 +2,6 @@
 #define APP_MAINEDITOR_H
 
 #include <QHBoxLayout>
-#include <QSplitter>
 #include <QTabWidget>
 #include <QVBoxLayout>
 #include <QWidget>

@@ -15,6 +15,8 @@ MainWindow::MainWindow() {
     initActions();
     initMenus();
     initToolBars();
+
+    resize(1200, this->height());
 }
 
 MainWindow::~MainWindow() {
