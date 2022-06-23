@@ -110,10 +110,10 @@ void LevelMapEditor::updateState() {
         0,
         0,
         static_cast<int>(
-            Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value()) + 1
+            Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1)
         ) * Constants::tileWidth,
         static_cast<int>(
-            Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value()) + 1
+            Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1)
         ) * Constants::tileHeight
     );
 
