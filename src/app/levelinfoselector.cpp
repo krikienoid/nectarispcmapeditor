@@ -55,7 +55,7 @@ void LevelInfoSelector::updateState() {
                 QString::number(value + 1) +
                 QString(" : ") +
                 QString::fromStdString(
-                    targetFileData->bigInfo->items[i].levelName.toString()
+                    targetFileData->bigInfo->items[i].levelName.getValue()
                 )
             );
 

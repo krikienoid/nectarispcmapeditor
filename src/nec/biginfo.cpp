@@ -3,13 +3,11 @@
 namespace Nec {
 
 BigInfo::BigInfo() {
-    for (std::size_t i = 0; i < levelCount; ++i) {
-        items.push_back(LevelInfo());
-    }
+    items.resize(levelCount);
 }
 
 bool BigInfo::levelInfoExists(const std::size_t i) const {
-    return (i + 1) == items[i].levelNumber.value();
+    return (i + 1) == items[i].levelNumber.getValue();
 }
 
 std::istream& BigInfo::read(std::istream& ins) {

@@ -33,7 +33,7 @@ int main() {
     {
         std::cout << std::endl << "Nec::LevelName" << std::endl << std::endl;
         Nec::LevelName levelName("revolt");
-        std::cout << levelName.toString() << std::endl;
+        std::cout << levelName.getValue() << std::endl;
     }
 
     return 0;

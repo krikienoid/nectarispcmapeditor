@@ -4,9 +4,11 @@
 #include <iostream>
 #include <string>
 
+#include "datanode.h"
+
 namespace Nec {
 
-class LevelName {
+class LevelName : public Raw::AbstractDataNode {
 public:
     static constexpr std::size_t    length = 6;
 
@@ -14,10 +16,12 @@ public:
     explicit                    LevelName(const std::string&);
     explicit                    LevelName(const char*);
 
-    std::istream&               read(std::istream&);
-    std::ostream&               write(std::ostream&) const;
+    std::istream&               read(std::istream&) override;
+    std::ostream&               write(std::ostream&) const override;
 
-    std::string                 toString() const;
+    std::string                 getValue() const;
+    void                        setValue(const std::string&);
+    void                        setValue(const char*);
 
 private:
     static constexpr char       filler = '_';

@@ -3,48 +3,26 @@
 
 #include <cstddef>
 #include <cstdint>
-#include <iostream>
 
 #include "bytearray.h"
+#include "datanode.h"
 
 namespace Raw {
 
 enum class                      Endian { Little, Big };
 
 template <class T, std::size_t N, Endian E = Endian::Little>
-class Int {
+class Int : public DataElement {
 public:
     static constexpr std::size_t    bitCount = 8;
 
-                                Int() : data(N) {}
+                                Int() : DataElement(N) {}
 
-                                Int(T n) : data(N) {
-                                    for (
-                                        std::size_t i = 0;
-                                        i < N;
-                                        ++i, n >>= bitCount
-                                    ) {
-                                        const auto j = (E == Endian::Little)
-                                            ? i
-                                            : (N - 1) - i;
-
-                                        data[j] = static_cast<Byte>(n);
-                                    }
+                                Int(T n) : DataElement(N) {
+                                    setValue(n);
                                 }
 
-    std::istream&               read(std::istream& ins) {
-                                    data.read(ins);
-
-                                    return ins;
-                                }
-
-    std::ostream&               write(std::ostream& outs) const {
-                                    data.write(outs);
-
-                                    return outs;
-                                }
-
-    T                           value() const {
+    T                           getValue() const {
                                     T result = 0;
 
                                     for (std::size_t i = 0; i < N; ++i) {
@@ -58,6 +36,20 @@ public:
                                     }
 
                                     return result;
+                                }
+
+    void                        setValue(T n) {
+                                    for (
+                                        std::size_t i = 0;
+                                        i < N;
+                                        ++i, n >>= bitCount
+                                    ) {
+                                        const auto j = (E == Endian::Little)
+                                            ? i
+                                            : (N - 1) - i;
+
+                                        data[j] = static_cast<Byte>(n);
+                                    }
                                 }
 
     ByteArray                   toByteArray() {
@@ -85,9 +77,6 @@ public:
 
                                     return result;
                                 }
-
-private:
-    ByteArray                   data;
 };
 
 typedef Int<std::int8_t,   1>   Int8;

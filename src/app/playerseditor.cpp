@@ -16,7 +16,7 @@ PlayersEditor::PlayersEditor(QWidget* const parent) : QWidget(parent) {
 void PlayersEditor::editPlayerRole(const int i) {
     const auto comboBox = playerRoleComboBoxes[i];
 
-    targetLevelInfo->playerRole[static_cast<std::size_t>(i)] = Raw::UInt8(
+    targetLevelInfo->playerRole[static_cast<std::size_t>(i)].setValue(
         comboBox->itemData(comboBox->currentIndex()).toInt()
     );
 }
@@ -24,7 +24,7 @@ void PlayersEditor::editPlayerRole(const int i) {
 void PlayersEditor::editPlayerAttitude(const int i) {
     const auto comboBox = playerAttitudeComboBoxes[i];
 
-    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)] = Raw::UInt8(
+    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].setValue(
         comboBox->itemData(comboBox->currentIndex()).toInt()
     );
 }
@@ -38,7 +38,7 @@ void PlayersEditor::updateState() {
         const auto comboBox = playerAttitudeComboBoxes[i];
 
         comboBox->setCurrentIndex(comboBox->findData(QVariant(static_cast<int>(
-            targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].value()
+            targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].getValue()
         ))));
     }
 
@@ -46,7 +46,7 @@ void PlayersEditor::updateState() {
         const auto comboBox = playerRoleComboBoxes[i];
 
         comboBox->setCurrentIndex(comboBox->findData(QVariant(static_cast<int>(
-            targetLevelInfo->playerRole[static_cast<std::size_t>(i)].value()
+            targetLevelInfo->playerRole[static_cast<std::size_t>(i)].getValue()
         ))));
     }
 }
@@ -57,7 +57,7 @@ QComboBox* PlayersEditor::createPlayerRoleComboBox() {
     for (const auto& item : Nec::PlayerRole::data) {
         comboBox->addItem(
             QString::fromStdString(item.name),
-            QVariant(static_cast<int>(item.value.value()))
+            QVariant(static_cast<int>(item.value.getValue()))
         );
     }
 
@@ -70,7 +70,7 @@ QComboBox* PlayersEditor::createPlayerAttitudeComboBox() {
     for (const auto& item : Nec::PlayerAttitude::data) {
         comboBox->addItem(
             QString::fromStdString(item.name),
-            QVariant(static_cast<int>(item.value.value()))
+            QVariant(static_cast<int>(item.value.getValue()))
         );
     }
 

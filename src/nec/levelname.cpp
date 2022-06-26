@@ -34,8 +34,20 @@ std::ostream& LevelName::write(std::ostream& outs) const {
     return outs;
 }
 
-std::string LevelName::toString() const {
+std::string LevelName::getValue() const {
     return data;
+}
+
+void LevelName::setValue(const std::string& str) {
+    data = str;
+
+    data.resize(length, filler);
+}
+
+void LevelName::setValue(const char* s) {
+    data = std::string(s);
+
+    data.resize(length, filler);
 }
 
 } // namespace Nec

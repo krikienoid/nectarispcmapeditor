@@ -17,7 +17,7 @@ public:
                                 ~FileData();
 
     void                        read(const std::string&);
-    void                        write(const std::string&);
+    void                        write(const std::string&) const;
 
     BigInfo*                    bigInfo;
     // BigUnit*                    bigUnit;

@@ -33,7 +33,7 @@ void LevelMapEditor::selectMapCell(const int value) {
     const std::size_t i = static_cast<std::size_t>(value);
 
     if (toolMode == ToolMode::Ter && i < targetLevelMap->items.size()) {
-        targetLevelMap->items[i] = Raw::UInt16(selectedTer);
+        targetLevelMap->items[i].setValue(selectedTer);
 
         updateState();
     }
@@ -51,7 +51,7 @@ void LevelMapEditor::editActiveTilesets() {
         i < ii;
         ++i
     ) {
-        targetLevelInfo->activeTilesets[i] = Raw::UInt8(0);
+        targetLevelInfo->activeTilesets[i].setValue(0);
     }
 
     std::size_t j = 0;
@@ -62,7 +62,7 @@ void LevelMapEditor::editActiveTilesets() {
         ++i
     ) {
         if (terSelector->tilesetSelections[i]) {
-            targetLevelInfo->activeTilesets[j] = Raw::UInt8(i);
+            targetLevelInfo->activeTilesets[j].setValue(i);
 
             ++j;
         }
@@ -73,14 +73,14 @@ void LevelMapEditor::editActiveTilesets() {
 }
 
 void LevelMapEditor::editChunkCountX(const int cX) {
-    targetLevelInfo->chunkCountX = Raw::UInt8(cX);
+    targetLevelInfo->chunkCountX.setValue(cX);
     targetLevelMap->cX = static_cast<std::size_t>(cX);
 
     updateState();
 }
 
 void LevelMapEditor::editChunkCountY(const int cY) {
-    targetLevelInfo->chunkCountY = Raw::UInt8(cY);
+    targetLevelInfo->chunkCountY.setValue(cY);
     targetLevelMap->cY = static_cast<std::size_t>(cY);
 
     updateState();
@@ -101,8 +101,8 @@ void LevelMapEditor::setTargetData(
 }
 
 void LevelMapEditor::updateState() {
-    chunkCountXComboBox->setCurrentIndex(targetLevelInfo->chunkCountX.value());
-    chunkCountYComboBox->setCurrentIndex(targetLevelInfo->chunkCountY.value());
+    chunkCountXComboBox->setCurrentIndex(targetLevelInfo->chunkCountX.getValue());
+    chunkCountYComboBox->setCurrentIndex(targetLevelInfo->chunkCountY.getValue());
 
     levelMapScene->updateState();
 
@@ -110,10 +110,10 @@ void LevelMapEditor::updateState() {
         0,
         0,
         static_cast<int>(
-            Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1)
+            Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.getValue() + 1)
         ) * Constants::tileWidth,
         static_cast<int>(
-            Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1)
+            Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.getValue() + 1)
         ) * Constants::tileHeight
     );
 
@@ -168,7 +168,7 @@ void LevelMapEditor::updateActiveTilesets() {
 
 bool LevelMapEditor::hasActiveTileset(int i) {
     for (const auto& item : targetLevelInfo->activeTilesets) {
-        if (item.value() == i) {
+        if (item.getValue() == i) {
             return true;
         }
     }

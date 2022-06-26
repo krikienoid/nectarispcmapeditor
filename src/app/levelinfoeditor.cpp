@@ -24,8 +24,7 @@ LevelInfoEditor::LevelInfoEditor(QWidget* const parent) : QWidget(parent) {
 }
 
 void LevelInfoEditor::editLevelName() {
-    targetLevelInfo->levelName =
-        Nec::LevelName(levelNameEdit->text().toStdString());
+    targetLevelInfo->levelName.setValue(levelNameEdit->text().toStdString());
 
     emit signaledUpdate();
 }
@@ -36,7 +35,7 @@ void LevelInfoEditor::setTargetData(Nec::LevelInfo* const levelInfo) {
 
 void LevelInfoEditor::updateState() {
     levelNameEdit->setText(
-        QString::fromStdString(targetLevelInfo->levelName.toString())
+        QString::fromStdString(targetLevelInfo->levelName.getValue())
     );
 }
 

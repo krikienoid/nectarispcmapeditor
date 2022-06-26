@@ -69,7 +69,7 @@ void FileData::read(const std::string& filepath) {
     }
 }
 
-void FileData::write(const std::string& filepath) {
+void FileData::write(const std::string& filepath) const {
     // Assume working directory by default.
     std::string filedir  = "";
     std::string filename = filepath;

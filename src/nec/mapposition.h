@@ -1,15 +1,14 @@
 #ifndef NEC_MAPPOSITION_H
 #define NEC_MAPPOSITION_H
 
-#include <iostream>
-
+#include "raw/datanode.h"
 #include "raw/int.h"
 
 namespace Nec {
 
-struct MapPosition {
-    std::istream&               read(std::istream&);
-    std::ostream&               write(std::ostream&) const;
+class MapPosition : public Raw::DataNode {
+public:
+                                MapPosition();
 
     Raw::UInt8                  x;
     Raw::UInt8                  y;

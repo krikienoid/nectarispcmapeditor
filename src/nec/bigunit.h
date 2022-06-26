@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 
-#include "raw/int.h"
 #include "biginfo.h"
 #include "levelunit.h"
 

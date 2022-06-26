@@ -16,7 +16,6 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-#include "raw/int.h"
 #include "nec/levelinfo.h"
 #include "nec/levelmap.h"
 #include "nec/mapsize.h"

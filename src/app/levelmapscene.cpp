@@ -71,9 +71,9 @@ void LevelMapScene::updateTerTiles() {
 
     constexpr int maxWidth = static_cast<int>(Nec::MapSize::maxWidth);
     const auto width  =
-        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1);
+        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.getValue() + 1);
     const auto height =
-        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1);
+        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.getValue() + 1);
 
     for (int i = 0, ii = terTiles.size(); i < ii; ++i) {
         const auto x = i % maxWidth;
@@ -86,7 +86,7 @@ void LevelMapScene::updateTerTiles() {
             Nec::MapSize::isInBounds(static_cast<std::size_t>(i), width, height)
         ) {
             terIndex = targetLevelMap->items[static_cast<std::size_t>(i)]
-                .value();
+                .getValue();
 
             terTile->setVisible(true);
 
@@ -109,9 +109,9 @@ void LevelMapScene::updateTerTiles() {
 
 void LevelMapScene::updateGridTiles() {
     const auto width  =
-        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.value() + 1);
+        Nec::MapSize::getWidth(targetLevelInfo->chunkCountX.getValue() + 1);
     const auto height =
-        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.value() + 1);
+        Nec::MapSize::getHeight(targetLevelInfo->chunkCountY.getValue() + 1);
 
     for (int i = 0, ii = gridTiles.size(); i < ii; ++i) {
         gridTiles[i]->setVisible(

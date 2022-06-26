@@ -4,18 +4,19 @@
 #include <iostream>
 #include <vector>
 
+#include "raw/datanode.h"
 #include "raw/int.h"
 #include "mapsize.h"
 
 namespace Nec {
 
-class LevelMap {
+class LevelMap : public Raw::AbstractDataNode {
 public:
                                 LevelMap();
     explicit                    LevelMap(std::size_t, std::size_t);
 
-    std::istream&               read(std::istream&);
-    std::ostream&               write(std::ostream&) const;
+    std::istream&               read(std::istream&) override;
+    std::ostream&               write(std::ostream&) const override;
 
     std::size_t                 cX;
     std::size_t                 cY;
