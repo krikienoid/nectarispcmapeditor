@@ -8,11 +8,11 @@ LevelInfo::LevelInfo() {
     push(&chunkCountX);
     push(&chunkCountY);
 
-    for (auto& item : playerRole) {
+    for (auto& item : playerRoles) {
         push(&item);
     }
 
-    for (auto& item : playerAttitude) {
+    for (auto& item : playerAttitudes) {
         push(&item);
     }
 

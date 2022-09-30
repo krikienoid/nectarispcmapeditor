@@ -16,7 +16,7 @@ PlayersEditor::PlayersEditor(QWidget* const parent) : QWidget(parent) {
 void PlayersEditor::editPlayerRole(const int i) {
     const auto comboBox = playerRoleComboBoxes[i];
 
-    targetLevelInfo->playerRole[static_cast<std::size_t>(i)].setValue(
+    targetLevelInfo->playerRoles[static_cast<std::size_t>(i)].setValue(
         comboBox->itemData(comboBox->currentIndex()).toInt()
     );
 }
@@ -24,7 +24,7 @@ void PlayersEditor::editPlayerRole(const int i) {
 void PlayersEditor::editPlayerAttitude(const int i) {
     const auto comboBox = playerAttitudeComboBoxes[i];
 
-    targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].setValue(
+    targetLevelInfo->playerAttitudes[static_cast<std::size_t>(i)].setValue(
         comboBox->itemData(comboBox->currentIndex()).toInt()
     );
 }
@@ -38,7 +38,7 @@ void PlayersEditor::updateState() {
         const auto comboBox = playerAttitudeComboBoxes[i];
 
         comboBox->setCurrentIndex(comboBox->findData(QVariant(static_cast<int>(
-            targetLevelInfo->playerAttitude[static_cast<std::size_t>(i)].getValue()
+            targetLevelInfo->playerAttitudes[static_cast<std::size_t>(i)].getValue()
         ))));
     }
 
@@ -46,7 +46,7 @@ void PlayersEditor::updateState() {
         const auto comboBox = playerRoleComboBoxes[i];
 
         comboBox->setCurrentIndex(comboBox->findData(QVariant(static_cast<int>(
-            targetLevelInfo->playerRole[static_cast<std::size_t>(i)].getValue()
+            targetLevelInfo->playerRoles[static_cast<std::size_t>(i)].getValue()
         ))));
     }
 }

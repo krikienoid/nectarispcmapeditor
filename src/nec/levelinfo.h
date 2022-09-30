@@ -24,8 +24,8 @@ public:
     Raw::UInt8                                  chunkCountX;
     Raw::UInt8                                  chunkCountY;
 
-    std::array<Raw::UInt8, playerCount>         playerRole;         // size:  4
-    std::array<Raw::UInt8, playerCountSq>       playerAttitude;     // size: 16
+    std::array<Raw::UInt8, playerCount>         playerRoles;        // size:  4
+    std::array<Raw::UInt8, playerCountSq>       playerAttitudes;    // size: 16
     std::array<Raw::UInt8, activeTilesetCount>  activeTilesets;     // size:  5
     Raw::DataElement                            unknown2;           // size:  3
 
